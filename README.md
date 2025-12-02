@@ -12,8 +12,7 @@ editable inside the HTML file.
 ```
 /assets
    ├─ EkarsiLodhCV2025.pdf      # Downloadable CV
-   ├─ favicon.png / favicon.svg # Website icon (optional)
-   ├─ Github_CV.png             # Any other custom icons
+   ├─ Github_CV .png            # Website icon (optional)
 index.html                      # Main website (all sections)
 README.md                       # This file
 ```
