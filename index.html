@@ -1,46 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    Basic metadata: charset + responsive viewport + title in browser tab
-  -->
+  <!-- Basic metadata -->
   <meta charset="UTF-8" />
   <title>Ekarsi Lodh | Bioinformatics CV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!--
-    Import Google Font: Inter
-    - If you want to change the font, edit this URL and the font-family in CSS below.
-  -->
+  <!-- Google Font: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <!--
-    Global styles for the whole page.
-    - You can change colours in :root
-    - Layout & section styles are below.
-  -->
   <style>
-    /* CSS variables (colour palette) */
+    /* ========== COLOUR PALETTE ========== */
     :root {
-      --bg: #020617;          /* page background */
-      --bg-alt: #02091c;      /* alternative background */
-      --card: #020b24;        /* card background (not used separately but you can) */
-      --accent: #7aa2f7;      /* links + accent colour */
-      --accent-soft: #1e293b; /* softer accent background */
-      --text: #e5e9f0;        /* main text colour */
-      --muted: #94a3b8;       /* muted / secondary text */
-      --border: #1f2937;      /* border colour */
-      --chip: #0b1220;        /* chip / tag background */
+      --bg: #020617;
+      --bg-alt: #02091c;
+      --card: #020b24;
+      --accent: #7aa2f7;
+      --accent-soft: #1e293b;
+      --text: #e5e9f0;
+      --muted: #94a3b8;
+      --border: #1f2937;
+      --chip: #0b1220;
     }
 
-    /* Reset margins + padding, use border-box sizing everywhere */
+    /* Global reset */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Body: dark background, Inter font, light text */
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 55%);
@@ -48,7 +37,6 @@
       line-height: 1.6;
     }
 
-    /* Link styling */
     a {
       color: var(--accent);
       text-decoration: none;
@@ -58,7 +46,7 @@
       text-decoration: underline;
     }
 
-    /* Wrapper around all content to center it and add padding */
+    /* Main content wrapper */
     .page {
       max-width: 1000px;
       margin: 0 auto;
@@ -71,15 +59,13 @@
       }
     }
 
-    /* ===========================
-       HEADER / NAVBAR
-       =========================== */
+    /* ========== STICKY HEADER / NAVBAR ========== */
 
     .site-header {
-      position: sticky;  /* Stick to top when scrolling */
+      position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(14px); /* Glass-like blur under header */
+      backdrop-filter: blur(14px);
       background: linear-gradient(
         to bottom,
         rgba(2, 6, 23, 0.95),
@@ -89,7 +75,6 @@
       border-bottom: 1px solid rgba(15, 23, 42, 0.8);
     }
 
-    /* Inner flex container for header */
     .nav-inner {
       max-width: 1000px;
       margin: 0 auto;
@@ -100,7 +85,6 @@
       gap: 1rem;
     }
 
-    /* Left side: name + subtitle */
     .branding {
       display: flex;
       flex-direction: column;
@@ -118,7 +102,6 @@
       color: var(--muted);
     }
 
-    /* Right side: navigation links */
     .nav-links {
       display: flex;
       gap: 0.6rem;
@@ -140,9 +123,7 @@
       text-decoration: none;
     }
 
-    /* ===========================
-       HERO / TOP SUMMARY SECTION
-       =========================== */
+    /* ========== HERO / TOP SUMMARY ========== */
 
     .hero {
       margin-top: 1.6rem;
@@ -155,7 +136,7 @@
         0 22px 45px rgba(15, 23, 42, 0.9),
         0 0 0 1px rgba(15, 23, 42, 0.9);
       display: grid;
-      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr); /* main text + sidebar */
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
       gap: 1.5rem;
     }
 
@@ -191,7 +172,6 @@
       font-weight: 600;
     }
 
-    /* Right-hand column in hero: contact details + buttons */
     .hero-aside {
       font-size: 0.86rem;
       display: flex;
@@ -207,7 +187,6 @@
       color: var(--muted);
     }
 
-    /* Small rounded info chips under the summary */
     .chip-row {
       margin-top: 0.55rem;
       display: flex;
@@ -224,7 +203,6 @@
       color: var(--muted);
     }
 
-    /* Buttons under contact (Download CV, ORCID, Scholar) */
     .hero-links {
       margin-top: 0.7rem;
       display: flex;
@@ -243,7 +221,7 @@
       background: rgba(30, 64, 175, 0.85);
       color: #e5e7eb;
       text-decoration: none;
-      gap: 0.3rem; /* gap between emoji and text */
+      gap: 0.3rem;
     }
 
     .btn.secondary {
@@ -256,12 +234,10 @@
       text-decoration: none;
     }
 
-    /* ===========================
-       GENERIC SECTION STYLING
-       =========================== */
+    /* ========== SECTIONS / CARDS ========== */
 
     .section {
-      margin-top: 2.2rem; /* space between sections */
+      margin-top: 2.2rem;
     }
 
     .section-header {
@@ -282,7 +258,6 @@
       gap: 0.55rem;
     }
 
-    /* horizontal accent line before section titles */
     .section-title::before {
       content: "";
       display: inline-block;
@@ -301,7 +276,6 @@
       color: var(--muted);
     }
 
-    /* Card: used for each "block" in sections */
     .card {
       background: rgba(15, 23, 42, 0.85);
       border-radius: 0.9rem;
@@ -349,10 +323,20 @@
       margin-bottom: 0.18rem;
     }
 
-    /* Skills layout (grid of small cards) */
+    /* Publications: add more spacing between items */
+    ol {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    ol li {
+      margin-bottom: 0.85rem; /* more space so it’s not condensed */
+    }
+
+    /* Skills layout: STACK vertically instead of grid */
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      display: flex;
+      flex-direction: column; /* <- this stacks them */
       gap: 0.7rem;
     }
 
@@ -372,52 +356,23 @@
       margin-bottom: 0.3rem;
     }
 
-    /* Footer note at the bottom of page */
     .footer {
       margin-top: 2.5rem;
       font-size: 0.78rem;
       color: var(--muted);
       text-align: right;
     }
-
-    /* Ordered lists for publications */
-    ol {
-      margin-left: 1.2rem;
-      margin-top: 0.3rem;
-    }
-
-    ol li {
-      margin-bottom: 0.35rem;
-    }
-
-    /* Two-column layout, used if needed (currently not used heavily) */
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 0.7rem 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
   </style>
 </head>
 <body>
 
-<!-- ===========================
-     STICKY HEADER / NAVIGATION
-     =========================== -->
+<!-- ========== HEADER / NAV ========== -->
 <header class="site-header">
   <div class="nav-inner">
-    <!-- Left side: your name and short tagline -->
     <div class="branding">
       <div class="branding-title">Ekarsi Lodh</div>
       <div class="branding-sub">Bioinformatics · Computational Genomics</div>
     </div>
-
-    <!-- Right side: navigation links to sections by ID (href="#section-id") -->
     <nav class="nav-links">
       <a href="#education">Education</a>
       <a href="#research">Research</a>
@@ -435,14 +390,10 @@
   </div>
 </header>
 
-<!-- Main content wrapper -->
 <main class="page">
 
-  <!-- ===========================
-       HERO / SUMMARY BLOCK
-       =========================== -->
+  <!-- ========== HERO ========== -->
   <section class="hero">
-    <!-- Left part: Name + short research summary -->
     <div class="hero-main">
       <h1>Ekarsi Lodh</h1>
       <div class="hero-role">MSc Bioinformatics (FT) · University of Birmingham</div>
@@ -452,7 +403,6 @@
         <strong>drug repurposing</strong>, and <strong>deep learning for protein–ligand binding affinity</strong>,
         with multiple journal and conference publications.
       </p>
-      <!-- Chips describing your key areas -->
       <div class="chip-row">
         <span class="chip">Polyploid GWAS</span>
         <span class="chip">Drug Repurposing</span>
@@ -461,10 +411,8 @@
       </div>
     </div>
 
-    <!-- Right part: address, email, phone, GitHub, and buttons -->
     <aside class="hero-aside">
       <div class="hero-contact-line">
-        <!-- Full postal address from your CV -->
         <span>📍 Flat 106, Asbury Overseas House, 3 College Walk, Selly Oak, Birmingham, B29 6LF</span>
       </div>
       <div class="hero-contact-line">
@@ -474,48 +422,32 @@
       <div class="hero-contact-line">
         <span>GitHub: <a href="https://github.com/ekarsilodh" target="_blank">github.com/ekarsilodh</a></span>
       </div>
-
-      <!-- Buttons: Download CV, ORCID, Google Scholar -->
+      <div class="hero-contact-line">
+        <span>LinkedIn: <a href="https://www.linkedin.com/in/ekarsi24" target="_blank">linkedin.com/in/ekarsi24</a></span>
+      </div>
       <div class="hero-links">
-        <!--
-          Download CV button:
-          - Make sure the PDF is at assets/EkarsiLodhCV2025.pdf in your repo.
-          - If you change the filename/path, update the href below.
-        -->
+        <!-- CV download (path: assets/EkarsiLodhCV2025.pdf) -->
         <a class="btn" href="assets/EkarsiLodhCV2025.pdf" target="_blank">
           📄 Download CV (PDF)
         </a>
-
-        <!--
-          ORCID button:
-          - Replace the URL with your actual ORCID profile link.
-          - Format: https://orcid.org/0000-0000-0000-0000
-        -->
-        <a class="btn secondary" href="https://orcid.org/0000-0000-0000-0000" target="_blank">
+        <!-- ORCID -->
+        <a class="btn secondary" href="https://orcid.org/0009-0000-7462-3217" target="_blank">
           🧬 ORCID
         </a>
-
-        <!--
-          Google Scholar button:
-          - Replace the URL with your actual Google Scholar profile.
-          - Format looks like: https://scholar.google.com/citations?user=XXXXXXX
-        -->
-        <a class="btn secondary" href="https://scholar.google.com/citations?user=YOURID" target="_blank">
+        <!-- Google Scholar (note & -> &amp;) -->
+        <a class="btn secondary" href="https://scholar.google.com/citations?user=-YtKBm8AAAAJ&amp;hl=en" target="_blank">
           📚 Google Scholar
         </a>
       </div>
     </aside>
   </section>
 
-  <!-- ===========================
-       1. EDUCATION
-       =========================== -->
+  <!-- ========== 1. EDUCATION ========== -->
   <section id="education" class="section">
     <div class="section-header">
       <h2 class="section-title">Education</h2>
     </div>
 
-    <!-- MSc row -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -524,12 +456,9 @@
         </div>
         <div class="card-meta">2025 – Present</div>
       </div>
-      <div class="card-body">
-        <!-- Add more detail about modules / thesis here later if you want -->
-      </div>
+      <div class="card-body"></div>
     </div>
 
-    <!-- BTech row -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -543,7 +472,6 @@
       </div>
     </div>
 
-    <!-- Class 11–12 row -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -559,7 +487,6 @@
       </div>
     </div>
 
-    <!-- Class 5–10 row -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -576,15 +503,12 @@
     </div>
   </section>
 
-  <!-- ===========================
-       2. RESEARCH EXPERIENCE
-       =========================== -->
+  <!-- ========== 2. RESEARCH EXPERIENCE ========== -->
   <section id="research" class="section">
     <div class="section-header">
       <h2 class="section-title">Research Experience</h2>
     </div>
 
-    <!-- Group Research Project -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -598,18 +522,18 @@
       </div>
       <div class="card-body">
         <p>
-          <strong>Research Topic:</strong> Optimising GWAS pipelines to uncover genetic loci underlying
-          canopy architecture and yield (complex traits) in autotetraploid potato using SNP and phenotyping
-          datasets, enabling enhanced precision breeding for climate-resilient crop improvement. The work
-          integrates population structure analysis (DAPC and STRUCTURE), environmental correction using
-          Best Linear Unbiased Estimates (BLUEs), and comparative statistical models to improve trait–locus
-          associations. Gaining hands-on experience in developing a robust polyploid GWAS workflow using
-          R and Linux.
+          <strong>Research Topic:</strong><br>
+          Optimising GWAS pipelines to uncover genetic loci underlying canopy
+          architecture and yield (complex traits) in autotetraploid potato using SNP and phenotyping
+          datasets, enabling enhanced precision breeding for climate-resilient crop improvement.
+          The work integrates population structure analysis (DAPC and STRUCTURE), environmental correction
+          using Best Linear Unbiased Estimates (BLUEs), and comparative statistical models to improve
+          trait–locus associations. Gaining hands-on experience in developing a robust polyploid GWAS
+          workflow using R and Linux.
         </p>
       </div>
     </div>
 
-    <!-- Research Internship -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -623,74 +547,74 @@
       </div>
       <div class="card-body">
         <p>
-          <strong>Research Domain:</strong> Signaling Pathway Analysis, Molecular Docking, Drug Repurposing,
+          <strong>Research Domain:</strong><br>
+          Signaling Pathway Analysis, Molecular Docking, Drug Repurposing,
           Deep Learning for Protein–Ligand Binding Affinity Prediction, Sequence Alignment Algorithms.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ===========================
-       3. PUBLICATIONS – JOURNAL
-       =========================== -->
+  <!-- ========== 3. PUBLICATIONS – JOURNAL ========== -->
   <section id="pubs-journal" class="section">
     <div class="section-header">
       <h2 class="section-title">Publications – Journal</h2>
     </div>
     <div class="card">
       <div class="card-body">
-        <!--
-          Ordered list of all journal papers as in CV.
-          If you get DOIs for more items later, just edit the text here.
-        -->
         <ol>
           <li>
-            S. Majumder, E. Lodh, and T. Chowdhury, “Implications of trinodal inhibitions and drug repurposing in MAPK
-            pathway: A putative remedy for breast cancer,” <em>Computational Biology and Chemistry</em>, vol. 113,
-            p. 108255, Oct. 2024, doi: 10.1016/j.compbiolchem.2024.108255.
+            S. Majumder, E. Lodh, and T. Chowdhury,<br>
+            “Implications of trinodal inhibitions and drug repurposing in MAPK pathway: A putative remedy for breast cancer,”<br>
+            <em>Computational Biology and Chemistry</em>, vol. 113, p. 108255, Oct. 2024.<br>
+            doi:
+            <a href="https://doi.org/10.1016/j.compbiolchem.2024.108255" target="_blank">
+              10.1016/j.compbiolchem.2024.108255
+            </a>
           </li>
           <li>
-            T. Chowdhury, E. Lodh, and S. Majumder, “A Novel Method for Drug Application on Signaling Pathways with
-            Concurrent Faults Using Probabilistic Boolean Networks,” <em>Computational Intelligence</em>, Feb. 2025,
-            (Under Revision).
+            T. Chowdhury, E. Lodh, and S. Majumder,<br>
+            “A Novel Method for Drug Application on Signaling Pathways with Concurrent Faults Using Probabilistic Boolean Networks,”<br>
+            <em>Computational Intelligence</em>, Feb. 2025, (Under Revision).
           </li>
           <li>
-            E. Lodh, S. Majumder, and T. Chowdhury, “PAM50GenePath: A CatBoost-Driven Framework for Enhanced Invasive
-            Breast Cancer Subtype Classification,” <em>Sādhanā</em>, Feb. 2025, (Under Review).
+            E. Lodh, S. Majumder, and T. Chowdhury,<br>
+            “PAM50GenePath: A CatBoost-Driven Framework for Enhanced Invasive Breast Cancer Subtype Classification,”<br>
+            <em>Sādhanā</em>, Feb. 2025, (Under Review).
           </li>
           <li>
-            E. Lodh, T. Chowdhury, and S. Majumder, “BioAlignNet: A GPU-Accelerated Framework for Efficient Global
-            Sequence Alignment Across Genomics and Proteomics Scales,” <em>Computational Intelligence</em>, Mar. 2025,
-            (Under Review).
+            E. Lodh, T. Chowdhury, and S. Majumder,<br>
+            “BioAlignNet: A GPU-Accelerated Framework for Efficient Global Sequence Alignment Across Genomics and Proteomics Scales,”<br>
+            <em>Computational Intelligence</em>, Mar. 2025, (Under Review).
           </li>
           <li>
-            E. Lodh, S. Majumder, T. Chowdhury, and M. De, “RLBindDeep: A ResNet-LSTM Based Novel Framework for
-            Protein–Ligand Binding Affinity Prediction,” <em>Journal of Molecular Graphics and Modelling</em>,
-            Jun. 2025, (Under Revision).
+            E. Lodh, S. Majumder, T. Chowdhury, and M. De,<br>
+            “RLBindDeep: A ResNet-LSTM Based Novel Framework for Protein–Ligand Binding Affinity Prediction,”<br>
+            <em>Journal of Molecular Graphics and Modelling</em>, Jun. 2025, (Under Revision).
           </li>
           <li>
-            T. Chowdhury, S. Samanta, P. Sil, S. Banerjee, S. Banerjee, E. Lodh, S. Majumder, and M. De, “Biomarker
-            Discovery For Breast Cancer Subtype Detection Using Deep Learning Based Approach,”
+            T. Chowdhury, S. Samanta, P. Sil, S. Banerjee, S. Banerjee, E. Lodh, S. Majumder, and M. De,<br>
+            “Biomarker Discovery For Breast Cancer Subtype Detection Using Deep Learning Based Approach,”<br>
             <em>SN Computer Science</em>, Oct. 2025, (Under Review).
           </li>
           <li>
-            E. Lodh, T. Chowdhury, S. Majumder, M. De, and S. Singha, “SkinEnsemNet: A Novel Ensemble Deep Learning
-            Framework for Skin Cancer Classification,” <em>Multimedia Tools and Applications</em>, Oct. 2025,
-            (Submitted).
+            E. Lodh, T. Chowdhury, S. Majumder, M. De, and S. Singha,<br>
+            “SkinEnsemNet: A Novel Ensemble Deep Learning Framework for Skin Cancer Classification,”<br>
+            <em>Multimedia Tools and Applications</em>, Oct. 2025, (Submitted).
           </li>
           <li>
-            T. Chowdhury, A. Maitra, A. Agarwal, A. Sinha, D. Jana, A. Das, and E. Lodh, “Multiple Fault Analysis and
-            Drug Therapy on Signaling Pathways Using GPU-Accelerated Dynamic Bayesian Network-based Model,”
+            T. Chowdhury, A. Maitra, A. Agarwal, A. Sinha, D. Jana, A. Das, and E. Lodh,<br>
+            “Multiple Fault Analysis and Drug Therapy on Signaling Pathways Using GPU-Accelerated Dynamic Bayesian Network-based Model,”<br>
             <em>The Journal of Supercomputing</em>, Oct. 2025, (Submitted).
           </li>
           <li>
-            S. Majumder, E. Lodh, T. De, and T. Chowdhury, “In silico Characterization of Melanoma-derived Mouse
-            lncRNA Gm26982 and Comparative Analyses with Human Ortholog,” <em>Molecular Genetics and Genomics</em>,
-            Nov. 2025, (Under Review).
+            S. Majumder, E. Lodh, T. De, and T. Chowdhury,<br>
+            “In silico Characterization of Melanoma-derived Mouse lncRNA Gm26982 and Comparative Analyses with Human Ortholog,”<br>
+            <em>Molecular Genetics and Genomics</em>, Nov. 2025, (Under Review).
           </li>
           <li>
-            E. Lodh, T. Chowdhury, A. Shaw, D. Bedajna, S. Bera, S. Majumder, and M. De, “A Stacked Ensemble
-            Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures,”
+            E. Lodh, T. Chowdhury, A. Shaw, D. Bedajna, S. Bera, S. Majumder, and M. De,<br>
+            “A Stacked Ensemble Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures,”<br>
             <em>Network Modeling Analysis in Health Informatics and Bioinformatics</em>, Nov. 2025, (Submitted).
           </li>
         </ol>
@@ -698,47 +622,54 @@
     </div>
   </section>
 
-  <!-- ===========================
-       4. PUBLICATION – CONFERENCE
-       =========================== -->
+  <!-- ========== 4. PUBLICATION – CONFERENCE ========== -->
   <section id="pubs-conference" class="section">
     <div class="section-header">
       <h2 class="section-title">Publication – Conference</h2>
     </div>
     <div class="card">
       <div class="card-body">
-        <!-- Ordered list of conference papers -->
         <ol>
           <li>
-            E. Lodh, S. Majumder and T. Chowdhury, “CGDeepAff: Deep Learning-Based Approach for Protein-Ligand
-            Binding Affinity Estimation Using CNN-GRU,” 2025 8th International Conference on Electronics, Materials
-            Engineering &amp; Nano-Technology (IEMENTech), Kolkata, India, 2025, pp. 1–6,
-            doi: 10.1109/IEMENTech65115.2025.10959578. (Presenter)
-          </li>
-          <li>
-            T. Chowdhury, U. Das, A. Makur, A. Sinha, D. Jana, A. Das, and E. Lodh, “Ensemble Clustering on Big Data,”
+            E. Lodh, S. Majumder and T. Chowdhury,<br>
+            “CGDeepAff: Deep Learning-Based Approach for Protein-Ligand Binding Affinity Estimation Using CNN-GRU,”<br>
             2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech),
-            Kolkata, India, 2025, pp. 1–6, doi: 10.1109/IEMENTech65115.2025.10959554. (Presenter)
+            Kolkata, India, 2025, pp. 1–6,<br>
+            doi:
+            <a href="https://doi.org/10.1109/IEMENTech65115.2025.10959578" target="_blank">
+              10.1109/IEMENTech65115.2025.10959578
+            </a>.
+            (Presenter)
           </li>
           <li>
-            M. De, R. L. Chhetri, M. Konar, A. N. Joardar, A. Jain, E. Lodh and T. Chowdhury, “A Deep Learning-Based
-            Method for the Categorization of Different Skin Diseases,” Second International Conference on Advanced
-            Computing and Systems (AdComSys 2025), Kolkata, India, 2025 (Accepted, In Press). (Presenter)
+            T. Chowdhury, U. Das, A. Makur, A. Sinha, D. Jana, A. Das, and E. Lodh,<br>
+            “Ensemble Clustering on Big Data,”<br>
+            2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech),
+            Kolkata, India, 2025, pp. 1–6,<br>
+            doi:
+            <a href="https://doi.org/10.1109/IEMENTech65115.2025.10959554" target="_blank">
+              10.1109/IEMENTech65115.2025.10959554
+            </a>.
+            (Presenter)
           </li>
           <li>
-            E. Lodh, S. Majumder, T. De, T. Chowdhury, and M. De, “GeneDeepNet: A Differential Expression and Deep
-            Learning Based Novel Framework for Detecting Invasive Breast Cancer Subtypes,” 4th International Conference
-            on Machine Learning and Data Engineering (ICMLDE-2025), <em>Procedia Computer Science</em>, 2025 (Accepted,
-            In Press). (Presenter)
+            M. De, R. L. Chhetri, M. Konar, A. N. Joardar, A. Jain, E. Lodh and T. Chowdhury,<br>
+            “A Deep Learning-Based Method for the Categorization of Different Skin Diseases,”<br>
+            Second International Conference on Advanced Computing and Systems (AdComSys 2025), Kolkata, India, 2025
+            (Accepted, In Press). (Presenter)
+          </li>
+          <li>
+            E. Lodh, S. Majumder, T. De, T. Chowdhury, and M. De,<br>
+            “GeneDeepNet: A Differential Expression and Deep Learning Based Novel Framework for Detecting Invasive Breast Cancer Subtypes,”<br>
+            4th International Conference on Machine Learning and Data Engineering (ICMLDE-2025),
+            <em>Procedia Computer Science</em>, 2025 (Accepted, In Press). (Presenter)
           </li>
         </ol>
       </div>
     </div>
   </section>
 
-  <!-- ===========================
-       5. PROFESSIONAL MEMBERSHIPS
-       =========================== -->
+  <!-- ========== 5. PROFESSIONAL MEMBERSHIPS ========== -->
   <section id="memberships" class="section">
     <div class="section-header">
       <h2 class="section-title">Professional Memberships</h2>
@@ -753,9 +684,7 @@
     </div>
   </section>
 
-  <!-- ===========================
-       6. LEADERSHIP
-       =========================== -->
+  <!-- ========== 6. LEADERSHIP ========== -->
   <section id="leadership" class="section">
     <div class="section-header">
       <h2 class="section-title">Leadership</h2>
@@ -772,35 +701,30 @@
     </div>
   </section>
 
-  <!-- ===========================
-       7. SKILLS
-       =========================== -->
+  <!-- ========== 7. SKILLS (STACKED) ========== -->
   <section id="skills" class="section">
     <div class="section-header">
       <h2 class="section-title">Skills</h2>
     </div>
 
-    <!-- Programming skills -->
     <div class="skills-grid">
       <div class="skills-card">
         <h4>Programming Languages</h4>
         <p>Python, R, Shell Scripting, Awk, Linux, C.</p>
       </div>
 
-      <!-- Bioinformatics tools (long paragraph from CV) -->
       <div class="skills-card">
         <h4>Bioinformatics Tools</h4>
         <p>
-          Proficiency in molecular docking and real-time simulation tools (e.g., UCSF Chimera, PyRx, AutoDock Vina 1.2.5,
-          ClusPro 2.0, Discovery Studio (BIOVIA)).
-          Familiar with in silico ncRNA characterization tools (e.g., RNAfold, LncRISearch, LncBase v.3, lncLocator,
-          iLOC-LncRNA(2.0), CPC2, RNAinter v4.0, NPInter v5.0).
+          Proficiency in molecular docking and real-time simulation tools (e.g., UCSF Chimera, PyRx,
+          AutoDock Vina 1.2.5, ClusPro 2.0, Discovery Studio (BIOVIA)).
+          Familiar with in silico ncRNA characterization tools (e.g., RNAfold, LncRISearch, LncBase v.3,
+          lncLocator, iLOC-LncRNA(2.0), CPC2, RNAinter v4.0, NPInter v5.0).
           Familiar with primer tools (e.g., NEBcutter V2.0, Primer3 Input).
           Done working with plant regulome analysis tools (e.g., PlantPAN 4.0, Phytozome v13).
         </p>
       </div>
 
-      <!-- HPC -->
       <div class="skills-card">
         <h4>High-Performance Computing Skill</h4>
         <p>
@@ -808,13 +732,11 @@
         </p>
       </div>
 
-      <!-- Digital skills -->
       <div class="skills-card">
         <h4>Digital Skills</h4>
         <p>Microsoft Office tools, Canva, DATAtab, Cytoscape.</p>
       </div>
 
-      <!-- Editing software -->
       <div class="skills-card">
         <h4>Editing Softwares</h4>
         <p>Adobe Photoshop, Adobe Premiere, Adobe Audition.</p>
@@ -822,15 +744,12 @@
     </div>
   </section>
 
-  <!-- ===========================
-       8. COMPETITIONS / AWARDS
-       =========================== -->
+  <!-- ========== 8. COMPETITIONS ========== -->
   <section id="competitions" class="section">
     <div class="section-header">
       <h2 class="section-title">Competitions</h2>
     </div>
 
-    <!-- One card per competition item so each is clearly readable -->
     <div class="card">
       <div class="card-body">
         <p><strong>Internal Hackathon’23</strong>, Sept 2023</p>
@@ -911,9 +830,7 @@
     </div>
   </section>
 
-  <!-- ===========================
-       9. LANGUAGE QUALIFICATIONS
-       =========================== -->
+  <!-- ========== 9. LANGUAGE QUALIFICATIONS ========== -->
   <section id="languages" class="section">
     <div class="section-header">
       <h2 class="section-title">Language Qualifications</h2>
@@ -933,9 +850,7 @@
     </div>
   </section>
 
-  <!-- ===========================
-       10. CERTIFICATIONS
-       =========================== -->
+  <!-- ========== 10. CERTIFICATIONS ========== -->
   <section id="certifications" class="section">
     <div class="section-header">
       <h2 class="section-title">Certifications</h2>
@@ -952,9 +867,7 @@
     </div>
   </section>
 
-  <!-- ===========================
-       11. EXTRACURRICULUM
-       =========================== -->
+  <!-- ========== 11. EXTRACURRICULUM ========== -->
   <section id="extracurriculum" class="section">
     <div class="section-header">
       <h2 class="section-title">Extracurriculum</h2>
@@ -973,9 +886,7 @@
     </div>
   </section>
 
-  <!-- ===========================
-       CONTACT / FOOTER
-       =========================== -->
+  <!-- ========== CONTACT / FOOTER ========== -->
   <section id="contact" class="section">
     <div class="section-header">
       <h2 class="section-title">Contact</h2>
@@ -986,8 +897,6 @@
         <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a>.
       </div>
     </div>
-
-    <!-- Footer text at bottom -->
     <div class="footer">
       Last updated: Dec 2025 · Hosted via GitHub Pages.
     </div>
