@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <!-- Basic metadata -->
   <meta charset="UTF-8" />
@@ -25,6 +25,7 @@
 
   <style>
     /* ========== COLOUR PALETTE ========== */
+    /* Default: dark (your existing look) */
     :root {
       --bg: #020617;
       --bg-alt: #02091c;
@@ -35,6 +36,19 @@
       --muted: #94a3b8;
       --border: #1f2937;
       --chip: #0b1220;
+    }
+    
+    /* Nature pastel light theme */
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-alt: #edf2f7;
+      --card: #ffffff;
+      --accent: #2f855a;      /* leaf green */
+      --accent-soft: #c6f6d5; /* pale green wash */
+      --text: #1f2933;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --chip: #e3f2fd;
     }
 
     /* Global reset */
@@ -49,6 +63,13 @@
       background: radial-gradient(circle at top, #111827 0, #020617 55%);
       color: var(--text);
       line-height: 1.6;
+    }
+    
+    /* Light-mode page background */
+    html[data-theme="light"] body {
+      background:
+        radial-gradient(circle at top left, #e0f2fe 0, #f8fafc 45%),
+        radial-gradient(circle at bottom right, #ede9fe 0, #f8fafc 55%);
     }
 
     a {
@@ -124,6 +145,32 @@
       justify-content: flex-end;
     }
 
+    /* Dark/Light toggle button in nav */
+    .theme-toggle {
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e9f0;
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    
+    .theme-toggle:hover {
+      filter: brightness(1.05);
+    }
+    
+    /* In light mode, invert it slightly so it doesn’t feel heavy */
+    html[data-theme="light"] .theme-toggle {
+      background: #ffffff;
+      color: #1f2933;
+      border-color: #cbd5e1;
+    }
+
     .nav-links a {
       padding: 0.2rem 0.5rem;
       border-radius: 999px;
@@ -152,6 +199,17 @@
       display: grid;
       grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
       gap: 1.5rem;
+    }
+
+    /* Light-mode hero: soft nature pastel */
+    html[data-theme="light"] .hero {
+      background:
+        radial-gradient(circle at top left, #e3f9e5 0, #edf2f7 45%),
+        radial-gradient(circle at bottom right, #e0f2fe 0, #edf2f7 55%);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow:
+        0 16px 30px rgba(148, 163, 184, 0.35),
+        0 0 0 1px rgba(226, 232, 240, 0.9);
     }
 
     @media (max-width: 768px) {
@@ -401,7 +459,13 @@
       <a href="#certifications">Certifications</a>
       <a href="#extracurriculum">Extracurriculum</a>
       <a href="#contact">Contact</a>
+
+      <!-- Theme toggle -->
+      <button class="theme-toggle" type="button" aria-label="Toggle color mode">
+        🌙 Dark
+      </button>
     </nav>
+
   </div>
 </header>
 
@@ -1061,5 +1125,49 @@
   </section>
 
 </main>
+
+    <script>
+    (function () {
+      const root = document.documentElement;
+      const toggleBtn = document.querySelector(".theme-toggle");
+  
+      // Initialise from localStorage or system preference
+      const storedTheme = window.localStorage.getItem("theme");
+      const prefersDark = window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+  
+      if (storedTheme === "light" || storedTheme === "dark") {
+        root.setAttribute("data-theme", storedTheme);
+      } else if (prefersDark) {
+        root.setAttribute("data-theme", "dark");
+      } else {
+        root.setAttribute("data-theme", "light");
+      }
+  
+      function updateToggleLabel(theme) {
+        if (!toggleBtn) return;
+        // Show the *other* mode as the action (e.g. "Light" if you’re currently dark)
+        if (theme === "light") {
+          toggleBtn.textContent = "🌙 Dark";
+        } else {
+          toggleBtn.textContent = "☀️ Light";
+        }
+      }
+  
+      const currentTheme = root.getAttribute("data-theme") || "dark";
+      updateToggleLabel(currentTheme);
+  
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+          const next = current === "light" ? "dark" : "light";
+          root.setAttribute("data-theme", next);
+          window.localStorage.setItem("theme", next);
+          updateToggleLabel(next);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
