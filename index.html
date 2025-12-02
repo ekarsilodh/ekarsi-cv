@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ekarsi Lodh | Bioinformatics CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #02091c;
+      --card: #020b24;
+      --accent: #7aa2f7;
+      --accent-soft: #1e293b;
+      --text: #e5e9f0;
+      --muted: #94a3b8;
+      --border: #1f2937;
+      --chip: #0b1220;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 1.75rem 0 3.5rem;
+      }
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.85), transparent);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .branding {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .branding-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .branding-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .nav-links a:hover {
+      background: rgba(30, 64, 175, 0.9);
+      border-color: rgba(96, 165, 250, 0.9);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      margin-top: 1.6rem;
+      margin-bottom: 1.5rem;
+      padding: 1.6rem 1.4rem;
+      border-radius: 1.4rem;
+      background: radial-gradient(circle at top left, #02091c 0, #020617 60%);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow:
+        0 22px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.3rem 1.1rem;
+        border-radius: 1rem;
+      }
+    }
+
+    .hero-main h1 {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-role {
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-summary {
+      font-size: 0.92rem;
+      color: #e5e7eb;
+    }
+
+    .hero-summary strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-aside {
+      font-size: 0.86rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: flex-start;
+    }
+
+    .hero-contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      margin-top: 0.55rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      color: var(--muted);
+    }
+
+    .hero-links {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.9);
+      background: rgba(30, 64, 175, 0.85);
+      color: #e5e7eb;
+      text-decoration: none;
+    }
+
+    .btn.secondary {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn:hover {
+      filter: brightness(1.05);
+      text-decoration: none;
+    }
+
+    /* Sections */
+    .section {
+      margin-top: 2.2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 0.96rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 26px;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        rgba(129, 140, 248, 0.9),
+        rgba(56, 189, 248, 0.6)
+      );
+      border-radius: 999px;
+    }
+
+    .section-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+
+    .card-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      margin-top: 0.25rem;
+    }
+
+    .card-body ul {
+      margin-left: 1.1rem;
+      margin-top: 0.2rem;
+    }
+
+    .card-body li {
+      margin-bottom: 0.18rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.17rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      color: var(--muted);
+    }
+
+    /* Two-column grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
+      gap: 0.7rem 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.7rem;
+    }
+
+    .skills-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 0.85rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 0.75rem 0.9rem;
+      font-size: 0.86rem;
+    }
+
+    .skills-card h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="branding">
+      <div class="branding-title">Ekarsi Lodh</div>
+      <div class="branding-sub">Bioinformatics · Computational Genomics</div>
+    </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#skills">Skills</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- HERO -->
+  <section id="about" class="hero">
+    <div class="hero-main">
+      <h1>Ekarsi Lodh</h1>
+      <div class="hero-role">MSc Bioinformatics (FT) · University of Birmingham</div>
+      <p class="hero-summary">
+        I am a computational biology researcher working at the interface of
+        <strong>cancer/complex-trait genomics</strong>, <strong>deep learning</strong>, and
+        <strong>bioinformatics pipelines</strong>. My experience spans GWAS in autotetraploid
+        crops, signaling pathway modelling, drug repurposing, and GPU-accelerated sequence alignment,
+        with multiple <strong>journal articles</strong> and <strong>international conference presentations</strong>.
+      </p>
+      <div class="chip-row">
+        <span class="chip">Polyploid GWAS</span>
+        <span class="chip">Deep Learning for Biology</span>
+        <span class="chip">Drug Repurposing</span>
+        <span class="chip">HPC · BlueBEAR</span>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <div class="hero-contact-line">
+        <span>📍 Birmingham, UK</span>
+      </div>
+      <div class="hero-contact-line">
+        <span>📧 <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a></span>
+        <span>📞 +44 7311486696</span>
+      </div>
+      <div class="hero-contact-line">
+        <span>GitHub: <a href="https://github.com/ekarsilodh" target="_blank">ekarsilodh</a></span>
+      </div>
+      <div class="hero-links">
+        <!-- Replace file name with your PDF CV file in the repo -->
+        <a class="btn" href="CV_Ekarsi.pdf" target="_blank">View PDF CV</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+      </div>
+    </aside>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">MSc in Bioinformatics (Full Time)</div>
+          <div class="card-subtitle">University of Birmingham, United Kingdom</div>
+        </div>
+        <div class="card-meta">2025 – Present</div>
+      </div>
+      <div class="card-body">
+        Focus on genomics & next-generation sequencing, computational biology, machine learning, and systems biology.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">BTech in Computer Science and Engineering</div>
+          <div class="card-subtitle">Techno Main Salt Lake, India</div>
+        </div>
+        <div class="card-meta">2020 – 2025</div>
+      </div>
+      <div class="card-body">
+        CGPA: 8.13 / 10.0. Strong grounding in algorithms, data structures, machine learning, and programming with early transition
+        into bioinformatics and computational biology.
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH EXPERIENCE -->
+  <section id="research" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Research Experience</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Group Research Project — Polyploid GWAS</div>
+          <div class="card-subtitle">School of Biosciences, University of Birmingham</div>
+        </div>
+        <div class="card-meta">2025 – Present</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Optimising GWAS pipelines to uncover loci underlying canopy architecture and yield (complex traits) in autotetraploid potato.</li>
+          <li>Integrating population structure analysis (DAPC, STRUCTURE), environmental correction via BLUEs, and comparative statistical models.</li>
+          <li>Building robust R + Linux workflows for polyploid GWAS and precision breeding applications.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">GWAS</span>
+          <span class="pill">Polyploid genetics</span>
+          <span class="pill">R</span>
+          <span class="pill">Linux</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Research Intern — Computational Biology</div>
+          <div class="card-subtitle">Techno Main Salt Lake, Kolkata · Supervisor: Dr. Tapan Chowdhury</div>
+        </div>
+        <div class="card-meta">Feb 2023 – Sept 2025</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Worked on signaling pathway analysis, molecular docking, and in silico drug repurposing for cancer, especially MAPK-related pathways.</li>
+          <li>Developed deep learning models for protein–ligand binding affinity prediction (CGDeepAff, RLBindDeep).</li>
+          <li>Contributed to GPU-accelerated frameworks for global sequence alignment and dynamic Bayesian network-based pathway modelling.</li>
+          <li>Co-authored multiple journal and conference papers across computational biology, AI, and high-performance computing.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Deep learning</span>
+          <span class="pill">Protein–ligand docking</span>
+          <span class="pill">Signaling pathways</span>
+          <span class="pill">GPU / CUDA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Selected Projects & Software</h2>
+      <div class="section-sub">More on GitHub: <a href="https://github.com/ekarsilodh" target="_blank">@ekarsilodh</a></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Trio-Based VCF Analyzer for Structural Variant Interpretation</div>
+          <div class="card-subtitle">Genomics & NGS Module Project</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/Delly-SV-Trios" target="_blank">GitHub repo</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Streamlit-based pipeline for summarising structural variants, inferring trio roles and sex, and detecting de novo SVs from VCF files.</li>
+          <li>Integrates functional annotation (genes, exons) and ClinGen dosage-sensitive regions to prioritise clinically relevant variants.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Python</span>
+          <span class="pill">Streamlit</span>
+          <span class="pill">VCF / SV</span>
+          <span class="pill">ClinGen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Delly-VCF-Trio-Analyzer: Complete SV Pipeline</div>
+          <div class="card-subtitle">Command-line + Report Generation Workflow</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/dvcf" target="_blank">GitHub repo</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>End-to-end structural variant analysis pipeline for trios, including parsing, QC, de novo calling, tiered prioritisation, and plotting.</li>
+          <li>Designed for reproducible research with clear outputs and downstream reporting.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Python</span>
+          <span class="pill">HPC-ready</span>
+          <span class="pill">Bioinformatics pipeline</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template for other repos: duplicate this card and edit -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">[Project Name]</div>
+          <div class="card-subtitle">Short description line</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/[repo-name]" target="_blank">GitHub repo</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>1–2 bullets describing what the tool / model does and what data it uses.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Tag 1</span>
+          <span class="pill">Tag 2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Publications</h2>
+      <div class="section-sub">Selected journal and conference outputs</div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="font-size:0.9rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); margin-bottom:0.4rem;">Journals</h3>
+        <div class="card">
+          <div class="card-body">
+            <ul>
+              <li>Trinodal MAPK pathway inhibition & drug repurposing for breast cancer — <em>Computational Biology and Chemistry</em>, 2024.</li>
+              <li>Probabilistic Boolean network-based drug application on signaling pathways — <em>Computational Intelligence</em>, 2025 (Under Revision).</li>
+              <li>PAM50GenePath framework for invasive breast cancer subtype classification — <em>Sādhanā</em>, 2025 (Under Review).</li>
+              <li>BioAlignNet GPU-accelerated sequence alignment framework — <em>Computational Intelligence</em>, 2025 (Under Review).</li>
+              <li>RLBindDeep ResNet–LSTM for protein–ligand binding affinity — <em>Journal of Molecular Graphics and Modelling</em>, 2025 (Under Revision).</li>
+              <li>Deep learning-based breast cancer biomarker discovery — <em>SN Computer Science</em>, 2025 (Under Review).</li>
+              <li>SkinEnsemNet ensemble for skin cancer classification — <em>Multimedia Tools and Applications</em>, 2025 (Submitted).</li>
+              <li>GPU-accelerated DBN-based multiple fault analysis in signaling pathways — <em>The Journal of Supercomputing</em>, 2025 (Submitted).</li>
+              <li>In silico characterisation of lncRNA Gm26982 — <em>Molecular Genetics and Genomics</em>, 2025 (Under Review).</li>
+              <li>Stacked ensemble PAM50 breast cancer subtype prediction — <em>Network Modeling Analysis in Health Informatics and Bioinformatics</em>, 2025 (Submitted).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:0.9rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); margin-bottom:0.4rem;">Conferences</h3>
+        <div class="card">
+          <div class="card-body">
+            <ul>
+              <li>CGDeepAff: CNN–GRU-based protein–ligand binding affinity — IEMENTech 2025 (Presenter).</li>
+              <li>Ensemble clustering on big data — IEMENTech 2025 (Presenter).</li>
+              <li>Deep learning-based skin disease categorisation — AdComSys 2025 (Presenter).</li>
+              <li>GeneDeepNet: differential expression + DL for invasive breast cancer — ICMLDE-2025, Procedia Computer Science (Presenter).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="font-size:0.83rem;">
+            Full publication list available on request or via Google Scholar / ORCID.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP & MEMBERSHIPS -->
+  <section id="leadership" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Leadership & Memberships</h2>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-body">
+          <ul>
+            <li>Postgraduate Student Ambassador, University of Birmingham (2025–Present).</li>
+            <li>Student Rep, MSc Bioinformatics FT (2025–26).</li>
+            <li>Convenor, Department of CSE, Techno Main Salt Lake (2024–25).</li>
+            <li>Class Representative, CSE, Techno Main Salt Lake (2023–25).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <ul>
+            <li>IEEE Member (since Feb 2025).</li>
+            <li>Member, IEEE Computational Intelligence Society.</li>
+            <li>Member, IEEE Engineering in Medicine and Biology Society.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skills-card">
+        <h4>Programming</h4>
+        <p>Python, R, Shell scripting, Awk, Linux, C.</p>
+      </div>
+      <div class="skills-card">
+        <h4>Bioinformatics & Tools</h4>
+        <p>Molecular docking & simulation (UCSF Chimera, PyRx, AutoDock Vina, ClusPro, Discovery Studio), ncRNA tools (RNAfold, LncRISearch, LncBase v3, lncLocator, CPC2, RNAinter, NPInter), primer design tools, plant regulome tools (PlantPAN 4.0, Phytozome v13).</p>
+      </div>
+      <div class="skills-card">
+        <h4>High-Performance Computing</h4>
+        <p>Experience running large-scale genomics workflows on BlueBEAR HPC (SLURM), GPU-accelerated computation.</p>
+      </div>
+      <div class="skills-card">
+        <h4>Digital & Editing</h4>
+        <p>Microsoft Office, Canva, Cytoscape, Adobe Photoshop, Premiere, Audition.</p>
+      </div>
+      <div class="skills-card">
+        <h4>Languages & Certifications</h4>
+        <p>IELTS (Overall 8.0, CEFR C1), Goethe Start Deutsch A1. Coursera courses in bioinformatics, Python, and machine learning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Awards & Competitions</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ul>
+          <li>Multiple first-place awards in science fairs, innovation challenges, and policy hackathons (e.g., LOKNITI Policy Conclave, ENVITIATIVE, West Bengal State Student-Youth Science Fair).</li>
+          <li>Recognition for innovative research presentations and STEM outreach activities.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        For collaborations, research opportunities, or PhD enquiries, feel free to contact me at
+        <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a>.
+      </div>
+    </div>
+    <div class="footer">
+      Last updated: Dec 2025 · This page is hosted via GitHub Pages.
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
