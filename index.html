@@ -323,20 +323,20 @@
       margin-bottom: 0.18rem;
     }
 
-    /* Publications: add more spacing between items */
+    /* Publications: more spacing so it’s readable */
     ol {
       margin-left: 1.2rem;
       margin-top: 0.3rem;
     }
 
     ol li {
-      margin-bottom: 0.85rem; /* more space so it’s not condensed */
+      margin-bottom: 0.85rem;
     }
 
-    /* Skills layout: STACK vertically instead of grid */
+    /* Skills layout: STACK vertically */
     .skills-grid {
       display: flex;
-      flex-direction: column; /* <- this stacks them */
+      flex-direction: column;
       gap: 0.7rem;
     }
 
@@ -376,6 +376,7 @@
     <nav class="nav-links">
       <a href="#education">Education</a>
       <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
       <a href="#pubs-journal">Journal&nbsp;Papers</a>
       <a href="#pubs-conference">Conference</a>
       <a href="#memberships">Memberships</a>
@@ -422,19 +423,20 @@
       <div class="hero-contact-line">
         <span>GitHub: <a href="https://github.com/ekarsilodh" target="_blank">github.com/ekarsilodh</a></span>
       </div>
-      <div class="hero-contact-line">
-        <span>LinkedIn: <a href="https://www.linkedin.com/in/ekarsi24" target="_blank">linkedin.com/in/ekarsi24</a></span>
-      </div>
       <div class="hero-links">
-        <!-- CV download (path: assets/EkarsiLodhCV2025.pdf) -->
+        <!-- CV button -->
         <a class="btn" href="assets/EkarsiLodhCV2025.pdf" target="_blank">
           📄 Download CV (PDF)
         </a>
-        <!-- ORCID -->
+        <!-- LinkedIn button -->
+        <a class="btn secondary" href="https://www.linkedin.com/in/ekarsi24" target="_blank">
+          💼 LinkedIn
+        </a>
+        <!-- ORCID button -->
         <a class="btn secondary" href="https://orcid.org/0009-0000-7462-3217" target="_blank">
           🧬 ORCID
         </a>
-        <!-- Google Scholar (note & -> &amp;) -->
+        <!-- Google Scholar button -->
         <a class="btn secondary" href="https://scholar.google.com/citations?user=-YtKBm8AAAAJ&amp;hl=en" target="_blank">
           📚 Google Scholar
         </a>
@@ -551,6 +553,70 @@
           Signaling Pathway Analysis, Molecular Docking, Drug Repurposing,
           Deep Learning for Protein–Ligand Binding Affinity Prediction, Sequence Alignment Algorithms.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2.5 PROJECTS ========== -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-sub">
+        Selected software and pipelines (see GitHub for full list).
+      </div>
+    </div>
+
+    <!-- Streamlit Trio VCF Analyzer -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Streamlit-Based Trio VCF Analyzer for Structural Variant Interpretation</div>
+          <div class="card-subtitle">Genomics &amp; NGS Module Project · Interactive Web App</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/dvcf" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>
+            Developed an interactive Streamlit app that ingests VCF files from trio-based structural variant
+            calling and presents a complete summary of SV types, genomic locations, and functional context.
+          </li>
+          <li>
+            Implements trio role inference (child/parents), sex inference based on X-chromosome heterozygosity,
+            and detection of de novo mutations via Mendelian consistency checks.
+          </li>
+          <li>
+            Integrates functional annotations (genes, exons) and ClinGen dosage-sensitive regions to prioritise
+            clinically relevant variants, with exportable reports and plots for downstream interpretation.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CLI pipeline (Delly-VCF-Trio-Analyzer) -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Delly-VCF-Trio-Analyzer: Command-Line SV Interpretation Pipeline</div>
+          <div class="card-subtitle">Reproducible Analysis Workflow</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/Delly-SV-Trios" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>
+            End-to-end command-line pipeline for parsing, summarising, and prioritising structural variants from
+            Delly-generated trio VCF files, including QC, de novo calling, tiering, and plotting.
+          </li>
+          <li>
+            Designed for reproducible workflows with clearly structured output tables, text reports, and visualisations
+            that can be integrated into downstream clinical or research pipelines.
+          </li>
+        </ul>
       </div>
     </div>
   </section>
