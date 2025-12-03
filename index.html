@@ -25,7 +25,7 @@
 
   <style>
     /* ========== COLOUR PALETTE ========== */
-    /* Default: dark (your existing look) */
+    /* Default: dark theme */
     :root {
       --bg: #020617;
       --bg-alt: #02091c;
@@ -37,16 +37,16 @@
       --border: #1f2937;
       --chip: #0b1220;
     }
-    
+
     /* Nature pastel light theme */
     :root[data-theme="light"] {
       --bg: #f8fafc;
       --bg-alt: #edf2f7;
       --card: #ffffff;
-      --accent: #2f855a;      /* leaf green */
-      --accent-soft: #c6f6d5; /* pale green wash */
+      --accent: #2f855a;
+      --accent-soft: #c6f6d5;
       --text: #1f2933;
-      --muted: #6b7280;
+      --muted: #4b5563;
       --border: #d1d5db;
       --chip: #e3f2fd;
     }
@@ -64,7 +64,7 @@
       color: var(--text);
       line-height: 1.6;
     }
-    
+
     /* Light-mode page background */
     html[data-theme="light"] body {
       background:
@@ -110,6 +110,17 @@
       border-bottom: 1px solid rgba(15, 23, 42, 0.8);
     }
 
+    /* Light header */
+    html[data-theme="light"] .site-header {
+      background: linear-gradient(
+        to bottom,
+        rgba(237, 242, 247, 0.96),
+        rgba(237, 242, 247, 0.9),
+        transparent
+      );
+      border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
     .nav-inner {
       max-width: 1000px;
       margin: 0 auto;
@@ -145,6 +156,32 @@
       justify-content: flex-end;
     }
 
+    .nav-links a {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      color: #e5e9f0;
+    }
+
+    .nav-links a:hover {
+      background: rgba(30, 64, 175, 0.9);
+      border-color: rgba(96, 165, 250, 0.9);
+      text-decoration: none;
+    }
+
+    /* Light-mode nav links */
+    html[data-theme="light"] .nav-links a {
+      background: #e5f2ff;
+      border-color: #bfdbfe;
+      color: #1f2933;
+    }
+
+    html[data-theme="light"] .nav-links a:hover {
+      background: #bfdbfe;
+      border-color: #93c5fd;
+    }
+
     /* Dark/Light toggle button in nav */
     .theme-toggle {
       border: 1px solid rgba(148, 163, 184, 0.7);
@@ -159,29 +196,16 @@
       cursor: pointer;
       white-space: nowrap;
     }
-    
+
     .theme-toggle:hover {
       filter: brightness(1.05);
     }
-    
-    /* In light mode, invert it slightly so it doesn’t feel heavy */
+
+    /* Light mode toggle */
     html[data-theme="light"] .theme-toggle {
       background: #ffffff;
       color: #1f2933;
       border-color: #cbd5e1;
-    }
-
-    .nav-links a {
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(51, 65, 85, 0.9);
-    }
-
-    .nav-links a:hover {
-      background: rgba(30, 64, 175, 0.9);
-      border-color: rgba(96, 165, 250, 0.9);
-      text-decoration: none;
     }
 
     /* ========== HERO / TOP SUMMARY ========== */
@@ -239,6 +263,10 @@
       color: #e5e7eb;
     }
 
+    html[data-theme="light"] .hero-summary {
+      color: #374151;
+    }
+
     .hero-summary strong {
       color: var(--accent);
       font-weight: 600;
@@ -275,6 +303,12 @@
       color: var(--muted);
     }
 
+    html[data-theme="light"] .chip {
+      background: #e3f2fd;
+      border-color: #93c5fd;
+      color: #1f2933;
+    }
+
     .hero-links {
       margin-top: 0.7rem;
       display: flex;
@@ -304,6 +338,21 @@
     .btn:hover {
       filter: brightness(1.05);
       text-decoration: none;
+    }
+
+    /* Light mode buttons */
+    html[data-theme="light"] .btn {
+      background: #2f855a;
+      border-color: #38a169;
+      color: #f9fafb;
+      box-shadow: 0 6px 12px rgba(56, 161, 105, 0.35);
+    }
+
+    html[data-theme="light"] .btn.secondary {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #1f2933;
+      box-shadow: 0 4px 8px rgba(148, 163, 184, 0.35);
     }
 
     /* ========== SECTIONS / CARDS ========== */
@@ -343,17 +392,27 @@
       border-radius: 999px;
     }
 
+    /* Light mode section rule */
+    html[data-theme="light"] .section-title::before {
+      background: linear-gradient(to right, #2f855a, #4c51bf);
+    }
+
     .section-sub {
       font-size: 0.8rem;
       color: var(--muted);
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.85);
+      background: var(--card);
       border-radius: 0.9rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid var(--border);
       padding: 0.85rem 0.95rem;
       margin-bottom: 0.7rem;
+      box-shadow: 0 12px 22px rgba(15, 23, 42, 0.55);
+    }
+
+    html[data-theme="light"] .card {
+      box-shadow: 0 8px 14px rgba(148, 163, 184, 0.18);
     }
 
     .card-header {
@@ -374,6 +433,10 @@
       color: #cbd5f5;
     }
 
+    html[data-theme="light"] .card-subtitle {
+      color: #4b5563;
+    }
+
     .card-meta {
       font-size: 0.8rem;
       color: var(--muted);
@@ -382,7 +445,7 @@
 
     .card-body {
       font-size: 0.86rem;
-      color: #e5e7eb;
+      color: var(--text);
       margin-top: 0.25rem;
     }
 
@@ -413,11 +476,16 @@
     }
 
     .skills-card {
-      background: rgba(15, 23, 42, 0.9);
+      background: var(--card);
       border-radius: 0.85rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid var(--border);
       padding: 0.75rem 0.9rem;
       font-size: 0.86rem;
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.6);
+    }
+
+    html[data-theme="light"] .skills-card {
+      box-shadow: 0 6px 12px rgba(148, 163, 184, 0.22);
     }
 
     .skills-card h4 {
@@ -502,8 +570,6 @@
           <!-- CV BUTTON -->
           <a class="btn" href="assets/EkarsiLodhCV2025.pdf" download
              style="display:inline-flex;align-items:center;gap:6px;">
-          
-            <!-- Download Icon -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -512,13 +578,12 @@
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-          
             Download CV
           </a>
+
           <!-- ORCID BUTTON -->
           <a class="btn secondary" href="https://orcid.org/0009-0000-7462-3217" target="_blank">
             <span style="display:flex;align-items:center;gap:6px;">
-              <!-- ORCID SVG -->
               <svg width="18" height="18" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="#A6CE39"/>
                 <path fill="#fff" d="M9.1 7.4v9.2H7V7.4h2.1zM12.2 7.4c1.3 0 2.5.5 3.4 1.4.9.9 1.4 2.1 1.4 3.4 0 1.3-.5 2.5-1.4 3.4-.9.9-2.1 1.4-3.4 1.4H10v-9.6h2.2zm0 7.7c1.6 0 2.9-1.3 2.9-2.9 0-1.6-1.3-2.9-2.9-2.9h-.8v5.8h.8z"/>
@@ -526,11 +591,10 @@
               ORCID
             </span>
           </a>
-        
+
           <!-- GOOGLE SCHOLAR BUTTON -->
           <a class="btn secondary" href="https://scholar.google.com/citations?user=-YtKBm8AAAAJ&hl=en" target="_blank">
             <span style="display:flex;align-items:center;gap:6px;">
-              <!-- Google Scholar SVG -->
               <svg width="18" height="18" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M12 2L1 9l11 7 9-5.73V17h2V9L12 2z"/>
                 <path fill="#34A853" d="M11 19h2v3h-2z"/>
@@ -539,22 +603,20 @@
               Google Scholar
             </span>
           </a>
-        
+
           <!-- LINKEDIN BUTTON -->
           <a class="btn secondary" href="https://www.linkedin.com/in/ekarsi24" target="_blank">
             <span style="display:flex;align-items:center;gap:6px;">
-              <!-- LinkedIn SVG -->
               <svg width="18" height="18" fill="#0A66C2" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.036-1.852-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.353V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM6.96 20.452H3.71V9h3.25v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
               </svg>
               LinkedIn
             </span>
           </a>
-        
+
           <!-- GITHUB BUTTON -->
           <a class="btn secondary" href="https://github.com/ekarsilodh" target="_blank">
             <span style="display:flex;align-items:center;gap:6px;">
-              <!-- GitHub Official SVG -->
               <svg width="20" height="20" viewBox="0 0 16 16" fill="#ffffff" aria-hidden="true">
                 <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 
                          5.47 7.59c.4.07.55-.17.55-.38 
@@ -574,10 +636,7 @@
               GitHub
             </span>
           </a>
-        
         </div>
-
-      </div>
     </aside>
   </section>
 
@@ -694,7 +753,7 @@
     </div>
   </section>
 
-   <!-- ========== 3. PUBLICATIONS – JOURNAL ========== -->
+  <!-- ========== 3. PUBLICATIONS – JOURNAL ========== -->
   <section id="pubs-journal" class="section">
     <div class="section-header">
       <h2 class="section-title">Publications – Journal</h2>
@@ -824,13 +883,11 @@
           <div class="card-title">Streamlit-Based Trio VCF Analyzer for Structural Variant Interpretation</div>
           <div class="card-subtitle">Genomics &amp; NGS Module Project · Interactive Web App</div>
         </div>
-    
-        <!-- GitHub link -->
         <div class="card-meta">
           <a href="https://github.com/ekarsilodh/dvcf" target="_blank">GitHub</a>
         </div>
       </div>
-    
+
       <div class="card-body">
         <ul>
           <li>
@@ -842,12 +899,9 @@
             and detection of de novo mutations via Mendelian consistency checks.
           </li>
         </ul>
-    
-        <!-- Streamlit Launch Button -->
+
         <a class="btn secondary" href="https://dellyvcftrio.streamlit.app/" target="_blank"
            style="margin-top:0.6rem; display:inline-flex; align-items:center; gap:6px;">
-           
-          <!-- Official Streamlit SVG Logo -->
           <svg width="20" height="20" viewBox="0 0 256 256">
             <defs>
               <linearGradient id="streamlitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -858,14 +912,12 @@
             <path fill="url(#streamlitGrad)"
               d="M128 18c-7 0-14 4-17 10L19 199c-4 7-4 15 0 22 4 7 10 11 18 11h182c8 0 14-4 18-11 4-7 4-15 0-22L145 28c-3-6-10-10-17-10z"/>
           </svg>
-    
           Launch App
         </a>
-    
       </div>
     </div>
 
-    <!-- CLI pipeline (Delly-VCF-Trio-Analyzer) -->
+    <!-- CLI pipeline -->
     <div class="card">
       <div class="card-header">
         <div>
@@ -1126,48 +1178,47 @@
 
 </main>
 
-    <script>
-    (function () {
-      const root = document.documentElement;
-      const toggleBtn = document.querySelector(".theme-toggle");
-  
-      // Initialise from localStorage or system preference
-      const storedTheme = window.localStorage.getItem("theme");
-      const prefersDark = window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
-      if (storedTheme === "light" || storedTheme === "dark") {
-        root.setAttribute("data-theme", storedTheme);
-      } else if (prefersDark) {
-        root.setAttribute("data-theme", "dark");
+<script>
+  (function () {
+    const root = document.documentElement;
+    const toggleBtn = document.querySelector(".theme-toggle");
+
+    // Initialise from localStorage or system preference
+    const storedTheme = window.localStorage.getItem("theme");
+    const prefersDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (storedTheme === "light" || storedTheme === "dark") {
+      root.setAttribute("data-theme", storedTheme);
+    } else if (prefersDark) {
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.setAttribute("data-theme", "light");
+    }
+
+    function updateToggleLabel(theme) {
+      if (!toggleBtn) return;
+      if (theme === "light") {
+        toggleBtn.textContent = "🌙 Dark";
       } else {
-        root.setAttribute("data-theme", "light");
+        toggleBtn.textContent = "☀️ Light";
       }
-  
-      function updateToggleLabel(theme) {
-        if (!toggleBtn) return;
-        // Show the *other* mode as the action (e.g. "Light" if you’re currently dark)
-        if (theme === "light") {
-          toggleBtn.textContent = "🌙 Dark";
-        } else {
-          toggleBtn.textContent = "☀️ Light";
-        }
-      }
-  
-      const currentTheme = root.getAttribute("data-theme") || "dark";
-      updateToggleLabel(currentTheme);
-  
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", () => {
-          const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
-          const next = current === "light" ? "dark" : "light";
-          root.setAttribute("data-theme", next);
-          window.localStorage.setItem("theme", next);
-          updateToggleLabel(next);
-        });
-      }
-    })();
-  </script>
+    }
+
+    const currentTheme = root.getAttribute("data-theme") || "dark";
+    updateToggleLabel(currentTheme);
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+        const next = current === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        window.localStorage.setItem("theme", next);
+        updateToggleLabel(next);
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
