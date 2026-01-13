@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Basic metadata -->
+  <meta charset="UTF-8" />
+  <title>Ekarsi Lodh | Bioinformatics CV</title>
+  <link rel="icon" type="image/png" href="assets/Github_CV.png" />
+  <link rel="shortcut icon" href="assets/Github_CV.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description" content="Ekarsi Lodh – MSc Bioinformatics student at the University of Birmingham. Research in computational genomics, polyploid GWAS, drug repurposing, and deep learning for protein–ligand binding affinity with multiple journal and conference publications.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Ekarsi Lodh">
+
+  <meta property="og:title" content="Ekarsi Lodh | Bioinformatics CV">
+  <meta property="og:description" content="MSc Bioinformatics at the University of Birmingham – computational genomics, GWAS, drug repurposing, deep learning in biology.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ekarsilodh.github.io/ekarsi-cv/">
+  <meta property="og:image" content="https://ekarsilodh.github.io/ekarsi-cv/assets/Github_CV.png">
+
+  <meta name="google-site-verification" content="RPcr9AdwsslCzIlwCYD1WdUdgy58Alh_D-j2suqMocI" />
+
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========== COLOUR PALETTE ========== */
+    /* Default: dark theme */
+    :root {
+      --bg: #020617;
+      --bg-alt: #02091c;
+      --card: #020b24;
+      --accent: #7aa2f7;
+      --accent-soft: #1e293b;
+      --text: #e5e9f0;
+      --muted: #94a3b8;
+      --border: #1f2937;
+      --chip: #0b1220;
+    }
+
+    /* Nature pastel light theme */
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-alt: #edf2f7;
+      --card: #ffffff;
+      --accent: #2f855a;
+      --accent-soft: #c6f6d5;
+      --text: #1f2933;
+      --muted: #4b5563;
+      --border: #d1d5db;
+      --chip: #e3f2fd;
+    }
+
+    /* Global reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Light-mode page background */
+    html[data-theme="light"] body {
+      background:
+        radial-gradient(circle at top left, #e0f2fe 0, #f8fafc 45%),
+        radial-gradient(circle at bottom right, #ede9fe 0, #f8fafc 55%);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content wrapper */
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 1.75rem 0 3.5rem;
+      }
+    }
+
+    /* ========== STICKY HEADER / NAVBAR ========== */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.95),
+        rgba(2, 6, 23, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    /* Light header */
+    html[data-theme="light"] .site-header {
+      background: linear-gradient(
+        to bottom,
+        rgba(237, 242, 247, 0.96),
+        rgba(237, 242, 247, 0.9),
+        transparent
+      );
+      border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .branding {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .branding-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .branding-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      color: #e5e9f0;
+    }
+
+    .nav-links a:hover {
+      background: rgba(30, 64, 175, 0.9);
+      border-color: rgba(96, 165, 250, 0.9);
+      text-decoration: none;
+    }
+
+    /* Light-mode nav links */
+    html[data-theme="light"] .nav-links a {
+      background: #e5f2ff;
+      border-color: #bfdbfe;
+      color: #1f2933;
+    }
+
+    html[data-theme="light"] .nav-links a:hover {
+      background: #bfdbfe;
+      border-color: #93c5fd;
+    }
+
+    /* Dark/Light toggle button in nav */
+    .theme-toggle {
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e9f0;
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      filter: brightness(1.05);
+    }
+
+    /* Light mode toggle */
+    html[data-theme="light"] .theme-toggle {
+      background: #ffffff;
+      color: #1f2933;
+      border-color: #cbd5e1;
+    }
+
+    /* ========== HERO / TOP SUMMARY ========== */
+
+    .hero {
+      margin-top: 1.6rem;
+      margin-bottom: 1.5rem;
+      padding: 1.6rem 1.4rem;
+      border-radius: 1.4rem;
+      background: radial-gradient(circle at top left, #02091c 0, #020617 60%);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow:
+        0 22px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
+      gap: 1.5rem;
+    }
+
+    /* Light-mode hero: soft nature pastel */
+    html[data-theme="light"] .hero {
+      background:
+        radial-gradient(circle at top left, #e3f9e5 0, #edf2f7 45%),
+        radial-gradient(circle at bottom right, #e0f2fe 0, #edf2f7 55%);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow:
+        0 16px 30px rgba(148, 163, 184, 0.35),
+        0 0 0 1px rgba(226, 232, 240, 0.9);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.3rem 1.1rem;
+        border-radius: 1rem;
+      }
+    }
+
+    .hero-main h1 {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-role {
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-summary {
+      font-size: 0.92rem;
+      color: #e5e7eb;
+    }
+
+    html[data-theme="light"] .hero-summary {
+      color: #374151;
+    }
+
+    .hero-summary strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-aside {
+      font-size: 0.86rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: flex-start;
+    }
+
+    .hero-contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      margin-top: 0.55rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      color: var(--muted);
+    }
+
+    html[data-theme="light"] .chip {
+      background: #e3f2fd;
+      border-color: #93c5fd;
+      color: #1f2933;
+    }
+
+    .hero-links {
+      margin-top: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.9);
+      background: rgba(30, 64, 175, 0.85);
+      color: #e5e7eb;
+      text-decoration: none;
+      gap: 0.3rem;
+    }
+
+    .btn.secondary {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(55, 65, 81, 0.9);
+    }
+
+    .btn:hover {
+      filter: brightness(1.05);
+      text-decoration: none;
+    }
+
+    /* Light mode buttons */
+    html[data-theme="light"] .btn {
+      background: #2f855a;
+      border-color: #38a169;
+      color: #f9fafb;
+      box-shadow: 0 6px 12px rgba(56, 161, 105, 0.35);
+    }
+
+    html[data-theme="light"] .btn.secondary {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #1f2933;
+      box-shadow: 0 4px 8px rgba(148, 163, 184, 0.35);
+    }
+
+    /* ========== SECTIONS / CARDS ========== */
+
+    .section {
+      margin-top: 2.2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 0.96rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 26px;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        rgba(129, 140, 248, 0.9),
+        rgba(56, 189, 248, 0.6)
+      );
+      border-radius: 999px;
+    }
+
+    /* Light mode section rule */
+    html[data-theme="light"] .section-title::before {
+      background: linear-gradient(to right, #2f855a, #4c51bf);
+    }
+
+    .section-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 0.7rem;
+      box-shadow: 0 12px 22px rgba(15, 23, 42, 0.55);
+    }
+
+    html[data-theme="light"] .card {
+      box-shadow: 0 8px 14px rgba(148, 163, 184, 0.18);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+
+    .card-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    html[data-theme="light"] .card-subtitle {
+      color: #4b5563;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: var(--text);
+      margin-top: 0.25rem;
+    }
+
+    .card-body ul {
+      margin-left: 1.1rem;
+      margin-top: 0.2rem;
+    }
+
+    .card-body li {
+      margin-bottom: 0.18rem;
+    }
+
+    /* Publications: more spacing so it’s readable */
+    ol {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+    }
+
+    ol li {
+      margin-bottom: 0.85rem;
+    }
+
+    /* Skills layout: STACK vertically */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .skills-card {
+      background: var(--card);
+      border-radius: 0.85rem;
+      border: 1px solid var(--border);
+      padding: 0.75rem 0.9rem;
+      font-size: 0.86rem;
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.6);
+    }
+
+    html[data-theme="light"] .skills-card {
+      box-shadow: 0 6px 12px rgba(148, 163, 184, 0.22);
+    }
+
+    .skills-card h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== HEADER / NAV ========== -->
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="branding">
+      <div class="branding-title">Ekarsi Lodh</div>
+      <div class="branding-sub">Bioinformatics · Computational Genomics</div>
+    </div>
+    <nav class="nav-links">
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#pubs-journal">Journal&nbsp;Papers</a>
+      <a href="#pubs-conference">Conference</a>
+      <a href="#projects">Projects</a>
+      <a href="#memberships">Memberships</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#skills">Skills</a>
+      <a href="#competitions">Competitions</a>
+      <a href="#languages">Languages</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#extracurriculum">Extracurriculum</a>
+      <a href="#contact">Contact</a>
+
+      <!-- Theme toggle -->
+      <button class="theme-toggle" type="button" aria-label="Toggle color mode">
+        🌙 Dark
+      </button>
+    </nav>
+
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-main">
+      <h1>Ekarsi Lodh</h1>
+      <div class="hero-role">MSc Bioinformatics (FT) · University of Birmingham</div>
+      <p class="hero-summary">
+        I am an MSc Bioinformatics student working on
+        <strong>GWAS in autotetraploid crops</strong>, <strong>signaling pathway analysis</strong>, <strong>epigenomics</strong>, <strong>NGS analysis</strong>,
+        <strong>drug repurposing</strong>, and <strong>deep learning for protein–ligand binding affinity</strong>,
+        with multiple journal and conference publications.
+      </p>
+      <div class="chip-row">
+        <span class="chip">Polyploid GWAS</span>
+        <span class="chip">Drug Repurposing</span>
+        <span class="chip">Deep Learning</span>
+        <span class="chip">HPC · BlueBEAR</span>
+      </div>
+    </div>
+
+    <aside class="hero-aside">
+      <div class="hero-contact-line">
+        <span>📍 Flat 106, Asbury Overseas House, 3 College Walk, Selly Oak, Birmingham, B29 6LF</span>
+      </div>
+      <div class="hero-contact-line">
+        <span>📧 <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a></span>
+        <span>📞 +44 7311486696</span>
+      </div>
+      <div class="hero-links">
+          <!-- CV BUTTON -->
+          <a class="btn" href="assets/EkarsiLodhCV2026.pdf" download
+             style="display:inline-flex;align-items:center;gap:6px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 
+                       2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download CV
+          </a>
+
+          <!-- ORCID BUTTON -->
+          <a class="btn secondary" href="https://orcid.org/0009-0000-7462-3217" target="_blank">
+            <span style="display:flex;align-items:center;gap:6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" fill="#A6CE39"/>
+                <path fill="#fff" d="M9.1 7.4v9.2H7V7.4h2.1zM12.2 7.4c1.3 0 2.5.5 3.4 1.4.9.9 1.4 2.1 1.4 3.4 0 1.3-.5 2.5-1.4 3.4-.9.9-2.1 1.4-3.4 1.4H10v-9.6h2.2zm0 7.7c1.6 0 2.9-1.3 2.9-2.9 0-1.6-1.3-2.9-2.9-2.9h-.8v5.8h.8z"/>
+              </svg>
+              ORCID
+            </span>
+          </a>
+
+          <!-- GOOGLE SCHOLAR BUTTON -->
+          <a class="btn secondary" href="https://scholar.google.com/citations?user=-YtKBm8AAAAJ&hl=en" target="_blank">
+            <span style="display:flex;align-items:center;gap:6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M12 2L1 9l11 7 9-5.73V17h2V9L12 2z"/>
+                <path fill="#34A853" d="M11 19h2v3h-2z"/>
+                <path fill="#FBBC04" d="M7 17h10v2H7z"/>
+              </svg>
+              Google Scholar
+            </span>
+          </a>
+
+          <!-- LINKEDIN BUTTON -->
+          <a class="btn secondary" href="https://www.linkedin.com/in/ekarsi24" target="_blank">
+            <span style="display:flex;align-items:center;gap:6px;">
+              <svg width="18" height="18" fill="#0A66C2" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.036-1.852-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.353V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM6.96 20.452H3.71V9h3.25v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+              </svg>
+              LinkedIn
+            </span>
+          </a>
+
+          <!-- GITHUB BUTTON -->
+          <a class="btn secondary" href="https://github.com/ekarsilodh" target="_blank">
+            <span style="display:flex;align-items:center;gap:6px;">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="#ffffff" aria-hidden="true">
+                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 
+                         5.47 7.59c.4.07.55-.17.55-.38 
+                         0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94
+                         -.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+                         -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 
+                         1.87.87 2.33.66.07-.52.28-.87.51-1.07
+                         -1.78-.2-3.64-.89-3.64-3.95 
+                         0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
+                         0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 2-.27 
+                         c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 
+                         2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 
+                         1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
+                         1.48 0 1.07-.01 1.93-.01 2.2 
+                         0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              GitHub
+            </span>
+          </a>
+        </div>
+    </aside>
+  </section>
+
+  <!-- ========== 1. EDUCATION ========== -->
+  <section id="education" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Education</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">MSc in Bioinformatics (FT)</div>
+          <div class="card-subtitle">University of Birmingham, United Kingdom</div>
+        </div>
+        <div class="card-meta">2025 – Present</div>
+      </div>
+      <div class="card-body"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">BTech in Computer Science and Engineering</div>
+          <div class="card-subtitle">Techno Main Salt Lake, India</div>
+        </div>
+        <div class="card-meta">2020 – 2025</div>
+      </div>
+      <div class="card-body">
+        CGPA: 8.13/10.0
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Class 11th &amp; 12th</div>
+          <div class="card-subtitle">
+            Ramakrishna Mission Boys’ Home High School (H.S.), Rahara, India, WBCHSE
+          </div>
+        </div>
+        <div class="card-meta">2018 – 2020</div>
+      </div>
+      <div class="card-body">
+        Percentage: 87.80%
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Class 5th – 10th</div>
+          <div class="card-subtitle">
+            Ramakrishna Mission Boys’ Home High School (H.S.), Rahara, India, WBBSE
+          </div>
+        </div>
+        <div class="card-meta">2012 – 2018</div>
+      </div>
+      <div class="card-body">
+        Percentage: 94.28%
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2. RESEARCH EXPERIENCE ========== -->
+  <section id="research" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Research Experience</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Group Research Project</div>
+          <div class="card-subtitle">
+            Under the supervision of Dr. Lindsey Compton, Associate Professor in Genetics,
+            School of Biosciences, University of Birmingham, UK
+          </div>
+        </div>
+        <div class="card-meta">2025 – Present</div>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>Research Topic:</strong><br>
+          Optimising GWAS pipelines to uncover genetic loci underlying canopy
+          architecture and yield (complex traits) in autotetraploid potato using SNP and phenotyping
+          datasets, enabling enhanced precision breeding for climate-resilient crop improvement.
+          The work integrates population structure analysis (DAPC and STRUCTURE), environmental correction
+          using Best Linear Unbiased Estimates (BLUEs), and comparative statistical models to improve
+          trait–locus associations. Gaining hands-on experience in developing a robust polyploid GWAS
+          workflow using R and Linux.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Research Internship</div>
+          <div class="card-subtitle">
+            Under the supervision of Dr. Tapan Chowdhury, Head and Associate Professor,
+            Department of Computer Science and Engineering, Techno Main Salt Lake, Kolkata, India
+          </div>
+        </div>
+        <div class="card-meta">Feb 2023 – Sept 2025</div>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>Research Domain:</strong><br>
+          Signaling Pathway Analysis, Molecular Docking, Drug Repurposing,
+          Deep Learning for Protein–Ligand Binding Affinity Prediction, Sequence Alignment Algorithms.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. PUBLICATIONS – JOURNAL ========== -->
+  <section id="pubs-journal" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Publications – Journal</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ol>
+          <li>
+            <strong>E. Lodh</strong>, S. Majumder, T. Chowdhury, and M. De, 
+            “RLBindDeep: A ResNet-LSTM based novel framework for protein–ligand binding affinity prediction,”
+            <em>Journal of Molecular Graphics and Modelling</em>, vol. 144, no. 109282, p. 245, Jan. 2026. <br>
+            doi:
+            <a href="https://doi.org/10.1016/j.jmgm.2026.109282" target="_blank">
+              10.1016/j.jmgm.2026.109282
+            </a>
+          </li>
+          <li>
+            T. Chowdhury, S. Basu, A. Roy, V. Sarkar, K. Mondal, <strong>E. Lodh</strong>, and M. De, 
+            “Graph-theoretic and emotional analysis of character dynamics in novel-to-film adaptations,”
+            <em>Journal of Computational Social Science</em>, vol. 9, no. 18, p. 23, Jan. 2026. <br>
+            doi:
+            <a href="https://doi.org/10.1007/s42001-025-00451-2" target="_blank">
+              10.1007/s42001-025-00451-2
+            </a>
+          </li>
+          <li>
+            S. Majumder, <strong>E. Lodh</strong>, and T. Chowdhury,
+            “Implications of trinodal inhibitions and drug repurposing in MAPK pathway: A putative remedy for breast cancer,”
+            <em>Computational Biology and Chemistry</em>, vol. 113, no. 108255, p. 22, Oct. 2024.<br>
+            doi:
+            <a href="https://doi.org/10.1016/j.compbiolchem.2024.108255" target="_blank">
+              10.1016/j.compbiolchem.2024.108255
+            </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. PUBLICATION – CONFERENCE ========== -->
+  <section id="pubs-conference" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Publication – Conference</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ol>
+          <li>
+            <strong>E. Lodh</strong>, S. Majumder, and T. Chowdhury,
+            “CGDeepAff: Deep Learning-Based Approach for Protein-Ligand Binding Affinity Estimation Using CNN-GRU,”
+            <em>2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech)</em>,
+            Kolkata, India, 2025, pp. 1–6,<br>
+            doi:
+            <a href="https://doi.org/10.1109/IEMENTech65115.2025.10959578" target="_blank">
+              10.1109/IEMENTech65115.2025.10959578
+            </a>.
+            (Presenter)
+          </li>
+          <li>
+            T. Chowdhury, U. Das, A. Makur, A. Sinha, D. Jana, A. Das, and <strong>E. Lodh</strong>,
+            “Ensemble Clustering on Big Data,”
+            <em>2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech)</em>,
+            Kolkata, India, 2025, pp. 1–6,<br>
+            doi:
+            <a href="https://doi.org/10.1109/IEMENTech65115.2025.10959554" target="_blank">
+              10.1109/IEMENTech65115.2025.10959554
+            </a>.
+            (Presenter)
+          </li>
+          <li>
+            M. De, R. L. Chhetri, M. Konar, A. N. Joardar, A. Jain, <strong>E. Lodh</strong>, and T. Chowdhury,
+            “A Deep Learning-Based Method for the Categorization of Different Skin Diseases,”
+            <em>Second International Conference on Advanced Computing and Systems (AdComSys 2025)</em>, Kolkata, India, 2025
+            (Accepted, In Press). (Presenter)
+          </li>
+          <li>
+            <strong>E. Lodh</strong>, S. Majumder, T. De, T. Chowdhury, and M. De,
+            “GeneDeepNet: A Differential Expression and Deep Learning Based Novel Framework for Detecting Invasive Breast Cancer Subtypes,”
+            <em>4th International Conference on Machine Learning and Data Engineering (ICMLDE-2025)</em>,
+            <em>Procedia Computer Science</em>, 2025 (Accepted, In Press). (Presenter)
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2.5 PROJECTS ========== -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-sub">
+        Selected software and pipelines (see GitHub for full list).
+      </div>
+    </div>
+
+    <!-- Streamlit Trio VCF Analyzer -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Streamlit-Based Trio VCF Analyzer for Structural Variant Interpretation</div>
+          <div class="card-subtitle">Based on Genomics &amp; NGS Module Project · Interactive Web App</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/dvcf" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <ul>
+          <li>
+            Developed an interactive Streamlit app that ingests VCF files from trio-based structural variant
+            calling and presents a complete summary of SV types, genomic locations, and functional context.
+          </li>
+          <li>
+            Implements trio role inference (child/parents), sex inference based on X-chromosome heterozygosity,
+            and detection of de novo mutations via Mendelian consistency checks.
+          </li>
+        </ul>
+
+        <a class="btn secondary" href="https://dellyvcftrio.streamlit.app/" target="_blank"
+           style="margin-top:0.6rem; display:inline-flex; align-items:center; gap:6px;">
+          <svg width="20" height="20" viewBox="0 0 256 256">
+            <defs>
+              <linearGradient id="streamlitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF4B4B"/>
+                <stop offset="100%" stop-color="#FF8F56"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#streamlitGrad)"
+              d="M128 18c-7 0-14 4-17 10L19 199c-4 7-4 15 0 22 4 7 10 11 18 11h182c8 0 14-4 18-11 4-7 4-15 0-22L145 28c-3-6-10-10-17-10z"/>
+          </svg>
+          Launch App
+        </a>
+      </div>
+    </div>
+
+    <!-- CLI pipeline -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Delly-VCF-Trio-Analyzer: Command-Line SV Interpretation Pipeline</div>
+          <div class="card-subtitle">Genomics &amp; NGS Module Project; Reproducible Analysis Workflow</div>
+        </div>
+        <div class="card-meta">
+          <a href="https://github.com/ekarsilodh/Delly-SV-Trios" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>
+            End-to-end command-line pipeline for parsing, summarising, and prioritising structural variants from
+            Delly-generated trio VCF files, including QC, de novo calling, annotating, tiering pathogenic variants, and plotting.
+          </li>
+          <li>
+            Designed for reproducible workflows with clearly structured output tables, text reports, and visualisations
+            that can be integrated into downstream clinical or research pipelines.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. PROFESSIONAL MEMBERSHIPS ========== -->
+  <section id="memberships" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Professional Memberships</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <strong>IEEE (Institute of Electrical and Electronics Engineers) Member</strong>, Feb 2025 – present<br />
+          – Member of IEEE Computational Intelligence Society and IEEE Engineering in Medicine and Biology Society.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. LEADERSHIP ========== -->
+  <section id="leadership" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Leadership</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ul>
+          <li>2025 – present: Postgraduate Student Ambassador, University of Birmingham.</li>
+          <li>2025 – present: Student Rep, MSc Bioinformatics FT (2025–26 Batch), University of Birmingham.</li>
+          <li>2024 – 2025: Convenor, Department of Computer Science and Engineering, Techno Main Salt Lake.</li>
+          <li>2023 – 2025: Class Representative, Department of Computer Science and Engineering, Techno Main Salt Lake.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. SKILLS (STACKED) ========== -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skills-card">
+        <h4>Programming Languages</h4>
+        <p>Python, R, Shell Scripting, Awk, Linux, C.</p>
+      </div>
+
+      <div class="skills-card">
+        <h4>Bioinformatics Tools</h4>
+        <ul>
+          <li>
+            Proficiency in molecular docking and real-time simulation tools (e.g., UCSF Chimera, PyRx, AutoDock Vina 1.2.5, ClusPro 2.0, Discovery Studio (BIOVIA)).
+          </li>
+          <li>
+            Familiar with in silico ncRNA characterization tools (e.g., RNAfold, LncRISearch, LncBase v.3, lncLocator, iLOC-LncRNA(2.0), CPC2, RNAinter v4.0, NPInter v5.0).
+          </li>
+          <li>
+            Familiar with primer tools (e.g., NEBcutter V2.0, Primer3 Input).
+          </li>
+          <li>
+            Done working with plant regulome analysis tools (e.g., PlantPAN 4.0, Phytozome v13).
+          </li>
+        </ul>
+      </div>
+
+      <div class="skills-card">
+        <h4>High-Performance Computing Skill</h4>
+        <p>
+          Gained experience in running large-scale genomics workflows in BlueBEAR HPC (University of Birmingham).
+        </p>
+      </div>
+
+      <div class="skills-card">
+        <h4>Digital Skills</h4>
+        <p>Microsoft Office tools, Canva, DATAtab, Cytoscape.</p>
+      </div>
+
+      <div class="skills-card">
+        <h4>Editing Softwares</h4>
+        <p>Adobe Photoshop, Adobe Premiere, Adobe Audition.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8. COMPETITIONS ========== -->
+  <section id="competitions" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Competitions</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>Internal Hackathon’23</strong>, Sept 2023</p>
+        <ul>
+          <li>Intra-college hackathon for finals of SIH-2023.</li>
+          <li>Organised by Techno Main Salt Lake.</li>
+          <li>Position: Qualified to the finals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>INDUSTRIAL CARNIVAL 4.0, a 36 Hours Ideathon</strong>, May 2021</p>
+        <ul>
+          <li>Organised by SPE-VIT (Vellore Institute of Technology), School of Chemical Engineering.</li>
+          <li>Position: Qualified to the finals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>LOKNITI, Policy Conclave 2021</strong>, Apr 2021</p>
+        <ul>
+          <li>Organised by Public Policy &amp; Opinion Cell, IIT Kanpur.</li>
+          <li>
+            Project: ACCEPTaB (Activated, controllable, cost-effective, eco-friendly, perennial, thermo-absorbent
+            bio-generator).
+          </li>
+          <li>Position: 1st.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>ENVITIATIVE, Public Policy Hackathon 2021</strong>, Apr 2021</p>
+        <ul>
+          <li>Organised by Environment Cell, University Business School, Punjab University.</li>
+          <li>Project: ACCEPTaB.</li>
+          <li>Position: 3rd.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>West Bengal State Student-Youth Science Fair 2019</strong>, Nov 2019</p>
+        <ul>
+          <li>Organised by Department of Youth Services and Sports, Government of West Bengal.</li>
+          <li>Category: State Science Quiz Contest.</li>
+          <li>Position: 1st.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>West Bengal District Level Student-Youth Science Fair 2019</strong>, Sept 2019</p>
+        <ul>
+          <li>Organised by Department of Youth Services and Sports, Government of West Bengal.</li>
+          <li>Project: S.M.A.R.T HOME.</li>
+          <li>Position: 1st.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>Most Innovative Research Presentation</strong>, Dec 2018</p>
+        <ul>
+          <li>Organised by Ramakrishna Mission Boys’ Home High School (H.S.), Rahara.</li>
+          <li>Project: Enemy Detection Radar using Arduino and A.A.V.A.R.S.</li>
+          <li>Position: 1st.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9. LANGUAGE QUALIFICATIONS ========== -->
+  <section id="languages" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Language Qualifications</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ul>
+          <li>
+            <strong>IELTS</strong>, Overall Band Score: 8.0 (Listening: 8.5, Reading: 9.0, Writing: 8.0, Speaking: 6.5),
+            CEFR level: C1 (2025).
+          </li>
+          <li>
+            <strong>Goethe Start Deutsch A1</strong>, Goethe-Institut, Score: 71/100, Befriedigend (2024).
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10. CERTIFICATIONS ========== -->
+  <section id="certifications" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ul>
+          <li>Biology Meets Programming: Bioinformatics for Beginners – University of California San Diego, Coursera (2025).</li>
+          <li>Python for Genomic Data Science – Johns Hopkins University, Coursera (2024).</li>
+          <li>Introduction to Machine Learning – Duke University, Coursera (2023).</li>
+          <li>Introduction to Python Programming – University of Pennsylvania, Coursera (2022).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 11. EXTRACURRICULUM ========== -->
+  <section id="extracurriculum" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Extracurriculum</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ul>
+          <li>Participation in the cultural programme at the Jahresabschlussfeier at Goethe-Institut Kolkata (2024).</li>
+          <li>Organised Hasta-La-Vista, Department of CSE, Techno Main Salt Lake (2023).</li>
+          <li>Participation in Photography event, by Calcutta Youth Meet Chapter 5 (2021).</li>
+          <li>1st in TRIFECTA, a Fandom Quiz – by Literary Club of Techno Main Salt Lake (2021).</li>
+          <li>Participation in SIYAAHI (Bengali), a Writing Competition, by Heramba Chandra College (2021).</li>
+          <li>Passed Sangeet Visharad Part 1 (4th Year) in Vocal-Classical, from Pracheen Kala Kendra (2016).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT / FOOTER ========== -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        For collaborations, research opportunities, please contact me at
+        <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a> | <a href="mailto:ekarsilodh@gmail.com">ekarsilodh@gmail.com</a>.
+      </div>
+    </div>
+    <div class="footer">
+      Last updated: Dec 2025 · Hosted via GitHub Pages.
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/theme-toggle.js"></script>
+
+</body>
+</html>
