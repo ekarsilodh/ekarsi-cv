@@ -1249,23 +1249,48 @@
   </section>
   
   <script>
-    (function () {
-      const el = document.getElementById("last-updated");
-      if (!el) return;
+  document.addEventListener("DOMContentLoaded", async function () {
+    const el = document.getElementById("last-updated");
+    if (!el) return;
   
-      const lastModified = new Date(document.lastModified);
+    try {
+      const res = await fetch(window.location.href, {
+        method: "HEAD",
+        cache: "no-store"
+      });
   
-      if (isNaN(lastModified.getTime())) {
+      let lastModified = res.headers.get("last-modified");
+  
+      if (!lastModified) {
+        lastModified = document.lastModified;
+      }
+  
+      const dt = new Date(lastModified);
+  
+      if (isNaN(dt.getTime())) {
         el.textContent = "Unknown";
         return;
       }
   
-      el.textContent = lastModified.toLocaleDateString("en-GB", {
+      el.textContent = dt.toLocaleDateString("en-GB", {
+        day: "2-digit",
         month: "short",
         year: "numeric"
       });
-      });
-    })();
+    } catch (err) {
+      const fallback = new Date(document.lastModified);
+  
+      if (!isNaN(fallback.getTime())) {
+        el.textContent = fallback.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        });
+      } else {
+        el.textContent = "Unknown";
+      }
+    }
+  });
   </script>
 
 </main>
