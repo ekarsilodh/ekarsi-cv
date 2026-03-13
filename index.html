@@ -1239,13 +1239,34 @@
     <div class="card">
       <div class="card-body">
         For collaborations, research opportunities, please contact me at
-        <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a> | <a href="mailto:ekarsilodh@gmail.com">ekarsilodh@gmail.com</a>.
+        <a href="mailto:exl533@student.bham.ac.uk">exl533@student.bham.ac.uk</a> |
+        <a href="mailto:ekarsilodh@gmail.com">ekarsilodh@gmail.com</a>.
       </div>
     </div>
     <div class="footer">
-      Last updated: Dec 2025 · Hosted via GitHub Pages.
+      Last updated: <span id="last-updated">Loading...</span> · Hosted via GitHub Pages.
     </div>
   </section>
+  
+  <script>
+    (function () {
+      const el = document.getElementById("last-updated");
+      if (!el) return;
+  
+      const lastModified = new Date(document.lastModified);
+  
+      if (isNaN(lastModified.getTime())) {
+        el.textContent = "Unknown";
+        return;
+      }
+  
+      el.textContent = lastModified.toLocaleDateString("en-GB", {
+        month: "short",
+        year: "numeric"
+      });
+      });
+    })();
+  </script>
 
 </main>
 
