@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <!-- Basic metadata -->
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ekarsi Lodh | Bioinformatics CV</title>
   <link rel="icon" type="image/png" href="assets/Github_CV.png" />
   <link rel="shortcut icon" href="assets/Github_CV.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="description" content="Ekarsi Lodh – Bioinformatics researcher, Research Associate, and PGTA at the University of Birmingham. Research in cancer epigenomics, polyploid GWAS, healthcare AI and LLMs, drug repurposing, and deep learning, with multiple journal and conference publications.">
   <meta name="robots" content="index,follow">
@@ -20,1457 +19,1572 @@
 
   <meta name="google-site-verification" content="RPcr9AdwsslCzIlwCYD1WdUdgy58Alh_D-j2suqMocI" />
 
-  <!-- Google Font: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Structured data: helps search engines show your profile correctly -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ekarsi Lodh",
+    "jobTitle": "Research Associate, Bioinformatics",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Birmingham" },
+    "email": "mailto:e.lodh@bham.ac.uk",
+    "url": "https://ekarsilodh.github.io/ekarsi-cv/",
+    "sameAs": [
+      "https://orcid.org/0009-0000-7462-3217",
+      "https://scholar.google.com/citations?user=-YtKBm8AAAAJ&hl=en",
+      "https://github.com/ekarsilodh",
+      "https://www.linkedin.com/in/ekarsi24"
+    ]
+  }
+  </script>
+
+  <!-- Apply saved theme before paint (no flash) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
   <style>
-    /* ========== COLOUR PALETTE ========== */
-    /* Default: dark theme */
+    /* =========================================================
+       Palette: hematoxylin (ink indigo) + eosin (rose),
+       the two stains of an H&E histology slide.
+       ========================================================= */
     :root {
-      --bg: #020617;
-      --bg-alt: #02091c;
-      --card: #020b24;
-      --accent: #7aa2f7;
-      --accent-soft: #1e293b;
-      --text: #e5e9f0;
-      --muted: #94a3b8;
-      --border: #1f2937;
-      --chip: #0b1220;
+      --paper: #F7F6FB;
+      --surface: #FFFFFF;
+      --ink: #1C1A33;
+      --muted: #55526F;
+      --rule: #DFDCEB;
+      --hema: #34307A;
+      --hema-soft: #EAE8F7;
+      --eosin: #B8336A;
+      --eosin-soft: #F8E4ED;
+      --on-hema: #FFFFFF;
+
+      --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+      --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+      --header-h: 3.75rem;
+      color-scheme: light;
     }
 
-    /* Nature pastel light theme */
-    :root[data-theme="light"] {
-      --bg: #f8fafc;
-      --bg-alt: #edf2f7;
-      --card: #ffffff;
-      --accent: #2f855a;
-      --accent-soft: #c6f6d5;
-      --text: #1f2933;
-      --muted: #4b5563;
-      --border: #d1d5db;
-      --chip: #e3f2fd;
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #14131F;
+        --surface: #1C1B2C;
+        --ink: #ECEAF5;
+        --muted: #A9A5C4;
+        --rule: #302E48;
+        --hema: #ADA8F5;
+        --hema-soft: #26244A;
+        --eosin: #F28AB3;
+        --eosin-soft: #3A2134;
+        --on-hema: #14131F;
+        color-scheme: dark;
+      }
     }
 
-    /* Global reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root[data-theme="dark"] {
+      --paper: #14131F;
+      --surface: #1C1B2C;
+      --ink: #ECEAF5;
+      --muted: #A9A5C4;
+      --rule: #302E48;
+      --hema: #ADA8F5;
+      --hema-soft: #26244A;
+      --eosin: #F28AB3;
+      --eosin-soft: #3A2134;
+      --on-hema: #14131F;
+      color-scheme: dark;
+    }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%);
-      color: var(--text);
-      line-height: 1.6;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.65;
+      font-feature-settings: "kern", "liga";
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* Light-mode page background */
-    html[data-theme="light"] body {
-      background:
-        radial-gradient(circle at top left, #e0f2fe 0, #f8fafc 45%),
-        radial-gradient(circle at bottom right, #ede9fe 0, #f8fafc 55%);
+    a { color: var(--hema); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+    a:hover { color: var(--eosin); }
+
+    :focus-visible {
+      outline: 2px solid var(--eosin);
+      outline-offset: 3px;
+      border-radius: 3px;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    .wrap {
+      width: 100%;
+      max-width: 72rem;
+      margin-inline: auto;
+      padding-inline: 1rem;
     }
+    @media (min-width: 768px) { .wrap { padding-inline: 2rem; } }
 
-    a:hover {
-      text-decoration: underline;
+    .skip {
+      position: absolute; left: -999px; top: 0.5rem;
+      background: var(--hema); color: var(--on-hema);
+      padding: 0.5rem 0.9rem; border-radius: 6px; z-index: 100;
     }
+    .skip:focus { left: 1rem; }
 
-    /* Main content wrapper */
-    .page {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1.25rem 1rem 3rem;
-    }
-
-    @media (min-width: 768px) {
-      .page {
-        padding: 1.75rem 0 3.5rem;
-      }
-    }
-
-    /* ========== STICKY HEADER / NAVBAR ========== */
-
+    /* ---------- Header ---------- */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(
-        to bottom,
-        rgba(2, 6, 23, 0.95),
-        rgba(2, 6, 23, 0.85),
-        transparent
-      );
-      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--paper) 90%, transparent);
+      backdrop-filter: saturate(1.4) blur(12px);
+      -webkit-backdrop-filter: saturate(1.4) blur(12px);
+      border-bottom: 1px solid var(--rule);
     }
-
-    /* Light header */
-    html[data-theme="light"] .site-header {
-      background: linear-gradient(
-        to bottom,
-        rgba(237, 242, 247, 0.96),
-        rgba(237, 242, 247, 0.9),
-        transparent
-      );
-      border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+    .header-inner {
+      display: flex; align-items: center; gap: 1rem;
+      min-height: var(--header-h);
     }
-
-    .nav-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0.6rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .branding {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-    }
-
-    .branding-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .branding-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 0.6rem;
-      font-size: 0.82rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-links a {
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      color: #e5e9f0;
-    }
-
-    .nav-links a:hover {
-      background: rgba(30, 64, 175, 0.9);
-      border-color: rgba(96, 165, 250, 0.9);
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--ink);
       text-decoration: none;
-    }
-
-    /* Light-mode nav links */
-    html[data-theme="light"] .nav-links a {
-      background: #e5f2ff;
-      border-color: #bfdbfe;
-      color: #1f2933;
-    }
-
-    html[data-theme="light"] .nav-links a:hover {
-      background: #bfdbfe;
-      border-color: #93c5fd;
-    }
-
-    /* Dark/Light toggle button in nav */
-    .theme-toggle {
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.85);
-      color: #e5e9f0;
-      border-radius: 999px;
-      padding: 0.18rem 0.6rem;
-      font-size: 0.78rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      cursor: pointer;
       white-space: nowrap;
     }
+    .brand:hover { color: var(--ink); }
 
-    .theme-toggle:hover {
-      filter: brightness(1.05);
+    .nav { margin-left: auto; min-width: 0; }
+    .nav ul {
+      list-style: none;
+      display: flex; gap: 0.15rem;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .nav ul::-webkit-scrollbar { display: none; }
+    .nav a {
+      display: block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav a:hover { color: var(--ink); background: var(--hema-soft); }
+    .nav a[aria-current="location"] { color: var(--hema); background: var(--hema-soft); }
+
+    .theme-toggle {
+      flex: none;
+      display: inline-grid; place-items: center;
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .theme-toggle:hover { border-color: var(--hema); color: var(--hema); }
+    .theme-toggle svg { width: 1.05rem; height: 1.05rem; }
+    .theme-toggle .i-sun { display: none; }
+    .is-dark .theme-toggle .i-sun { display: block; }
+    .is-dark .theme-toggle .i-moon { display: none; }
+
+    @media (max-width: 760px) {
+      .header-inner { flex-wrap: wrap; gap: 0 0.75rem; padding-top: 0.5rem; }
+      .brand { order: 1; }
+      .theme-toggle { order: 2; margin-left: auto; }
+      .nav { order: 3; width: 100%; margin: 0 -0.4rem; padding-bottom: 0.35rem; }
     }
 
-    /* Light mode toggle */
-    html[data-theme="light"] .theme-toggle {
-      background: #ffffff;
-      color: #1f2933;
-      border-color: #cbd5e1;
-    }
+    /* ---------- Hero ---------- */
+    .hero { padding-top: clamp(2.5rem, 7vw, 5rem); }
 
-    /* ========== HERO / TOP SUMMARY ========== */
-
-    .hero {
-      margin-top: 1.6rem;
-      margin-bottom: 1.5rem;
-      padding: 1.6rem 1.4rem;
-      border-radius: 1.4rem;
-      background: radial-gradient(circle at top left, #02091c 0, #020617 60%);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      box-shadow:
-        0 22px 45px rgba(15, 23, 42, 0.9),
-        0 0 0 1px rgba(15, 23, 42, 0.9);
+    .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
-      gap: 1.5rem;
+      grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: start;
     }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } }
 
-    /* Light-mode hero: soft nature pastel */
-    html[data-theme="light"] .hero {
-      background:
-        radial-gradient(circle at top left, #e3f9e5 0, #edf2f7 45%),
-        radial-gradient(circle at bottom right, #e0f2fe 0, #edf2f7 55%);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      box-shadow:
-        0 16px 30px rgba(148, 163, 184, 0.35),
-        0 0 0 1px rgba(226, 232, 240, 0.9);
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(2.9rem, 8vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 72;
     }
-
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 1.3rem 1.1rem;
-        border-radius: 1rem;
-      }
+    .lede {
+      margin-top: 1.25rem;
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+      line-height: 1.38;
+      max-width: 34ch;
+      color: var(--ink);
     }
-
-    .hero-main h1 {
-      font-size: clamp(1.9rem, 3vw, 2.3rem);
-      letter-spacing: 0.03em;
-      margin-bottom: 0.2rem;
-    }
-
-    .hero-role {
-      font-size: 0.95rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-summary {
-      font-size: 0.92rem;
-      color: #e5e7eb;
-    }
-
-    html[data-theme="light"] .hero-summary {
-      color: #374151;
-    }
-
-    .hero-summary strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .hero-aside {
-      font-size: 0.86rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      align-items: flex-start;
-    }
-
-    .hero-contact-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem 0.75rem;
+    .hero-text {
+      margin-top: 1.1rem;
+      max-width: 62ch;
       color: var(--muted);
     }
 
-    .chip-row {
-      margin-top: 0.55rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+    .actions {
+      margin-top: 1.75rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
     }
-
-    .chip {
-      font-size: 0.78rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: var(--chip);
-      border: 1px solid rgba(129, 140, 248, 0.4);
-      color: var(--muted);
-    }
-
-    html[data-theme="light"] .chip {
-      background: #e3f2fd;
-      border-color: #93c5fd;
-      color: #1f2933;
-    }
-
-    .hero-links {
-      margin-top: 0.7rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .btn svg { width: 1.05rem; height: 1.05rem; flex: none; }
+    .btn:hover { border-color: var(--hema); color: var(--hema); }
+    .btn.primary {
+      background: var(--hema);
+      border-color: var(--hema);
+      color: var(--on-hema);
+    }
+    .btn.primary:hover { background: var(--eosin); border-color: var(--eosin); color: var(--on-hema); }
+
+    .now {
+      border-left: 2px solid var(--hema);
+      padding-left: 1.25rem;
+    }
+    .now h2 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .now ul { list-style: none; display: grid; gap: 0.9rem; }
+    .now li strong { display: block; font-weight: 600; }
+    .now li span { display: block; font-size: 0.9rem; color: var(--muted); line-height: 1.45; }
+
+    .contact-mini {
+      margin-top: 1.5rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.35rem 0.9rem;
+      font-size: 0.9rem;
+    }
+    .contact-mini dt { color: var(--muted); }
+    .contact-mini dd { overflow-wrap: anywhere; }
+
+    /* CpG methylation track */
+    .cpg {
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+    }
+    .cpg svg { display: block; width: 100%; height: 64px; overflow: visible; }
+    .cpg-base { stroke: var(--rule); stroke-width: 1.5; }
+    .cpg-island { fill: var(--hema-soft); }
+    .cpg-stick { stroke: var(--muted); stroke-width: 1; opacity: 0.55; }
+    .cpg-dot { fill: var(--surface); stroke: var(--hema); stroke-width: 1.4; }
+    .cpg-dot.m { transition: fill 0.35s ease; transition-delay: var(--d, 0ms); }
+    .cpg.on .cpg-dot.m { fill: var(--hema); }
+    .cpg figcaption {
+      margin-top: 0.5rem;
       font-size: 0.8rem;
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(96, 165, 250, 0.9);
-      background: rgba(30, 64, 175, 0.85);
-      color: #e5e7eb;
-      text-decoration: none;
-      gap: 0.3rem;
+      color: var(--muted);
+      display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem;
+    }
+    .cpg figcaption span { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .key { width: 0.65rem; height: 0.65rem; border-radius: 50%; border: 1.4px solid var(--hema); display: inline-block; }
+    .key.filled { background: var(--hema); }
+    .key.band { border-radius: 2px; border: 0; background: var(--hema-soft); width: 1rem; outline: 1px solid var(--rule); }
+
+    /* ---------- Sections ---------- */
+    main > section { scroll-margin-top: calc(var(--header-h) + 1rem); }
+    .section { padding-top: clamp(4rem, 9vw, 6.5rem); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      max-width: 62ch;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+    }
+    .section-head p { color: var(--muted); }
+
+    .group-title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--hema);
+      margin: 2.75rem 0 0.25rem;
+      scroll-margin-top: calc(var(--header-h) + 1rem);
     }
 
-    .btn.secondary {
-      background: rgba(15, 23, 42, 0.85);
-      border-color: rgba(55, 65, 81, 0.9);
+    /* ---------- Research areas ---------- */
+    .areas {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--rule);
     }
-
-    .btn:hover {
-      filter: brightness(1.05);
-      text-decoration: none;
+    @media (max-width: 900px) { .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .areas { grid-template-columns: minmax(0, 1fr); } }
+    .areas li {
+      padding: 1.4rem 1.5rem 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
     }
-
-    /* Light mode buttons */
-    html[data-theme="light"] .btn {
-      background: #2f855a;
-      border-color: #38a169;
-      color: #f9fafb;
-      box-shadow: 0 6px 12px rgba(56, 161, 105, 0.35);
+    .areas h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
     }
+    .areas p { font-size: 0.95rem; color: var(--muted); }
 
-    html[data-theme="light"] .btn.secondary {
-      background: #ffffff;
-      border-color: #cbd5e1;
-      color: #1f2933;
-      box-shadow: 0 4px 8px rgba(148, 163, 184, 0.35);
+    /* ---------- Genome-browser timeline ---------- */
+    .gb {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1rem 1.25rem 1.25rem;
+      font-size: 0.88rem;
     }
-
-    /* ========== SECTIONS / CARDS ========== */
-
-    .section {
-      margin-top: 2.2rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
+    .gb-row, .gb-axis {
+      display: grid;
+      grid-template-columns: 17rem minmax(0, 1fr);
       gap: 1rem;
+      align-items: center;
+    }
+    .gb-axis { height: 1.6rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .gb-group {
+      margin-top: 0.75rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+    .gb-row {
+      padding: 0.3rem 0.4rem;
+      margin-inline: -0.4rem;
+      border-radius: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .gb-row:hover { background: var(--hema-soft); color: var(--ink); }
+    .gb-name { display: block; font-weight: 500; line-height: 1.3; }
+    .gb-dates { display: block; font-size: 0.8rem; color: var(--muted); }
+    .gb-lane { position: relative; height: 1.75rem; }
+    .gb-axis .gb-lane { height: 100%; }
+    .gb-tick {
+      position: absolute; top: -0.4rem; bottom: -0.4rem;
+      border-left: 1px dashed var(--rule);
+    }
+    .gb-tick-label { position: absolute; top: 0.15rem; transform: translateX(-50%); font-size: 0.78rem; }
+    .gb-now { position: absolute; top: -0.4rem; bottom: -0.4rem; border-left: 1.5px solid var(--eosin); }
+    .gb-now-label {
+      position: absolute; top: 0.15rem; transform: translateX(-50%);
+      font-size: 0.78rem; color: var(--eosin); font-weight: 600;
+      background: var(--surface); padding: 0 0.25rem;
+    }
+    .gb-bar {
+      position: absolute; top: 50%; height: 0.7rem;
+      transform: translateY(-50%);
+      border-radius: 2px;
+      min-width: 6px;
+    }
+    .gb-bar.research { background: var(--hema); }
+    .gb-bar.teaching { background: var(--eosin); }
+    .gb-bar.education { background: var(--hema-soft); box-shadow: inset 0 0 0 1.5px var(--hema); }
+    /* ongoing: the bar runs up to "now" and thins out like an open-ended feature */
+    .gb-bar.ongoing::after {
+      content: ""; position: absolute; left: 100%; top: 50%;
+      width: 0; height: 0;
+      transform: translateY(-50%);
+      border-left: 6px solid currentColor;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+    .gb-bar.research.ongoing { color: var(--hema); }
+    .gb-bar.teaching.ongoing { color: var(--eosin); }
+    .gb-bar.education.ongoing { color: var(--hema); }
+    /* clipped: starts before the visible window */
+    .gb-bar.clipped { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+    .gb-bar.clipped::before {
+      content: ""; position: absolute; right: 100%; top: 50%;
+      transform: translateY(-50%);
+      border-right: 6px solid var(--hema);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      margin-right: 2px;
+    }
+    .gb-note { margin-top: 0.85rem; font-size: 0.8rem; color: var(--muted); }
+
+    @media (max-width: 680px) {
+      .gb { padding: 0.75rem 0.9rem 1rem; }
+      .gb-row, .gb-axis { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
+      .gb-axis > .gb-label { display: none; }
+      .gb-lane { height: 1.25rem; }
+      .gb-tick-label, .gb-now-label { font-size: 0.72rem; }
+    }
+
+    /* ---------- Entries (experience, projects) ---------- */
+    .entry {
+      display: grid;
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 0.25rem 2rem;
+      padding: 1.6rem 0 1.6rem;
+      border-bottom: 1px solid var(--rule);
+      scroll-margin-top: calc(var(--header-h) + 1rem);
+      position: relative;
+    }
+    .entry:last-child { border-bottom: 0; }
+    .entry::before {
+      content: ""; position: absolute; left: -1rem; top: 1.6rem; bottom: 1.6rem;
+      width: 3px; border-radius: 2px; background: var(--eosin);
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .entry:target::before { opacity: 1; }
+    @media (max-width: 680px) {
+      .entry { grid-template-columns: minmax(0, 1fr); }
+      .entry::before { left: -0.6rem; }
+    }
+
+    .entry-when {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      padding-top: 0.2rem;
+    }
+    .entry h4 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+    .entry-org { font-weight: 500; margin-top: 0.15rem; }
+    .entry-sup { color: var(--muted); font-size: 0.93rem; }
+    .entry-sup em { font-style: normal; color: var(--ink); }
+    .entry-body > p + p, .entry-body > p + ul, .entry-body > ul + p { margin-top: 0.6rem; }
+    .entry-body ul { margin-top: 0.7rem; padding-left: 1.1rem; max-width: 72ch; }
+    .entry-body li { margin-bottom: 0.3rem; }
+    .entry-body li::marker { color: var(--hema); }
+    .entry-desc { margin-top: 0.7rem; max-width: 72ch; }
+    .entry-desc b { font-weight: 600; }
+    .entry-links { margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .tags { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; padding: 0 !important; }
+    .tags li {
+      margin: 0 !important;
+      font-size: 0.8rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 4px;
+      background: var(--hema-soft);
+      color: var(--hema);
+    }
+
+    /* ---------- Publications ---------- */
+    .pub-controls {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 0.75rem 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .seg {
+      display: inline-flex; flex-wrap: wrap;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 9px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .seg button {
+      font: inherit; font-size: 0.88rem;
+      border: 0; background: transparent; color: var(--muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .seg button:hover { color: var(--ink); }
+    .seg button[aria-pressed="true"] { background: var(--hema); color: var(--on-hema); }
+    .seg .count { font-variant-numeric: tabular-nums; opacity: 0.75; margin-left: 0.15rem; }
+
+    .switch { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.9rem; cursor: pointer; user-select: none; }
+    .switch input {
+      appearance: none; -webkit-appearance: none;
+      width: 2.3rem; height: 1.3rem; border-radius: 999px;
+      background: var(--rule); position: relative; cursor: pointer;
+      transition: background 0.2s ease;
+      flex: none;
+    }
+    .switch input::after {
+      content: ""; position: absolute; top: 3px; left: 3px;
+      width: calc(1.3rem - 6px); height: calc(1.3rem - 6px);
+      border-radius: 50%; background: var(--surface);
+      transition: transform 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .switch input:checked { background: var(--eosin); }
+    .switch input:checked::after { transform: translateX(1rem); }
+
+    .pub-status { margin-top: 0.75rem; font-size: 0.85rem; color: var(--muted); }
+
+    .pub-group h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.35rem;
+      color: var(--hema);
+      margin: 2.25rem 0 0.5rem;
+      scroll-margin-top: calc(var(--header-h) + 1rem);
+    }
+    .pubs { list-style: none; }
+    .pub {
+      display: grid;
+      grid-template-columns: 2.75rem minmax(0, 1fr) 5.5rem;
+      gap: 0 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub:last-child { border-bottom: 0; }
+    .pub-n {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-top: 0.25rem;
+    }
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1.16rem;
+      font-weight: 500;
+      line-height: 1.32;
+      max-width: 68ch;
+    }
+    .pub-title a { color: var(--ink); text-decoration: none; }
+    .pub-title a:hover { color: var(--hema); text-decoration: underline; }
+    .pub-authors { margin-top: 0.3rem; font-size: 0.93rem; color: var(--muted); }
+    .pub-authors .me {
+      color: var(--ink); font-weight: 600;
+      text-decoration: underline; text-decoration-color: var(--eosin);
+      text-decoration-thickness: 2px; text-underline-offset: 0.22em;
+    }
+    .pub-venue { font-size: 0.93rem; }
+    .pub-meta {
+      margin-top: 0.35rem;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+    }
+    .doi { font-family: var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+    .flag { color: var(--eosin); font-weight: 600; }
+    .note { color: var(--muted); font-style: italic; }
+    .pub-year {
+      text-align: right;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--muted);
+      font-variant-numeric: oldstyle-nums;
+    }
+    @media (max-width: 680px) {
+      .pub { grid-template-columns: 2.25rem minmax(0, 1fr); }
+      .pub-year { display: none; }
+    }
+
+    /* ---------- Skills ---------- */
+    .skills { border-top: 1px solid var(--rule); }
+    .skill {
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 1fr);
+      gap: 0.4rem 2rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .skill dt {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.12rem;
+      line-height: 1.3;
+    }
+    .skill dd ul { padding-left: 1.1rem; max-width: 72ch; }
+    .skill dd li { margin-bottom: 0.3rem; }
+    .skill dd li::marker { color: var(--hema); }
+    @media (max-width: 680px) { .skill { grid-template-columns: minmax(0, 1fr); } }
+
+    /* ---------- Beyond research ---------- */
+    .beyond {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 3.5rem;
+    }
+    @media (max-width: 820px) { .beyond { grid-template-columns: minmax(0, 1fr); } }
+    .block { padding: 1.5rem 0; border-top: 1px solid var(--rule); scroll-margin-top: calc(var(--header-h) + 1rem); }
+    .block.wide { grid-column: 1 / -1; }
+    .block h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.25rem;
       margin-bottom: 0.75rem;
     }
+    .block ul { padding-left: 1.1rem; }
+    .block li { margin-bottom: 0.4rem; }
+    .block li::marker { color: var(--hema); }
+    .muted { color: var(--muted); }
+    .small { font-size: 0.9rem; }
 
-    .section-title {
-      font-size: 0.96rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-    }
+    .dated { list-style: none; padding: 0 !important; }
+    .dated li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 1rem; margin-bottom: 0.55rem; }
+    .dated .when { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; padding-top: 0.08rem; }
+    @media (max-width: 480px) { .dated li { grid-template-columns: minmax(0, 1fr); } }
 
-    .section-title::before {
-      content: "";
-      display: inline-block;
-      width: 26px;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        rgba(129, 140, 248, 0.9),
-        rgba(56, 189, 248, 0.6)
-      );
-      border-radius: 999px;
+    .podium { list-style: none; padding: 0 !important; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3.5rem; }
+    @media (max-width: 820px) { .podium { grid-template-columns: minmax(0, 1fr); } }
+    .podium li {
+      display: grid; grid-template-columns: 4.25rem minmax(0, 1fr);
+      gap: 0 1rem; padding: 0.85rem 0; margin: 0 !important;
+      border-bottom: 1px dashed var(--rule);
     }
+    .place {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      line-height: 1;
+      color: var(--eosin);
+      padding-top: 0.1rem;
+    }
+    .place.fin { font-size: 0.95rem; font-style: italic; padding-top: 0.3rem; color: var(--hema); }
+    .podium b { font-weight: 600; }
+    .podium p { font-size: 0.9rem; color: var(--muted); }
 
-    /* Light mode section rule */
-    html[data-theme="light"] .section-title::before {
-      background: linear-gradient(to right, #2f855a, #4c51bf);
+    /* ---------- Contact & footer ---------- */
+    .contact-line {
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 3.4vw, 2.1rem);
+      line-height: 1.3;
+      max-width: 30ch;
     }
-
-    .section-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 0.9rem;
-      border: 1px solid var(--border);
-      padding: 0.85rem 0.95rem;
-      margin-bottom: 0.7rem;
-      box-shadow: 0 12px 22px rgba(15, 23, 42, 0.55);
-    }
-
-    html[data-theme="light"] .card {
-      box-shadow: 0 8px 14px rgba(148, 163, 184, 0.18);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      align-items: baseline;
-      margin-bottom: 0.2rem;
-    }
-
-    .card-title {
-      font-size: 0.96rem;
-      font-weight: 600;
-    }
-
-    .card-subtitle {
-      font-size: 0.9rem;
-      color: #cbd5f5;
-    }
-
-    html[data-theme="light"] .card-subtitle {
-      color: #4b5563;
-    }
-
-    .card-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .card-body {
-      font-size: 0.86rem;
-      color: var(--text);
-      margin-top: 0.25rem;
-    }
-
-    .card-body ul {
-      margin-left: 1.1rem;
-      margin-top: 0.2rem;
-    }
-
-    .card-body li {
-      margin-bottom: 0.18rem;
-    }
-
-    /* Publications: more spacing so it’s readable */
-    ol {
-      margin-left: 1.2rem;
-      margin-top: 0.3rem;
-    }
-
-    ol li {
-      margin-bottom: 0.85rem;
-    }
-
-    /* Skills layout: STACK vertically */
-    .skills-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    .skills-card {
-      background: var(--card);
-      border-radius: 0.85rem;
-      border: 1px solid var(--border);
-      padding: 0.75rem 0.9rem;
-      font-size: 0.86rem;
-      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.6);
-    }
-
-    .skills-card ul {
-      margin-left: 1.1rem;
-      margin-top: 0.2rem;
-    }
-
-    .skills-card li {
-      margin-bottom: 0.18rem;
-    }
-
-    html[data-theme="light"] .skills-card {
-      box-shadow: 0 6px 12px rgba(148, 163, 184, 0.22);
-    }
-
-    .skills-card h4 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
+    .contact-line a { color: var(--hema); text-decoration-color: var(--eosin); text-decoration-thickness: 2px; overflow-wrap: anywhere; }
+    .contact-alt { margin-top: 0.9rem; color: var(--muted); }
 
     .footer {
-      margin-top: 2.5rem;
-      font-size: 0.78rem;
+      margin-top: 4.5rem;
+      padding: 1.5rem 0 2.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem;
       color: var(--muted);
-      text-align: right;
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem;
+    }
+
+    /* ---------- Print: clean paper CV ---------- */
+    @media print {
+      :root { --paper:#fff; --surface:#fff; --ink:#000; --muted:#333; --rule:#ccc; --hema:#000; --eosin:#000; --hema-soft:#eee; }
+      .site-header, .cpg, .gb, .pub-controls, .pub-status, .actions, .theme-toggle, .skip { display: none !important; }
+      .section { padding-top: 1.5rem; }
+      .pub, .entry, .block { break-inside: avoid; }
+      a { color: #000; text-decoration: none; }
     }
   </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- ========== HEADER / NAV ========== -->
+<!-- ========== HEADER ========== -->
 <header class="site-header">
-  <div class="nav-inner">
-    <div class="branding">
-      <div class="branding-title">Ekarsi Lodh</div>
-      <div class="branding-sub">Bioinformatics · Computational Genomics</div>
-    </div>
-    <nav class="nav-links">
-      <a href="#education">Education</a>
-      <a href="#research">Research</a>
-      <a href="#pubs-journal">Journal&nbsp;Papers</a>
-      <a href="#pubs-conference">Conference</a>
-      <a href="#projects">Projects</a>
-      <a href="#memberships">Memberships</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#skills">Skills</a>
-      <a href="#competitions">Competitions</a>
-      <a href="#languages">Languages</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#extracurriculum">Extracurriculum</a>
-      <a href="#contact">Contact</a>
-
-      <!-- Theme toggle -->
-      <button class="theme-toggle" type="button" aria-label="Toggle color mode">
-        🌙 Dark
-      </button>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">Ekarsi Lodh</a>
+    <nav class="nav" aria-label="Sections">
+      <ul>
+        <li><a href="#areas">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#beyond">Beyond research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
-
+    <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
   </div>
 </header>
 
-<main class="page">
+<main id="main">
 
   <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="hero-main">
-      <h1>Ekarsi Lodh</h1>
-      <div class="hero-role">MSc Bioinformatics · Research Associate · PGTA · University of Birmingham</div>
-      <p class="hero-summary">
-        I am a <strong>Bioinformatics researcher, Research Associate, and Postgraduate Teaching Assistant at the University of Birmingham</strong>, working on <strong>LLMs for Electronic Health Record data</strong>, <strong>cancer epigenomics</strong>, <strong>GWAS in autotetraploid crops</strong>, <strong>signaling pathway analysis</strong>, <strong>NGS analysis</strong>, <strong>drug repurposing</strong>, and <strong>deep learning for protein–ligand binding affinity</strong>, with multiple journal and conference publications.
-      </p>
-      <div class="chip-row">
-        <span class="chip">LLMs</span>
-        <span class="chip">Polyploid GWAS</span>
-        <span class="chip">Drug Repurposing</span>
-        <span class="chip">Deep Learning</span>
-        <span class="chip">HPC · BlueBEAR</span>
-      </div>
-    </div>
+  <section class="hero wrap" id="top">
+    <div class="hero-grid">
+      <div>
+        <h1>Ekarsi Lodh</h1>
+        <p class="lede">I build computational methods for genomic, epigenomic and clinical data, from DNA methylation clocks and polyploid GWAS to fine-tuned clinical language models.</p>
+        <p class="hero-text">
+          I am a Research Associate at the HealthTech AI Hub and a Postgraduate Teaching Assistant at the University of Birmingham, where I am also an MSc Bioinformatics student.
+          Earlier, as a research intern in Dr Tapan Chowdhury's group at Techno Main Salt Lake, I worked on signalling pathway analysis, drug repurposing and deep learning for protein–ligand binding affinity, which led to multiple journal and conference publications.
+        </p>
 
-    <aside class="hero-aside">
-      <div class="hero-contact-line">
-        <span>📍 Flat 106, Asbury Overseas House, 3 College Walk, Selly Oak, Birmingham, B29 6LF</span>
-      </div>
-      <div class="hero-contact-line">
-        <span>📧 <a href="mailto:e.lodh@bham.ac.uk">e.lodh@bham.ac.uk</a></span>
-        <span>📞 +44 7311486696</span>
-      </div>
-      <div class="hero-links">
-          <!-- CV BUTTON -->
-          <a class="btn" href="assets/EkarsiLodhCV2026.pdf" download
-             style="display:inline-flex;align-items:center;gap:6px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 
-                       2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Download CV
+        <div class="actions">
+          <a class="btn primary" href="assets/EkarsiLodhCV2026.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV (PDF)
           </a>
-
-          <!-- ORCID BUTTON -->
-          <a class="btn secondary" href="https://orcid.org/0009-0000-7462-3217" target="_blank">
-            <span style="display:flex;align-items:center;gap:6px;">
-              <svg width="18" height="18" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" fill="#A6CE39"/>
-                <path fill="#fff" d="M9.1 7.4v9.2H7V7.4h2.1zM12.2 7.4c1.3 0 2.5.5 3.4 1.4.9.9 1.4 2.1 1.4 3.4 0 1.3-.5 2.5-1.4 3.4-.9.9-2.1 1.4-3.4 1.4H10v-9.6h2.2zm0 7.7c1.6 0 2.9-1.3 2.9-2.9 0-1.6-1.3-2.9-2.9-2.9h-.8v5.8h.8z"/>
-              </svg>
-              ORCID
-            </span>
+          <a class="btn" href="https://orcid.org/0009-0000-7462-3217" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="var(--surface)" d="M9.1 7.4v9.2H7V7.4h2.1zM12.2 7.4c1.3 0 2.5.5 3.4 1.4.9.9 1.4 2.1 1.4 3.4 0 1.3-.5 2.5-1.4 3.4-.9.9-2.1 1.4-3.4 1.4H10V7.4h2.2zm0 7.7c1.6 0 2.9-1.3 2.9-2.9 0-1.6-1.3-2.9-2.9-2.9h-.8v5.8h.8z"/><circle cx="8.05" cy="5.6" r="1.1" fill="var(--surface)"/></svg>
+            ORCID
           </a>
-
-          <!-- GOOGLE SCHOLAR BUTTON -->
-          <a class="btn secondary" href="https://scholar.google.com/citations?user=-YtKBm8AAAAJ&hl=en" target="_blank">
-            <span style="display:flex;align-items:center;gap:6px;">
-              <svg width="18" height="18" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M12 2L1 9l11 7 9-5.73V17h2V9L12 2z"/>
-                <path fill="#34A853" d="M11 19h2v3h-2z"/>
-                <path fill="#FBBC04" d="M7 17h10v2H7z"/>
-              </svg>
-              Google Scholar
-            </span>
+          <a class="btn" href="https://scholar.google.com/citations?user=-YtKBm8AAAAJ&amp;hl=en" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 10l11 7 9-5.73V17h2v-7L12 3z"/><path d="M6 14.6V18c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.4l-6 3.8-6-3.8z"/></svg>
+            Google Scholar
           </a>
-
-          <!-- LINKEDIN BUTTON -->
-          <a class="btn secondary" href="https://www.linkedin.com/in/ekarsi24" target="_blank">
-            <span style="display:flex;align-items:center;gap:6px;">
-              <svg width="18" height="18" fill="#0A66C2" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.036-1.852-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.353V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM6.96 20.452H3.71V9h3.25v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-              </svg>
-              LinkedIn
-            </span>
+          <a class="btn" href="https://github.com/ekarsilodh" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
           </a>
-
-          <!-- GITHUB BUTTON -->
-          <a class="btn secondary" href="https://github.com/ekarsilodh" target="_blank">
-            <span style="display:flex;align-items:center;gap:6px;">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="#ffffff" aria-hidden="true">
-                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 
-                         5.47 7.59c.4.07.55-.17.55-.38 
-                         0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94
-                         -.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
-                         -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 
-                         1.87.87 2.33.66.07-.52.28-.87.51-1.07
-                         -1.78-.2-3.64-.89-3.64-3.95 
-                         0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
-                         0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 2-.27 
-                         c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 
-                         2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 
-                         1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
-                         1.48 0 1.07-.01 1.93-.01 2.2 
-                         0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-              </svg>
-              GitHub
-            </span>
+          <a class="btn" href="https://www.linkedin.com/in/ekarsi24" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.036-1.852-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.353V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM6.96 20.452H3.71V9h3.25v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+            LinkedIn
           </a>
         </div>
-    </aside>
+      </div>
+
+      <aside class="now" aria-labelledby="now-title">
+        <h2 id="now-title">Currently</h2>
+        <ul>
+          <li>
+            <strong>Research Associate</strong>
+            <span>HealthTech AI Hub, University of Birmingham. Fine-tuning clinical LLMs on EHR data.</span>
+          </li>
+          <li>
+            <strong>Postgraduate Teaching Assistant</strong>
+            <span>MSc Bioinformatics, University of Birmingham</span>
+          </li>
+          <li>
+            <strong>MSc Bioinformatics</strong>
+            <span>Thesis on epigenetic age acceleration in early-onset breast cancer</span>
+          </li>
+        </ul>
+        <dl class="contact-mini">
+          <dt>Email</dt><dd><a href="mailto:e.lodh@bham.ac.uk">e.lodh@bham.ac.uk</a></dd>
+          <dt>Phone</dt><dd><a href="tel:+447311486696">+44 7311 486696</a></dd>
+          <dt>Address</dt><dd>Flat 106, Asbury Overseas House, 3 College Walk, Selly Oak, Birmingham, B29 6LF</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <figure class="cpg" id="cpg">
+      <svg id="cpg-track" aria-hidden="true" focusable="false"></svg>
+      <figcaption>
+        <span><i class="key filled"></i>Methylated CpG</span>
+        <span><i class="key"></i>Unmethylated CpG</span>
+        <span><i class="key band"></i>CpG island</span>
+      </figcaption>
+    </figure>
   </section>
 
-  <!-- ========== 1. EDUCATION ========== -->
-  <section id="education" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Education</h2>
+  <!-- ========== RESEARCH AREAS ========== -->
+  <section class="section wrap" id="areas">
+    <div class="section-head">
+      <h2>Research areas</h2>
+      <p>My work sits where biology meets machine learning, often bringing both to the same question.</p>
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">MSc in Bioinformatics</div>
-          <div class="card-subtitle">University of Birmingham, United Kingdom</div>
-        </div>
-        <div class="card-meta">2025 – Present</div>
-      </div>
-      <div class="card-body">
-        <strong>Thesis:</strong>
-        <em>
-          Epigenetic Age Acceleration in Early-Onset Breast Cancer: Multi-Cohort and Cross-Omic Analysis
-        </em>,
-        supervised by <strong><em>Dr. Archana Sharma-Oates</em></strong>, University of Birmingham, UK
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">BTech in Computer Science and Engineering</div>
-          <div class="card-subtitle">Techno Main Salt Lake, India</div>
-        </div>
-        <div class="card-meta">2020 – 2025</div>
-      </div>
-      <div class="card-body">
-        CGPA: 8.13 / 10.0
-      </div>
-    </div>
+    <ul class="areas">
+      <li>
+        <h3>Cancer epigenomics</h3>
+        <p>Epigenetic clocks and age acceleration in early-onset breast cancer, and gene-expression models for PAM50 subtype prediction.</p>
+      </li>
+      <li>
+        <h3>Clinical language models</h3>
+        <p>Parameter-efficient fine-tuning of Internist-7B and Gemma-9B on EHR data to predict mortality and readmission risk.</p>
+      </li>
+      <li>
+        <h3>Signalling and drug repurposing</h3>
+        <p>Boolean and Bayesian network models of faulty signalling pathways, molecular docking, and offline reinforcement learning for drug prioritisation.</p>
+      </li>
+      <li>
+        <h3>Protein–ligand binding</h3>
+        <p>Deep learning architectures (ResNet-LSTM, CNN-GRU) for predicting binding affinity.</p>
+      </li>
+      <li>
+        <h3>Polyploid GWAS</h3>
+        <p>Association pipelines for canopy architecture and yield in autotetraploid potato, with population structure and BLUE-based correction.</p>
+      </li>
+      <li>
+        <h3>Sequence algorithms</h3>
+        <p>GPU-accelerated global alignment that scales from genomic to proteomic data.</p>
+      </li>
+    </ul>
   </section>
 
-  <!-- ========== 2. RESEARCH EXPERIENCE ========== -->
-  <section id="research" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Research Experience</h2>
+  <!-- ========== EXPERIENCE & EDUCATION ========== -->
+  <section class="section wrap" id="experience">
+    <div class="section-head">
+      <h2>Experience and education</h2>
+      <p>Several of these roles run in parallel. The tracks below show how they overlap; select one to read the details.</p>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Research Associate</div>
-          <div class="card-subtitle">
-            <em>HealthTech AI Hub, University of Birmingham, UK</em><br>
-            Under the supervision of <strong><em>Dr Mamunur Rashid</em></strong>
-          </div>
-        </div>
-        <div class="card-meta">Mar 2026 – Present</div>
-      </div>
-    
-      <div class="card-body">
+    <div class="gb" id="gb" role="navigation" aria-label="Timeline of roles"></div>
+
+    <h3 class="group-title" id="research">Research</h3>
+
+    <article class="entry" id="exp-ra">
+      <p class="entry-when">Mar 2026 – present</p>
+      <div class="entry-body">
+        <h4>Research Associate</h4>
+        <p class="entry-org">HealthTech AI Hub, University of Birmingham, UK</p>
+        <p class="entry-sup">Supervisor: <em>Dr Mamunur Rashid</em></p>
         <ul>
           <li>Conducting research on machine learning and AI applications for Electronic Health Record (EHR) data.</li>
-          <li>Training and fine-tuning the <strong>Internist-7B clinical large language model</strong> and <strong>Gemma-9B model</strong> on multiple EHR datasets to predict patient mortality and hospital readmission risk.</li>
+          <li>Training and fine-tuning the <b>Internist-7B</b> clinical large language model and <b>Gemma-9B</b> on multiple EHR datasets to predict patient mortality and hospital readmission risk.</li>
           <li>Implementing parameter-efficient fine-tuning methods (QLoRA / PEFT) and benchmarking against transformer and classical machine learning models.</li>
         </ul>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">MSc Thesis Project</div>
-          <div class="card-subtitle">
-            Under the supervision of <strong><em>Dr. Archana Sharma-Oates</em></strong>, Assistant Professor in Bioinformatics, 
-            School of Biosciences, University of Birmingham, UK
-          </div>
-        </div>
-        <div class="card-meta">Nov 2025 – Present</div>
-      </div>
-      <div class="card-body">
-        <p>
-          <strong>Research Topic:</strong><br>
-          Epigenetic Age Acceleration and Earlier Breast Cancer Onset in UK-Resident South Asian Women: 
-          A multi-cohort DNA methylation clock study. The project investigates ethnicity-associated 
-          differences in epigenetic ageing using blood-derived DNA methylation data, integrating multiple 
-          generations of epigenetic clocks (Horvath, Hannum, PhenoAge, GrimAge, and DunedinPACE). The work 
-          focuses on robust preprocessing, cell composition adjustment, and multi-clock triangulation to 
-          assess associations with breast cancer risk and age at diagnosis, with an emphasis on 
-          underrepresented populations and reproducible statistical and machine learning workflows implemented 
-          in R and Python.
+    <article class="entry" id="exp-thesis">
+      <p class="entry-when">Nov 2025 – present</p>
+      <div class="entry-body">
+        <h4>MSc thesis project</h4>
+        <p class="entry-org">School of Biosciences, University of Birmingham, UK</p>
+        <p class="entry-sup">Supervisor: <em>Dr Archana Sharma-Oates</em>, Assistant Professor in Bioinformatics</p>
+        <p class="entry-desc">
+          <b>Epigenetic age acceleration and earlier breast cancer onset in UK-resident South Asian women: a multi-cohort DNA methylation clock study.</b>
+          The project investigates ethnicity-associated differences in epigenetic ageing using blood-derived DNA methylation data, integrating multiple generations of epigenetic clocks (Horvath, Hannum, PhenoAge, GrimAge and DunedinPACE). The work focuses on robust preprocessing, cell composition adjustment and multi-clock triangulation to assess associations with breast cancer risk and age at diagnosis, with an emphasis on underrepresented populations and reproducible statistical and machine learning workflows in R and Python.
         </p>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Group Research Project</div>
-          <div class="card-subtitle">
-            Under the supervision of <strong><em>Dr. Lindsey Compton</em></strong>, Associate Professor in Genetics,
-            School of Biosciences, University of Birmingham, UK
-          </div>
-        </div>
-        <div class="card-meta">Oct 2025 – Present</div>
-      </div>
-      <div class="card-body">
-        <p>
-          <strong>Research Topic:</strong><br>
-          Optimising GWAS pipelines to uncover genetic loci underlying the canopy
-          architecture and yield (complex traits) in autotetraploid potato using SNP and phenotyping
-          datasets, enabling enhanced precision breeding for climate-resilient crop improvement.
-          The work integrates population structure analysis (DAPC and STRUCTURE), environmental correction
-          using Best Linear Unbiased Estimates (BLUEs), and comparative statistical models to improve
-          trait–locus associations. Gaining hands-on experience in developing a robust polyploid GWAS
-          workflow using R and Linux.
+    <article class="entry" id="exp-gwas">
+      <p class="entry-when">Oct 2025 – present</p>
+      <div class="entry-body">
+        <h4>Group research project</h4>
+        <p class="entry-org">School of Biosciences, University of Birmingham, UK</p>
+        <p class="entry-sup">Supervisor: <em>Dr Lindsey Compton</em>, Associate Professor in Genetics</p>
+        <p class="entry-desc">
+          <b>Optimising GWAS pipelines to uncover genetic loci underlying canopy architecture and yield in autotetraploid potato.</b>
+          Using SNP and phenotyping datasets to enable precision breeding for climate-resilient crop improvement. The work integrates population structure analysis (DAPC and STRUCTURE), environmental correction using Best Linear Unbiased Estimates (BLUEs), and comparative statistical models to improve trait–locus associations, building a robust polyploid GWAS workflow in R and Linux.
         </p>
       </div>
+    </article>
+
+    <article class="entry" id="exp-intern">
+      <p class="entry-when">Feb 2023 – Sep 2025</p>
+      <div class="entry-body">
+        <h4>Research internship</h4>
+        <p class="entry-org">Department of Computer Science and Engineering, Techno Main Salt Lake, Kolkata, India</p>
+        <p class="entry-sup">Supervisor: <em>Dr Tapan Chowdhury</em>, Head and Associate Professor</p>
+        <ul class="tags" aria-label="Research domains">
+          <li>Signalling pathway analysis</li>
+          <li>Molecular docking</li>
+          <li>Drug repurposing</li>
+          <li>Deep learning for protein–ligand binding affinity</li>
+          <li>Sequence alignment algorithms</li>
+        </ul>
+      </div>
+    </article>
+
+    <h3 class="group-title" id="mentoring">Teaching and mentoring</h3>
+
+    <article class="entry" id="exp-pgta">
+      <p class="entry-when">Sep 2026 – present</p>
+      <div class="entry-body">
+        <h4>Postgraduate Teaching Assistant, MSc Bioinformatics</h4>
+        <p class="entry-org">University of Birmingham, UK</p>
+        <ul>
+          <li>Supporting teaching and practical learning for students on the MSc Bioinformatics programme.</li>
+          <li>Teaching support in Linux and command-line computing, Python and R programming, Next-Generation Sequencing (NGS) pipelines and bioinformatics workflows, Statistical Machine Learning, and Health Data Analytics.</li>
+          <li>Troubleshooting programming, computational and analytical workflows with students during practical sessions.</li>
+          <li>Helping students build foundational and applied computational skills for biological data analysis and bioinformatics problem-solving.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry" id="exp-cosup">
+      <p class="entry-when">Aug 2025 – present</p>
+      <div class="entry-body">
+        <h4>Undergraduate research project co-supervisor</h4>
+        <p class="entry-org">Techno Main Salt Lake, India (remote)</p>
+        <p class="entry-sup">With <em>Dr Tapan Chowdhury</em>, Head and Associate Professor, Department of Computer Science and Engineering</p>
+        <ul>
+          <li>Co-supervising a group of BTech final-year students on their undergraduate research project.</li>
+          <li>Running regular remote mentoring sessions from the UK on literature review, research design and computational methodology.</li>
+          <li>Guided a <b>miRNA–mRNA interaction network analysis for Alzheimer's disease biomarker discovery</b>.</li>
+          <li>Mentored students in scientific writing and manuscript preparation; the work resulted in a student-led article in <i>Journal of Molecular Neuroscience</i>.</li>
+        </ul>
+      </div>
+    </article>
+
+    <h3 class="group-title" id="education">Education</h3>
+
+    <article class="entry" id="edu-msc">
+      <p class="entry-when">2025 – present</p>
+      <div class="entry-body">
+        <h4>MSc in Bioinformatics</h4>
+        <p class="entry-org">University of Birmingham, United Kingdom</p>
+        <p class="entry-desc">Thesis: <i>Epigenetic Age Acceleration in Early-Onset Breast Cancer: Multi-Cohort and Cross-Omic Analysis</i>, supervised by Dr Archana Sharma-Oates.</p>
+      </div>
+    </article>
+
+    <article class="entry" id="edu-btech">
+      <p class="entry-when">2020 – 2025</p>
+      <div class="entry-body">
+        <h4>BTech in Computer Science and Engineering</h4>
+        <p class="entry-org">Techno Main Salt Lake, India</p>
+        <p class="entry-desc">CGPA 8.13 / 10.0</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ========== PUBLICATIONS ========== -->
+  <section class="section wrap" id="publications">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <p>My name is underlined in each author list. Titles link to the published version via DOI.</p>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Research Internship</div>
-          <div class="card-subtitle">
-            Under the supervision of <strong><em>Dr. Tapan Chowdhury</em></strong>, Head and Associate Professor,
-            Department of Computer Science and Engineering, Techno Main Salt Lake, Kolkata, India
+    <div class="pub-controls">
+      <div class="seg" role="group" aria-label="Filter by publication type">
+        <button type="button" data-filter="all" aria-pressed="true">All <span class="count"></span></button>
+        <button type="button" data-filter="journal" aria-pressed="false">Journal <span class="count"></span></button>
+        <button type="button" data-filter="conference" aria-pressed="false">Conference <span class="count"></span></button>
+        <button type="button" data-filter="preprint" aria-pressed="false">Preprint <span class="count"></span></button>
+        <button type="button" data-filter="chapter" aria-pressed="false">Book chapter <span class="count"></span></button>
+      </div>
+      <label class="switch"><input type="checkbox" id="first-only"> First-authored only</label>
+    </div>
+    <p class="pub-status" id="pub-status" aria-live="polite"></p>
+
+    <!-- Journal -->
+    <div class="pub-group" data-type="journal">
+      <h3 id="pubs-journal">Journal articles</h3>
+      <ol class="pubs">
+        <li class="pub" data-first="false">
+          <span class="pub-n">[1]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1007/s12031-026-02579-w" target="_blank" rel="noopener">miRNA–mRNA interaction network analysis in Alzheimer's disease for biomarker discovery</a></p>
+            <p class="pub-authors">A. Ray, K. Agarwal, S. Jha, A. M. Singh, S. Majumder, <span class="me">E. Lodh</span>, and T. Chowdhury</p>
+            <p class="pub-venue"><i>Journal of Molecular Neuroscience</i>, vol. 76, no. 123, p. 26, Aug. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1007/s12031-026-02579-w</span><span class="note">Student-led article (co-supervisor)</span></p>
           </div>
-        </div>
-        <div class="card-meta">Feb 2023 – Sept 2025</div>
-      </div>
-      <div class="card-body">
-        <p>
-          <strong>Research Domain:</strong><br>
-          Signaling Pathway Analysis, Molecular Docking, Drug Repurposing,
-          Deep Learning for Protein–Ligand Binding Affinity Prediction, Sequence Alignment Algorithms.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 3. TEACHING & MENTORING EXPERIENCE ========== -->
-  <section id="mentoring" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Teaching &amp; Mentoring Experience</h2>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Postgraduate Teaching Assistant (PGTA) – MSc Bioinformatics</div>
-          <div class="card-subtitle">
-            <em>University of Birmingham, UK</em>
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="false">
+          <span class="pub-n">[2]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1111/coin.70276" target="_blank" rel="noopener">A Novel Method for Drug Application on Signaling Pathways with Concurrent Faults Using Probabilistic Boolean Networks</a></p>
+            <p class="pub-authors">T. Chowdhury, <span class="me">E. Lodh</span>, and S. Majumder</p>
+            <p class="pub-venue"><i>Computational Intelligence</i>, vol. 42, no. 4, p. e70276, Jul. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1111/coin.70276</span></p>
           </div>
-        </div>
-        <div class="card-meta">Sep 2026 – Present</div>
-      </div>
-    
-      <div class="card-body">
-        <ul>
-          <li>Supporting teaching and practical learning for students enrolled in the <strong>MSc Bioinformatics programme</strong>.</li>
-          <li>Providing teaching support in <strong>Linux and command-line computing, Python and R programming, Next-Generation Sequencing (NGS) pipelines and bioinformatics workflows, Statistical Machine Learning, and Health Data Analytics</strong>.</li>
-          <li>Supporting students during practical sessions by troubleshooting programming, computational, and analytical workflows.</li>
-          <li>Assisting students in developing foundational and applied computational skills for <strong>biological data analysis and bioinformatics problem-solving</strong>.</li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Undergraduate Research Project Co-Supervisor</div>
-          <div class="card-subtitle">
-            <em>Techno Main Salt Lake, India</em>
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="true">
+          <span class="pub-n">[3]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1007/s10822-026-00823-4" target="_blank" rel="noopener">NetPolicy-RL: Network-Informed Offline Reinforcement Learning for Pharmacogenomic Drug prioritization</a></p>
+            <p class="pub-authors"><span class="me">E. Lodh</span>, S. Majumder, T. Chowdhury, and M. De</p>
+            <p class="pub-venue"><i>Journal of Computer-Aided Molecular Design</i>, vol. 40, no. 140, p. 24, Jun. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1007/s10822-026-00823-4</span><span class="flag">First author</span></p>
           </div>
-        </div>
-        <div class="card-meta">Aug 2025 – Present</div>
-      </div>
-  
-      <div class="card-body">
-        <ul>
-          <li>Co-supervising a group of B.Tech final-year students for their undergraduate research project under the supervision of <strong><em>Dr. Tapan Chowdhury</em></strong>, Head and Associate Professor,
-            Department of Computer Science and Engineering, Techno Main Salt Lake, Kolkata, India.</li>
-          <li>Conducting regular remote mentoring sessions from the UK to guide literature review, research design, and computational methodology.</li>
-          <li>Guided students in conducting a <strong>miRNA–mRNA interaction network analysis for Alzheimer’s disease biomarker discovery</strong>.</li>
-          <li>Mentored students in scientific writing and manuscript preparation; the work resulted in a <strong>student-led article in <em>Journal of Molecular Neuroscience</em></strong>.</li>
-        </ul>
-      </div>
-    </div>
-  
-  </section>
-
-  <!-- ========== 4. PUBLICATIONS – JOURNAL ========== -->
-  <section id="pubs-journal" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Publications – Journal</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <ol>
-          <li>
-            A. Ray, K. Agarwal, S. Jha, A. M. Singh, S. Majumder, <strong>E. Lodh</strong>, and T. Chowdhury,
-            “miRNA-mRNA interaction network analysis in Alzheimer’s disease for biomarker discovery,”
-            <em>Journal of Molecular Neuroscience</em>, vol. 76, no. 123, p. 26, Aug. 2026.<br>
-            doi:
-            <a href="https://doi.org/10.1007/s12031-026-02579-w" target="_blank">
-              10.1007/s12031-026-02579-w
-            </a>
-          </li>
-          <li>
-            T. Chowdhury, <strong>E. Lodh</strong>, and S. Majumder, 
-            “A Novel Method for Drug Application on Signaling Pathways with Concurrent Faults Using Probabilistic Boolean Networks,”
-            <em>Computational Intelligence</em>, vol. 42, no. 4, p. e70276, Jul. 2026. <br>
-            doi:
-            <a href="https://doi.org/10.1111/coin.70276" target="_blank">
-              10.1111/coin.70276
-            </a>
-          </li>
-          <li>
-            <strong>E. Lodh</strong>, S. Majumder, T. Chowdhury, and M. De,
-            “NetPolicy-RL: Network-Informed Offline Reinforcement Learning for Pharmacogenomic Drug prioritization,”
-            <em>Journal of Computer-Aided Molecular Design</em>, vol. 40, no. 140, p. 24, Jun. 2026.<br>
-            doi:
-            <a href="https://doi.org/10.1007/s10822-026-00823-4" target="_blank">
-              10.1007/s10822-026-00823-4
-            </a>
-          </li>
-          <li>
-            S. Majumder, <strong>E. Lodh</strong>, T.De, and T. Chowdhury,
-            “In silico Characterization of Melanoma-derived Mouse lncRNA Gm26982 and Comparative Analyses with Human Ortholog,”
-            <em>Molecular Genetics and Genomics</em>, vol. 301, no. 103, p. 25, Apr. 2026.<br>
-            doi:
-            <a href="https://doi.org/10.1007/s00438-026-02423-1" target="_blank">
-              10.1007/s00438-026-02423-1
-            </a>
-          </li>
-          <li>
-            <strong>E. Lodh</strong>, T. Chowdhury, and S. Majumder, 
-            “BioAlignNet: A GPU-Accelerated Framework for Efficient Global Sequence Alignment Across Genomics and Proteomics Scales,”
-            <em>Computational Intelligence</em>, vol. 42, no. 3, p. e70232, Apr. 2026. <br>
-            doi:
-            <a href="https://doi.org/10.1111/coin.70232" target="_blank">
-              10.1111/coin.70232
-            </a>
-          </li>
-          <li>
-            <strong>E. Lodh</strong>, T. Chowdhury, A. Shaw, D. Bedajna, S. Bera, S. Majumder, and M. De, 
-            “A Stacked Ensemble Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures,”
-            <em>Network Modeling Analysis in Health Informatics and Bioinformatics</em>, vol. 15, no. 78, p. 31, Mar. 2026. <br>
-            doi:
-            <a href="https://doi.org/10.1007/s13721-026-00755-x" target="_blank">
-              10.1007/s13721-026-00755-x
-            </a>
-          </li>
-          <li>
-            <strong>E. Lodh</strong>, S. Majumder, T. Chowdhury, and M. De, 
-            “RLBindDeep: A ResNet-LSTM based novel framework for protein–ligand binding affinity prediction,”
-            <em>Journal of Molecular Graphics and Modelling</em>, vol. 144, no. 109282, p. 245, Jan. 2026. <br>
-            doi:
-            <a href="https://doi.org/10.1016/j.jmgm.2026.109282" target="_blank">
-              10.1016/j.jmgm.2026.109282
-            </a>
-          </li>
-          <li>
-            T. Chowdhury, S. Basu, A. Roy, V. Sarkar, K. Mondal, <strong>E. Lodh</strong>, and M. De, 
-            “Graph-theoretic and emotional analysis of character dynamics in novel-to-film adaptations,”
-            <em>Journal of Computational Social Science</em>, vol. 9, no. 18, p. 23, Jan. 2026. <br>
-            doi:
-            <a href="https://doi.org/10.1007/s42001-025-00451-2" target="_blank">
-              10.1007/s42001-025-00451-2
-            </a>
-          </li>
-          <li>
-            S. Majumder, <strong>E. Lodh</strong>, and T. Chowdhury,
-            “Implications of trinodal inhibitions and drug repurposing in MAPK pathway: A putative remedy for breast cancer,”
-            <em>Computational Biology and Chemistry</em>, vol. 113, no. 108255, p. 22, Oct. 2024.<br>
-            doi:
-            <a href="https://doi.org/10.1016/j.compbiolchem.2024.108255" target="_blank">
-              10.1016/j.compbiolchem.2024.108255
-            </a>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 5. PUBLICATIONS – PREPRINT ========== -->
-  <section id="pubs-journal" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Publications – Preprint</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <ol>
-          <li>
-            T. Chowdhury, S. Majumder, <strong>E. Lodh</strong>, A. Maitra, A. Agarwal, A. Sur, and S. Sarkar,
-            “Multiple Fault Analysis and Drug Therapy on Signaling Pathways Using Dynamic Bayesian Network-based Model,”
-            <em>bioRxiv Preprint</em>, Jun. 2026. <br>
-            doi:
-            <a href="https://doi.org/10.64898/2026.06.11.731601" target="_blank">
-              10.64898/2026.06.11.731601
-            </a>
-            <em>(Manuscript under review at Journal of Computer-Aided Molecular Design)</em>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 6. PUBLICATION – CONFERENCE ========== -->
-  <section id="pubs-conference" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Publications – Conference</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <ol>
-          <li>
-            <strong>E. Lodh</strong>, S. Majumder, and T. Chowdhury,
-            “CGDeepAff: Deep Learning-Based Approach for Protein-Ligand Binding Affinity Estimation Using CNN-GRU,”
-            <em>2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech)</em>,
-            Kolkata, India, 2025, pp. 1–6,<br>
-            doi:
-            <a href="https://doi.org/10.1109/IEMENTech65115.2025.10959578" target="_blank">
-              10.1109/IEMENTech65115.2025.10959578
-            </a>.
-            (Presenter)
-          </li>
-          <li>
-            T. Chowdhury, U. Das, A. Makur, A. Sinha, D. Jana, A. Das, and <strong>E. Lodh</strong>,
-            “Ensemble Clustering on Big Data,”
-            <em>2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech)</em>,
-            Kolkata, India, 2025, pp. 1–6,<br>
-            doi:
-            <a href="https://doi.org/10.1109/IEMENTech65115.2025.10959554" target="_blank">
-              10.1109/IEMENTech65115.2025.10959554
-            </a>.
-            (Presenter)
-          </li>
-          <li>
-            M. De, R. L. Chhetri, M. Konar, A. N. Joardar, A. Jain, <strong>E. Lodh</strong>, and T. Chowdhury,
-            “A Deep Learning-Based Method for the Categorization of Different Skin Diseases,”
-            W. Ding, A. Chakrabarti, M. Chakraborty, S. Chakraborty, (eds),
-            <em>Proceedings of the Second International Conference on Advanced Computing and Systems, AdComSys 2025, Lecture Notes in Networks and Systems</em>, vol 1887, pp. 40-56 Springer, Cham,
-            doi:
-            <a href="https://doi.org/10.1007/978-3-032-20253-6_4" target="_blank">
-              10.1007/978-3-032-20253-6_4
-            </a>.
-            (Presenter)
-          </li>
-          <li>
-            <strong>E. Lodh</strong>, S. Majumder, T. De, T. Chowdhury, and M. De,
-            “GeneDeepNet: A Differential Expression and Deep Learning Based Novel Framework for Detecting Invasive Breast Cancer Subtypes,”
-            <em>4th International Conference on Machine Learning and Data Engineering (ICMLDE-2025)</em>,
-            <em>Procedia Computer Science</em>, vol 283, pp. 1235-1248, 2026,<br> 
-            doi:
-            <a href="https://doi.org/10.1016/j.procs.2026.06.202" target="_blank">
-              10.1016/j.procs.2026.06.202
-            </a>.
-            (Presenter)
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 7. PUBLICATIONS – BOOK CHAPTER (INVITED) ========== -->
-  <section id="pubs-journal" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Publications – Book Chapter (Invited)</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <ol>
-          <li>
-            S. Majumder*, <strong>E. Lodh*</strong> (joint first authors), and S. Datta,
-            “Explainable AI in Redox Medicine: Challenges and Opportunities,”
-            in <em>Oxidative Stress–Mediated Disorders: Advances in Diagnosis and Therapy with AI and Machine Learning</em>, edited by S. Roy, D. Ghosh, P. Kalita, and P. H. Guzzi, Springer Nature, 2026 <br>
-            <em>(In Production)</em>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 8. PROJECTS ========== -->
-  <section id="projects" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Projects</h2>
-      <div class="section-sub">
-        Selected software and pipelines (see GitHub for full list).
-      </div>
-    </div>
-
-    <!-- EHR Project -->
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">
-            Clinical Mortality Risk Prediction using Fine-Tuned Clinical LLMs
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="false">
+          <span class="pub-n">[4]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1007/s00438-026-02423-1" target="_blank" rel="noopener">In silico Characterization of Melanoma-derived Mouse lncRNA Gm26982 and Comparative Analyses with Human Ortholog</a></p>
+            <p class="pub-authors">S. Majumder, <span class="me">E. Lodh</span>, T. De, and T. Chowdhury</p>
+            <p class="pub-venue"><i>Molecular Genetics and Genomics</i>, vol. 301, no. 103, p. 25, Apr. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1007/s00438-026-02423-1</span></p>
           </div>
-          <div class="card-subtitle">
-            Machine Learning Module Project · Healthcare AI &amp; Large Language Models
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="true">
+          <span class="pub-n">[5]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1111/coin.70232" target="_blank" rel="noopener">BioAlignNet: A GPU-Accelerated Framework for Efficient Global Sequence Alignment Across Genomics and Proteomics Scales</a></p>
+            <p class="pub-authors"><span class="me">E. Lodh</span>, T. Chowdhury, and S. Majumder</p>
+            <p class="pub-venue"><i>Computational Intelligence</i>, vol. 42, no. 3, p. e70232, Apr. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1111/coin.70232</span><span class="flag">First author</span></p>
           </div>
-        </div>
-        <div class="card-meta">2026</div>
-      </div>
-    
-      <div class="card-body">
-        <ul>
-          <li>
-            Developed in-hospital mortality prediction models using structured EHR data inspired by MIMIC clinical datasets.
-          </li>
-          <li>
-            Fine-tuned <strong>Internist-7B</strong> using <strong>QLoRA (4-bit PEFT)</strong> for efficient clinical outcome prediction.
-          </li>
-          <li>
-            Fully fine-tuned <strong>BioClinicalBERT</strong> and benchmarked against XGBoost, LSTM, and transformer-based models.
-          </li>
-          <li>
-            Evaluated performance using <strong>AUC-ROC, Precision, Recall, and F1-score</strong>; GitHub release planned.
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Streamlit Trio VCF Analyzer -->
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Streamlit-Based Trio VCF Analyzer for Structural Variant Interpretation</div>
-          <div class="card-subtitle">Based on Genomics &amp; NGS Module Project · Interactive Web App</div>
-        </div>
-        <div class="card-meta">
-          <a href="https://github.com/ekarsilodh/dvcf" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="card-body">
-        <ul>
-          <li>
-            Developed an interactive Streamlit app that ingests VCF files from trio-based structural variant
-            calling and presents a complete summary of SV types, genomic locations, and functional context.
-          </li>
-          <li>
-            Implements trio role inference (child/parents), sex inference based on X-chromosome heterozygosity,
-            and detection of de novo mutations via Mendelian consistency checks.
-          </li>
-        </ul>
-
-        <a class="btn secondary" href="https://dellyvcftrio.streamlit.app/" target="_blank"
-           style="margin-top:0.6rem; display:inline-flex; align-items:center; gap:6px;">
-          <svg width="20" height="20" viewBox="0 0 256 256">
-            <defs>
-              <linearGradient id="streamlitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FF4B4B"/>
-                <stop offset="100%" stop-color="#FF8F56"/>
-              </linearGradient>
-            </defs>
-            <path fill="url(#streamlitGrad)"
-              d="M128 18c-7 0-14 4-17 10L19 199c-4 7-4 15 0 22 4 7 10 11 18 11h182c8 0 14-4 18-11 4-7 4-15 0-22L145 28c-3-6-10-10-17-10z"/>
-          </svg>
-          Launch App
-        </a>
-      </div>
-    </div>
-
-    <!-- CLI pipeline -->
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Delly-VCF-Trio-Analyzer: Command-Line SV Interpretation Pipeline</div>
-          <div class="card-subtitle">Genomics &amp; NGS Module Project; Reproducible Analysis Workflow</div>
-        </div>
-        <div class="card-meta">
-          <a href="https://github.com/ekarsilodh/Delly-SV-Trios" target="_blank">GitHub</a>
-        </div>
-      </div>
-      <div class="card-body">
-        <ul>
-          <li>
-            End-to-end command-line pipeline for parsing, summarising, and prioritising structural variants from
-            Delly-generated trio VCF files, including QC, de novo calling, annotating, tiering pathogenic variants, and plotting.
-          </li>
-          <li>
-            Designed for reproducible workflows with clearly structured output tables, text reports, and visualisations
-            that can be integrated into downstream clinical or research pipelines.
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 9. PROFESSIONAL MEMBERSHIPS ========== -->
-  <section id="memberships" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Professional Memberships</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p>
-          <strong>IEEE (Institute of Electrical and Electronics Engineers) Member</strong>, Feb 2025 – present<br />
-          – Member of IEEE Computational Intelligence Society and IEEE Engineering in Medicine and Biology Society.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 10. LEADERSHIP ========== -->
-  <section id="leadership" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Leadership</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <ul>
-          <li>2025 – present: Postgraduate Student Ambassador, University of Birmingham.</li>
-          <li>2025 – present: Student Rep, MSc Bioinformatics FT (2025–26 Batch), University of Birmingham.</li>
-          <li>2024 – 2025: Convenor, Department of Computer Science and Engineering, Techno Main Salt Lake.</li>
-          <li>2023 – 2025: Class Representative, Department of Computer Science and Engineering, Techno Main Salt Lake.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 11. SKILLS ========== -->
-  <section id="skills" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Skills</h2>
-    </div>
-
-    <div class="skills-grid">
-      <div class="skills-card">
-        <h4>Programming Languages</h4>
-        <p>Python, R, Shell Scripting, Awk, Linux, C.</p>
-      </div>
-
-      <div class="skills-card">
-        <h4>Machine Learning &amp; AI</h4>
-        <ul>
-          <li>
-            Deep Learning and Transformer Models (PyTorch, HuggingFace)
-          </li>
-          <li>
-            Large Language Model Fine-Tuning (<strong>QLoRA, PEFT, 4-bit Quantisation</strong>)
-          </li>
-          <li>
-            Clinical NLP and Healthcare Predictive Modelling
-          </li>
-          <li>
-            BioClinicalBERT and Domain-Specific Transformer Adaptation
-          </li>
-          <li>
-            Sequential Modelling (LSTM) and Model Evaluation (AUC-ROC, F1-score)
-          </li>
-        </ul>
-      </div>
-
-      <div class="skills-card">
-        <h4>Bioinformatics Tools</h4>
-        <ul>
-          <li>
-            Proficiency in molecular docking and real-time simulation tools (e.g., UCSF Chimera, PyRx, AutoDock Vina 1.2.5, ClusPro 2.0, Discovery Studio (BIOVIA)).
-          </li>
-          <li>
-            Familiar with in silico ncRNA characterization tools (e.g., RNAfold, LncRISearch, LncBase v.3, lncLocator, iLOC-LncRNA(2.0), CPC2, RNAinter v4.0, NPInter v5.0).
-          </li>
-          <li>
-            Familiar with primer tools (e.g., NEBcutter V2.0, Primer3 Input).
-          </li>
-          <li>
-            Done working with plant regulome analysis tools (e.g., PlantPAN 4.0, Phytozome v13).
-          </li>
-        </ul>
-      </div>
-
-      <div class="skills-card">
-        <h4>High-Performance &amp; Large-Scale Computing</h4>
-        <ul>
-          <li>Experience running large-scale genomics workflows on BlueBEAR HPC (University of Birmingham).</li>
-          <li>GPU-accelerated deep learning and LLM fine-tuning on BlueBEAR HPC.</li>
-        </ul>
-      </div>
-
-      <div class="skills-card">
-        <h4>Editing Softwares</h4>
-        <p>Adobe Photoshop, Adobe Premiere, Adobe Audition.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 12. RELEVANT EXPERIENCE ========== -->
-  <section id="relevant-experience" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Relevant Experience</h2>
-    </div>
-  
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">AI Hackathon Volunteer</div>
-          <div class="card-subtitle">
-            <em>HealthTech AI Hub &amp; University of Birmingham, UK</em>
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="true">
+          <span class="pub-n">[6]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1007/s13721-026-00755-x" target="_blank" rel="noopener">A Stacked Ensemble Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures</a></p>
+            <p class="pub-authors"><span class="me">E. Lodh</span>, T. Chowdhury, A. Shaw, D. Bedajna, S. Bera, S. Majumder, and M. De</p>
+            <p class="pub-venue"><i>Network Modeling Analysis in Health Informatics and Bioinformatics</i>, vol. 15, no. 78, p. 31, Mar. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1007/s13721-026-00755-x</span><span class="flag">First author</span></p>
           </div>
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="true">
+          <span class="pub-n">[7]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1016/j.jmgm.2026.109282" target="_blank" rel="noopener">RLBindDeep: A ResNet-LSTM based novel framework for protein–ligand binding affinity prediction</a></p>
+            <p class="pub-authors"><span class="me">E. Lodh</span>, S. Majumder, T. Chowdhury, and M. De</p>
+            <p class="pub-venue"><i>Journal of Molecular Graphics and Modelling</i>, vol. 144, no. 109282, p. 245, Jan. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1016/j.jmgm.2026.109282</span><span class="flag">First author</span></p>
+          </div>
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="false">
+          <span class="pub-n">[8]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1007/s42001-025-00451-2" target="_blank" rel="noopener">Graph-theoretic and emotional analysis of character dynamics in novel-to-film adaptations</a></p>
+            <p class="pub-authors">T. Chowdhury, S. Basu, A. Roy, V. Sarkar, K. Mondal, <span class="me">E. Lodh</span>, and M. De</p>
+            <p class="pub-venue"><i>Journal of Computational Social Science</i>, vol. 9, no. 18, p. 23, Jan. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1007/s42001-025-00451-2</span></p>
+          </div>
+          <span class="pub-year">2026</span>
+        </li>
+        <li class="pub" data-first="false">
+          <span class="pub-n">[9]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1016/j.compbiolchem.2024.108255" target="_blank" rel="noopener">Implications of trinodal inhibitions and drug repurposing in MAPK pathway: A putative remedy for breast cancer</a></p>
+            <p class="pub-authors">S. Majumder, <span class="me">E. Lodh</span>, and T. Chowdhury</p>
+            <p class="pub-venue"><i>Computational Biology and Chemistry</i>, vol. 113, no. 108255, p. 22, Oct. 2024.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1016/j.compbiolchem.2024.108255</span></p>
+          </div>
+          <span class="pub-year">2024</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Conference -->
+    <div class="pub-group" data-type="conference">
+      <h3 id="pubs-conference">Conference papers</h3>
+      <ol class="pubs">
+        <li class="pub" data-first="true">
+          <span class="pub-n">[1]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1109/IEMENTech65115.2025.10959578" target="_blank" rel="noopener">CGDeepAff: Deep Learning-Based Approach for Protein-Ligand Binding Affinity Estimation Using CNN-GRU</a></p>
+            <p class="pub-authors"><span class="me">E. Lodh</span>, S. Majumder, and T. Chowdhury</p>
+            <p class="pub-venue"><i>2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech)</i>, Kolkata, India, 2025, pp. 1–6.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1109/IEMENTech65115.2025.10959578</span><span class="flag">First author</span><span class="note">Presenter</span></p>
+          </div>
+          <span class="pub-year">2025</span>
+        </li>
+        <li class="pub" data-first="false">
+          <span class="pub-n">[2]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1109/IEMENTech65115.2025.10959554" target="_blank" rel="noopener">Ensemble Clustering on Big Data</a></p>
+            <p class="pub-authors">T. Chowdhury, U. Das, A. Makur, A. Sinha, D. Jana, A. Das, and <span class="me">E. Lodh</span></p>
+            <p class="pub-venue"><i>2025 8th International Conference on Electronics, Materials Engineering &amp; Nano-Technology (IEMENTech)</i>, Kolkata, India, 2025, pp. 1–6.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1109/IEMENTech65115.2025.10959554</span><span class="note">Presenter</span></p>
+          </div>
+          <span class="pub-year">2025</span>
+        </li>
+        <li class="pub" data-first="false">
+          <span class="pub-n">[3]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1007/978-3-032-20253-6_4" target="_blank" rel="noopener">A Deep Learning-Based Method for the Categorization of Different Skin Diseases</a></p>
+            <p class="pub-authors">M. De, R. L. Chhetri, M. Konar, A. N. Joardar, A. Jain, <span class="me">E. Lodh</span>, and T. Chowdhury</p>
+            <p class="pub-venue">In W. Ding, A. Chakrabarti, M. Chakraborty, S. Chakraborty (eds), <i>Proceedings of the Second International Conference on Advanced Computing and Systems, AdComSys 2025</i>, Lecture Notes in Networks and Systems, vol. 1887, pp. 40–56, Springer, Cham.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1007/978-3-032-20253-6_4</span><span class="note">Presenter</span></p>
+          </div>
+          <span class="pub-year">2025</span>
+        </li>
+        <li class="pub" data-first="true">
+          <span class="pub-n">[4]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.1016/j.procs.2026.06.202" target="_blank" rel="noopener">GeneDeepNet: A Differential Expression and Deep Learning Based Novel Framework for Detecting Invasive Breast Cancer Subtypes</a></p>
+            <p class="pub-authors"><span class="me">E. Lodh</span>, S. Majumder, T. De, T. Chowdhury, and M. De</p>
+            <p class="pub-venue"><i>4th International Conference on Machine Learning and Data Engineering (ICMLDE-2025)</i>, <i>Procedia Computer Science</i>, vol. 283, pp. 1235–1248, 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.1016/j.procs.2026.06.202</span><span class="flag">First author</span><span class="note">Presenter</span></p>
+          </div>
+          <span class="pub-year">2026</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Preprint -->
+    <div class="pub-group" data-type="preprint">
+      <h3 id="pubs-preprint">Preprints</h3>
+      <ol class="pubs">
+        <li class="pub" data-first="false">
+          <span class="pub-n">[1]</span>
+          <div>
+            <p class="pub-title"><a href="https://doi.org/10.64898/2026.06.11.731601" target="_blank" rel="noopener">Multiple Fault Analysis and Drug Therapy on Signaling Pathways Using Dynamic Bayesian Network-based Model</a></p>
+            <p class="pub-authors">T. Chowdhury, S. Majumder, <span class="me">E. Lodh</span>, A. Maitra, A. Agarwal, A. Sur, and S. Sarkar</p>
+            <p class="pub-venue"><i>bioRxiv</i>, Jun. 2026.</p>
+            <p class="pub-meta"><span class="doi">doi:10.64898/2026.06.11.731601</span><span class="note">Under review at Journal of Computer-Aided Molecular Design</span></p>
+          </div>
+          <span class="pub-year">2026</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Book chapter -->
+    <div class="pub-group" data-type="chapter">
+      <h3 id="pubs-chapter">Book chapter (invited)</h3>
+      <ol class="pubs">
+        <li class="pub" data-first="true">
+          <span class="pub-n">[1]</span>
+          <div>
+            <p class="pub-title">Explainable AI in Redox Medicine: Challenges and Opportunities</p>
+            <p class="pub-authors">S. Majumder*, <span class="me">E. Lodh*</span>, and S. Datta <span class="small">(*joint first authors)</span></p>
+            <p class="pub-venue">In <i>Oxidative Stress–Mediated Disorders: Advances in Diagnosis and Therapy with AI and Machine Learning</i>, eds. S. Roy, D. Ghosh, P. Kalita, and P. H. Guzzi, Springer Nature, 2026.</p>
+            <p class="pub-meta"><span class="flag">Joint first author</span><span class="note">In production</span></p>
+          </div>
+          <span class="pub-year">2026</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="section wrap" id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p>Selected software and pipelines. The full list is on <a href="https://github.com/ekarsilodh" target="_blank" rel="noopener">GitHub</a>.</p>
+    </div>
+
+    <article class="entry">
+      <p class="entry-when">2026</p>
+      <div class="entry-body">
+        <h4>Clinical mortality risk prediction using fine-tuned clinical LLMs</h4>
+        <p class="entry-org">Machine Learning module project</p>
+        <ul>
+          <li>Developed in-hospital mortality prediction models using structured EHR data inspired by MIMIC clinical datasets.</li>
+          <li>Fine-tuned <b>Internist-7B</b> using QLoRA (4-bit PEFT) for efficient clinical outcome prediction.</li>
+          <li>Fully fine-tuned <b>BioClinicalBERT</b> and benchmarked against XGBoost, LSTM and transformer-based models.</li>
+          <li>Evaluated with AUC-ROC, precision, recall and F1-score. GitHub release planned.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-when">2025</p>
+      <div class="entry-body">
+        <h4>Streamlit trio VCF analyser for structural variant interpretation</h4>
+        <p class="entry-org">Interactive web app, based on the Genomics &amp; NGS module project</p>
+        <ul>
+          <li>Ingests VCF files from trio-based structural variant calling and summarises SV types, genomic locations and functional context.</li>
+          <li>Infers trio roles (child and parents) and sex from X-chromosome heterozygosity, and detects de novo mutations through Mendelian consistency checks.</li>
+        </ul>
+        <div class="entry-links">
+          <a class="btn primary" href="https://dellyvcftrio.streamlit.app/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            Launch app
+          </a>
+          <a class="btn" href="https://github.com/ekarsilodh/dvcf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            Source code
+          </a>
         </div>
-        <div class="card-meta">Mar 2026</div>
       </div>
-      
-      <div class="card-body">
+    </article>
+
+    <article class="entry">
+      <p class="entry-when">2025</p>
+      <div class="entry-body">
+        <h4>Delly-VCF-Trio-Analyzer: command-line SV interpretation pipeline</h4>
+        <p class="entry-org">Reproducible analysis workflow, Genomics &amp; NGS module project</p>
         <ul>
-          <li>Supported the organisation and delivery of a large-scale international healthcare AI hackathon in a fast-paced environment.</li>
-          <li>Assisted participants by resolving queries, providing guidance, and enhancing overall participant experience.</li>
-          <li>Contributed to the technical evaluation of an NLP model using a Bengali dataset, reviewing the accuracy of translating medical check-up data into English and ensuring clinical relevance.</li>
-          <li>Contributed to event coordination, including setup, logistics, and real-time operational support.</li>
-          <li>Conducted interviews with student teams and industry partners, gaining insights into solution design and problem-solving approaches.</li>
-          <li>Supported talent matching activities between participants and industry stakeholders.</li>
-          <li>Captured key event moments and supported documentation of major activities.</li>
+          <li>End-to-end pipeline for parsing, summarising and prioritising structural variants from Delly-generated trio VCF files, including QC, de novo calling, annotation, tiering of pathogenic variants and plotting.</li>
+          <li>Produces structured output tables, text reports and visualisations that slot into downstream clinical or research pipelines.</li>
         </ul>
+        <div class="entry-links">
+          <a class="btn" href="https://github.com/ekarsilodh/Delly-SV-Trios" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            Source code
+          </a>
+        </div>
       </div>
-    </div>
+    </article>
   </section>
 
-  <!-- ========== 13. COMPETITIONS ========== -->
-  <section id="competitions" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Competitions</h2>
+  <!-- ========== SKILLS ========== -->
+  <section class="section wrap" id="skills">
+    <div class="section-head">
+      <h2>Skills</h2>
+    </div>
+    <dl class="skills">
+      <div class="skill">
+        <dt>Programming</dt>
+        <dd>Python, R, Shell scripting, Awk, Linux, C</dd>
+      </div>
+      <div class="skill">
+        <dt>Machine learning and AI</dt>
+        <dd>
+          <ul>
+            <li>Deep learning and transformer models (PyTorch, Hugging Face)</li>
+            <li>Large language model fine-tuning (QLoRA, PEFT, 4-bit quantisation)</li>
+            <li>Clinical NLP and healthcare predictive modelling</li>
+            <li>BioClinicalBERT and domain-specific transformer adaptation</li>
+            <li>Sequential modelling (LSTM) and model evaluation (AUC-ROC, F1-score)</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="skill">
+        <dt>Bioinformatics tools</dt>
+        <dd>
+          <ul>
+            <li>Molecular docking and simulation: UCSF Chimera, PyRx, AutoDock Vina 1.2.5, ClusPro 2.0, Discovery Studio (BIOVIA)</li>
+            <li>In silico ncRNA characterisation: RNAfold, LncRRIsearch, LncBase v.3, lncLocator, iLOC-LncRNA (2.0), CPC2, RNAInter v4.0, NPInter v5.0</li>
+            <li>Primer design: NEBcutter V2.0, Primer3</li>
+            <li>Plant regulome analysis: PlantPAN 4.0, Phytozome v13</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="skill">
+        <dt>High-performance computing</dt>
+        <dd>
+          <ul>
+            <li>Large-scale genomics workflows on BlueBEAR HPC (University of Birmingham)</li>
+            <li>GPU-accelerated deep learning and LLM fine-tuning on BlueBEAR</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="skill">
+        <dt>Editing software</dt>
+        <dd>Adobe Photoshop, Adobe Premiere, Adobe Audition</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ========== BEYOND RESEARCH ========== -->
+  <section class="section wrap" id="beyond">
+    <div class="section-head">
+      <h2>Beyond research</h2>
+      <p>Leadership, service, competitions and the rest.</p>
     </div>
 
-    <div class="card">
-      <div class="card-body">
-        <p><strong>Internal Hackathon’23</strong>, Sept 2023</p>
-        <ul>
-          <li>Intra-college hackathon for finals of SIH-2023.</li>
-          <li>Organised by Techno Main Salt Lake.</li>
-          <li>Position: Qualified to the finals.</li>
+    <div class="beyond">
+      <div class="block" id="leadership">
+        <h3>Leadership</h3>
+        <ul class="dated">
+          <li><span class="when">2025 – present</span><span>Postgraduate Student Ambassador, University of Birmingham</span></li>
+          <li><span class="when">2025 – present</span><span>Student Rep, MSc Bioinformatics FT (2025–26 cohort), University of Birmingham</span></li>
+          <li><span class="when">2024 – 2025</span><span>Convenor, Department of Computer Science and Engineering, Techno Main Salt Lake</span></li>
+          <li><span class="when">2023 – 2025</span><span>Class Representative, Department of Computer Science and Engineering, Techno Main Salt Lake</span></li>
         </ul>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-body">
-        <p><strong>INDUSTRIAL CARNIVAL 4.0, a 36 Hours Ideathon</strong>, May 2021</p>
-        <ul>
-          <li>Organised by SPE-VIT (Vellore Institute of Technology), School of Chemical Engineering.</li>
-          <li>Position: Qualified to the finals.</li>
+      <div class="block" id="memberships">
+        <h3>Professional memberships</h3>
+        <ul class="dated">
+          <li><span class="when">Feb 2025 – present</span><span>IEEE Member, including the IEEE Computational Intelligence Society and the IEEE Engineering in Medicine and Biology Society</span></li>
         </ul>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-body">
-        <p><strong>LOKNITI, Policy Conclave 2021</strong>, Apr 2021</p>
+      <div class="block wide" id="relevant-experience">
+        <h3>AI hackathon volunteer <span class="muted small">· HealthTech AI Hub &amp; University of Birmingham, Mar 2026</span></h3>
         <ul>
-          <li>Organised by Public Policy &amp; Opinion Cell, IIT Kanpur.</li>
+          <li>Supported the organisation and delivery of a large-scale international healthcare AI hackathon.</li>
+          <li>Contributed to the technical evaluation of an NLP model on a Bengali dataset, reviewing the accuracy of translating medical check-up data into English and checking clinical relevance.</li>
+          <li>Resolved participant queries and provided guidance throughout the event.</li>
+          <li>Interviewed student teams and industry partners about solution design and problem-solving approaches, and supported talent matching between participants and industry.</li>
+          <li>Helped with setup, logistics, real-time operations and documentation of key activities.</li>
+        </ul>
+      </div>
+
+      <div class="block wide" id="competitions">
+        <h3>Competitions</h3>
+        <ul class="podium">
           <li>
-            Project: ACCEPTaB (Activated, controllable, cost-effective, eco-friendly, perennial, thermo-absorbent
-            bio-generator).
-          </li>
-          <li>Position: 1st.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <p><strong>ENVITIATIVE, Public Policy Hackathon 2021</strong>, Apr 2021</p>
-        <ul>
-          <li>Organised by Environment Cell, University Business School, Punjab University.</li>
-          <li>Project: ACCEPTaB.</li>
-          <li>Position: 3rd.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <p><strong>West Bengal State Student-Youth Science Fair 2019</strong>, Nov 2019</p>
-        <ul>
-          <li>Organised by Department of Youth Services and Sports, Government of West Bengal.</li>
-          <li>Category: State Science Quiz Contest.</li>
-          <li>Position: 1st.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <p><strong>West Bengal District Level Student-Youth Science Fair 2019</strong>, Sept 2019</p>
-        <ul>
-          <li>Organised by Department of Youth Services and Sports, Government of West Bengal.</li>
-          <li>Project: S.M.A.R.T HOME.</li>
-          <li>Position: 1st.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <p><strong>Most Innovative Research Presentation</strong>, Dec 2018</p>
-        <ul>
-          <li>Organised by Ramakrishna Mission Boys’ Home High School (H.S.), Rahara.</li>
-          <li>Project: Enemy Detection Radar using Arduino and A.A.V.A.R.S.</li>
-          <li>Position: 1st.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 14. LANGUAGE QUALIFICATIONS ========== -->
-  <section id="languages" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Language Qualifications</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <ul>
-          <li>
-            <strong>IELTS</strong>, Overall Band Score: 8.0 (Listening: 8.5, Reading: 9.0, Writing: 8.0, Speaking: 6.5),
-            CEFR level: C1 (2025).
+            <span class="place">1st</span>
+            <div><b>LOKNITI, Policy Conclave 2021</b><p>Public Policy &amp; Opinion Cell, IIT Kanpur · Apr 2021. Project: ACCEPTaB (activated, controllable, cost-effective, eco-friendly, perennial, thermo-absorbent bio-generator).</p></div>
           </li>
           <li>
-            <strong>Goethe Start Deutsch A1</strong>, Goethe-Institut, Score: 71/100, Befriedigend (2024).
+            <span class="place">3rd</span>
+            <div><b>ENVITIATIVE, Public Policy Hackathon 2021</b><p>Environment Cell, University Business School, Panjab University · Apr 2021. Project: ACCEPTaB.</p></div>
+          </li>
+          <li>
+            <span class="place">1st</span>
+            <div><b>West Bengal State Student-Youth Science Fair 2019</b><p>Department of Youth Services and Sports, Govt. of West Bengal · Nov 2019. State Science Quiz Contest.</p></div>
+          </li>
+          <li>
+            <span class="place">1st</span>
+            <div><b>West Bengal District Level Student-Youth Science Fair 2019</b><p>Department of Youth Services and Sports, Govt. of West Bengal · Sep 2019. Project: S.M.A.R.T HOME.</p></div>
+          </li>
+          <li>
+            <span class="place">1st</span>
+            <div><b>Most Innovative Research Presentation</b><p>Ramakrishna Mission Boys' Home High School (H.S.), Rahara · Dec 2018. Project: Enemy Detection Radar using Arduino and A.A.V.A.R.S.</p></div>
+          </li>
+          <li>
+            <span class="place fin">Finalist</span>
+            <div><b>Internal Hackathon '23</b><p>Techno Main Salt Lake · Sep 2023. Intra-college qualifier for Smart India Hackathon 2023.</p></div>
+          </li>
+          <li>
+            <span class="place fin">Finalist</span>
+            <div><b>INDUSTRIAL CARNIVAL 4.0, 36-hour ideathon</b><p>SPE-VIT, School of Chemical Engineering, Vellore Institute of Technology · May 2021.</p></div>
           </li>
         </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- ========== 15. CERTIFICATIONS ========== -->
-  <section id="certifications" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Certifications</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
+      <div class="block" id="languages">
+        <h3>Language qualifications</h3>
         <ul>
-          <li>Biology Meets Programming: Bioinformatics for Beginners – University of California San Diego, Coursera (2025).</li>
-          <li>Python for Genomic Data Science – Johns Hopkins University, Coursera (2024).</li>
-          <li>Introduction to Machine Learning – Duke University, Coursera (2023).</li>
-          <li>Introduction to Python Programming – University of Pennsylvania, Coursera (2022).</li>
+          <li><b>IELTS</b>, overall band 8.0 (Listening 8.5, Reading 9.0, Writing 8.0, Speaking 6.5), CEFR C1, 2025</li>
+          <li><b>Goethe-Zertifikat Start Deutsch A1</b>, Goethe-Institut, 71/100 (Befriedigend), 2024</li>
+        </ul>
+      </div>
+
+      <div class="block" id="certifications">
+        <h3>Certifications</h3>
+        <ul>
+          <li>Biology Meets Programming: Bioinformatics for Beginners, UC San Diego, Coursera (2025)</li>
+          <li>Python for Genomic Data Science, Johns Hopkins University, Coursera (2024)</li>
+          <li>Introduction to Machine Learning, Duke University, Coursera (2023)</li>
+          <li>Introduction to Python Programming, University of Pennsylvania, Coursera (2022)</li>
+        </ul>
+      </div>
+
+      <div class="block wide" id="extracurriculum">
+        <h3>Extracurricular</h3>
+        <ul class="dated">
+          <li><span class="when">2024</span><span>Performed in the cultural programme at the Jahresabschlussfeier, Goethe-Institut Kolkata</span></li>
+          <li><span class="when">2023</span><span>Organised Hasta-La-Vista, Department of CSE, Techno Main Salt Lake</span></li>
+          <li><span class="when">2021</span><span>1st in TRIFECTA, a fandom quiz by the Literary Club of Techno Main Salt Lake</span></li>
+          <li><span class="when">2021</span><span>Photography event, Calcutta Youth Meet Chapter 5</span></li>
+          <li><span class="when">2021</span><span>SIYAAHI (Bengali) writing competition, Heramba Chandra College</span></li>
+          <li><span class="when">2016</span><span>Passed Sangeet Visharad Part 1 (4th year) in Hindustani classical vocal, Pracheen Kala Kendra</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ========== 16. EXTRACURRICULUM ========== -->
-  <section id="extracurriculum" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Extracurriculum</h2>
+  <!-- ========== CONTACT ========== -->
+  <section class="section wrap" id="contact">
+    <div class="section-head">
+      <h2>Contact</h2>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <ul>
-          <li>Participation in the cultural programme at the Jahresabschlussfeier at Goethe-Institut Kolkata (2024).</li>
-          <li>Organised Hasta-La-Vista, Department of CSE, Techno Main Salt Lake (2023).</li>
-          <li>Participation in Photography event, by Calcutta Youth Meet Chapter 5 (2021).</li>
-          <li>1st in TRIFECTA, a Fandom Quiz – by Literary Club of Techno Main Salt Lake (2021).</li>
-          <li>Participation in SIYAAHI (Bengali), a Writing Competition, by Heramba Chandra College (2021).</li>
-          <li>Passed Sangeet Visharad Part 1 (4th Year) in Vocal-Classical, from Pracheen Kala Kendra (2016).</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    <p class="contact-line">For collaborations and research opportunities, write to <a href="mailto:e.lodh@bham.ac.uk">e.lodh@bham.ac.uk</a>.</p>
+    <p class="contact-alt">Personal address: <a href="mailto:ekarsilodh@gmail.com">ekarsilodh@gmail.com</a></p>
 
-  <!-- ========== 17. CONTACT / FOOTER ========== -->
-  <section id="contact" class="section">
-    <div class="section-header">
-      <h2 class="section-title">Contact</h2>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        For collaborations, research opportunities, please contact me at
-        <a href="mailto:e.lodh@bham.ac.uk">e.lodh@bham.ac.uk</a> |
-        <a href="mailto:ekarsilodh@gmail.com">ekarsilodh@gmail.com</a>.
-      </div>
-    </div>
-    <div class="footer">
-      Last updated: <span id="last-updated">Loading...</span> · Hosted via GitHub Pages.
-    </div>
+    <footer class="footer">
+      <span>Last updated <span id="last-updated">…</span></span>
+      <span>Hosted on GitHub Pages</span>
+    </footer>
   </section>
-  
-  <script>
-  document.addEventListener("DOMContentLoaded", async function () {
-    const el = document.getElementById("last-updated");
-    if (!el) return;
-  
-    try {
-      const res = await fetch(window.location.href, {
-        method: "HEAD",
-        cache: "no-store"
-      });
-  
-      let lastModified = res.headers.get("last-modified");
-  
-      if (!lastModified) {
-        lastModified = document.lastModified;
-      }
-  
-      const dt = new Date(lastModified);
-  
-      if (isNaN(dt.getTime())) {
-        el.textContent = "Unknown";
-        return;
-      }
-  
-      el.textContent = dt.toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
-      });
-    } catch (err) {
-      const fallback = new Date(document.lastModified);
-  
-      if (!isNaN(fallback.getTime())) {
-        el.textContent = fallback.toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric"
-        });
-      } else {
-        el.textContent = "Unknown";
-      }
-    }
-  });
-  </script>
-
 </main>
 
-<script src="assets/theme-toggle.js"></script>
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Theme toggle ---------- */
+  var mqDark = window.matchMedia("(prefers-color-scheme: dark)");
+  var toggle = document.querySelector(".theme-toggle");
+  function effectiveTheme() {
+    var t = root.getAttribute("data-theme");
+    if (t === "light" || t === "dark") return t;
+    return mqDark.matches ? "dark" : "light";
+  }
+  function syncToggle() {
+    var dark = effectiveTheme() === "dark";
+    root.classList.toggle("is-dark", dark);
+    toggle.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+  }
+  toggle.addEventListener("click", function () {
+    var next = effectiveTheme() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    syncToggle();
+  });
+  if (mqDark.addEventListener) mqDark.addEventListener("change", syncToggle);
+  syncToggle();
+
+  /* ---------- CpG methylation track (hero) ---------- */
+  var fig = document.getElementById("cpg");
+  var svg = document.getElementById("cpg-track");
+  function drawCpG(animate) {
+    var w = Math.max(280, Math.round(svg.getBoundingClientRect().width));
+    var h = 64, base = h - 10, stick = 26, r = 4.5;
+    var seed = 20251102;
+    function rnd() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+    var step = w < 640 ? 17 : 21;
+    var islA = w * 0.44, islB = w * 0.66;
+    var xs = [], x = 8;
+    while (x < w - 8) {
+      xs.push(x);
+      var inIsland = x > islA && x < islB;
+      x += step * (inIsland ? 0.45 + rnd() * 0.3 : 0.55 + rnd() * 1.0);
+    }
+    var out = '<rect class="cpg-island" x="' + islA + '" y="4" width="' + (islB - islA) + '" height="' + (h - 8) + '" rx="3"/>';
+    out += '<line class="cpg-base" x1="0" x2="' + w + '" y1="' + base + '" y2="' + base + '"/>';
+    xs.forEach(function (px, i) {
+      var inIsland = px > islA && px < islB;
+      var edge = Math.min(Math.abs(px - islA), Math.abs(px - islB)) < step * 1.5;
+      var p = inIsland ? 0.08 : (edge ? 0.5 : 0.86);   // islands stay unmethylated, shores are mixed
+      var meth = rnd() < p;
+      out += '<line class="cpg-stick" x1="' + px.toFixed(1) + '" x2="' + px.toFixed(1) + '" y1="' + base + '" y2="' + (base - stick + r) + '"/>';
+      out += '<circle class="cpg-dot' + (meth ? ' m' : '') + '" style="--d:' + (i * 14) + 'ms" cx="' + px.toFixed(1) + '" cy="' + (base - stick) + '" r="' + r + '"/>';
+    });
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+    svg.innerHTML = out;
+    if (animate && !reduceMotion) {
+      fig.classList.remove("on");
+      requestAnimationFrame(function () { requestAnimationFrame(function () { fig.classList.add("on"); }); });
+    } else {
+      svg.querySelectorAll(".cpg-dot").forEach(function (c) { c.style.setProperty("--d", "0ms"); });
+      fig.classList.add("on");
+    }
+  }
+  drawCpG(true);
+  var lastW = window.innerWidth, rt;
+  window.addEventListener("resize", function () {
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(rt);
+    rt = setTimeout(function () { drawCpG(false); }, 150);
+  });
+
+  /* ---------- Genome-browser timeline ---------- */
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var tracks = [
+    { group: "Research",  cls: "research",  name: "Research Associate, HealthTech AI Hub", start: "2026-03", end: null, href: "#exp-ra" },
+    { group: "Research",  cls: "research",  name: "MSc thesis: epigenetic age acceleration", start: "2025-11", end: null, href: "#exp-thesis" },
+    { group: "Research",  cls: "research",  name: "Group project: polyploid GWAS", start: "2025-10", end: null, href: "#exp-gwas" },
+    { group: "Research",  cls: "research",  name: "Research internship, Kolkata", start: "2023-02", end: "2025-09", href: "#exp-intern" },
+    { group: "Teaching",  cls: "teaching",  name: "PGTA, MSc Bioinformatics", start: "2026-09", end: null, href: "#exp-pgta" },
+    { group: "Teaching",  cls: "teaching",  name: "Undergraduate project co-supervisor", start: "2025-08", end: null, href: "#exp-cosup" },
+    { group: "Education", cls: "education", name: "MSc Bioinformatics, Birmingham", start: "2025-09", end: null, href: "#edu-msc", label: "2025 – present" },
+    { group: "Education", cls: "education", name: "BTech CSE, Techno Main Salt Lake", start: "2020-08", end: "2025-06", href: "#edu-btech", label: "2020 – 2025" }
+  ];
+  function ym(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, 1); }
+  function fmt(d) { return MONTHS[d.getMonth()] + " " + d.getFullYear(); }
+  var now = new Date();
+  var axisStart = new Date(2023, 0, 1);
+  var axisEnd = new Date(now.getFullYear() + 1, 0, 1);
+  var span = axisEnd - axisStart;
+  function pct(d) { return Math.max(0, Math.min(100, (d - axisStart) / span * 100)); }
+
+  var nowPct = pct(now);
+  var ticksHTML = "";
+  for (var y = axisStart.getFullYear(); y <= axisEnd.getFullYear(); y++) {
+    ticksHTML += '<span class="gb-tick" style="left:' + pct(new Date(y, 0, 1)) + '%"></span>';
+  }
+  var nowHTML = '<span class="gb-now" style="left:' + nowPct + '%"></span>';
+
+  var axis = '<div class="gb-axis" aria-hidden="true"><span class="gb-label"></span><span class="gb-lane">';
+  for (var yy = axisStart.getFullYear(); yy < axisEnd.getFullYear(); yy++) {
+    var mid = (pct(new Date(yy, 0, 1)) + pct(new Date(yy + 1, 0, 1))) / 2;
+    if (Math.abs(mid - nowPct) > 9) axis += '<span class="gb-tick-label" style="left:' + mid + '%">' + yy + '</span>';
+  }
+  axis += '<span class="gb-now-label" style="left:' + nowPct + '%">Now</span></span></div>';
+
+  var html = axis, lastGroup = "";
+  tracks.forEach(function (t) {
+    if (t.group !== lastGroup) {
+      html += '<div class="gb-group">' + t.group + '</div>';
+      lastGroup = t.group;
+    }
+    var s = ym(t.start), e = t.end ? ym(t.end) : now;
+    var left = pct(s), right = pct(e);
+    var classes = "gb-bar " + t.cls + (t.end ? "" : " ongoing") + (s < axisStart ? " clipped" : "");
+    var dates = t.label || (fmt(s) + " – " + (t.end ? fmt(e) : "present"));
+    html += '<a class="gb-row" href="' + t.href + '">' +
+              '<span class="gb-label"><span class="gb-name">' + t.name + '</span><span class="gb-dates">' + dates + '</span></span>' +
+              '<span class="gb-lane" aria-hidden="true">' + ticksHTML + nowHTML +
+                '<span class="' + classes + '" style="left:' + left + '%;width:' + Math.max(right - left, 0.6) + '%"></span>' +
+              '</span>' +
+            '</a>';
+  });
+  html += '<p class="gb-note">Bars run from start date to today; an arrow marks a role that is ongoing.</p>';
+  document.getElementById("gb").innerHTML = html;
+
+  /* ---------- Publication filter ---------- */
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var firstOnly = document.getElementById("first-only");
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".pub-group"));
+  var status = document.getElementById("pub-status");
+  var allPubs = document.querySelectorAll(".pub").length;
+  var current = "all";
+
+  function applyFilter() {
+    var shown = 0;
+    groups.forEach(function (g) {
+      var typeOk = current === "all" || g.getAttribute("data-type") === current;
+      var visible = 0;
+      g.querySelectorAll(".pub").forEach(function (p) {
+        var ok = typeOk && (!firstOnly.checked || p.getAttribute("data-first") === "true");
+        p.hidden = !ok;
+        if (ok) visible++;
+      });
+      g.hidden = visible === 0;
+      shown += visible;
+    });
+    buttons.forEach(function (b) {
+      var f = b.getAttribute("data-filter");
+      var sel = (f === "all" ? ".pub" : '.pub-group[data-type="' + f + '"] .pub') + (firstOnly.checked ? '[data-first="true"]' : "");
+      b.querySelector(".count").textContent = document.querySelectorAll(sel).length;
+      b.setAttribute("aria-pressed", String(f === current));
+    });
+    status.textContent = "Showing " + shown + " of " + allPubs + " publications" + (firstOnly.checked ? ", first-authored only" : "") + ".";
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { current = b.getAttribute("data-filter"); applyFilter(); });
+  });
+  firstOnly.addEventListener("change", applyFilter);
+  applyFilter();
+
+  /* ---------- Highlight current section in nav ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+  if ("IntersectionObserver" in window) {
+    var map = {};
+    navLinks.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && map[en.target.id]) {
+          navLinks.forEach(function (a) { a.removeAttribute("aria-current"); });
+          map[en.target.id].setAttribute("aria-current", "location");
+          var ul = map[en.target.id].closest("ul");
+          var a = map[en.target.id];
+          if (ul.scrollWidth > ul.clientWidth) ul.scrollTo({ left: a.offsetLeft - 16, behavior: reduceMotion ? "auto" : "smooth" });
+        }
+      });
+    }, { rootMargin: "-35% 0px -60% 0px" });
+    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
+  /* ---------- Last updated ---------- */
+  var lu = document.getElementById("last-updated");
+  function show(d) {
+    lu.textContent = isNaN(d.getTime()) ? "unknown" :
+      d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  }
+  fetch(window.location.href, { method: "HEAD", cache: "no-store" })
+    .then(function (res) { show(new Date(res.headers.get("last-modified") || document.lastModified)); })
+    .catch(function () { show(new Date(document.lastModified)); });
+})();
+</script>
 </body>
 </html>
