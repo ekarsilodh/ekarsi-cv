@@ -110,6 +110,8 @@
     /* ---------- Base ---------- */
     *, *::before, *::after { box-sizing: border-box; }
     * { margin: 0; padding: 0; }
+    /* Make the hidden attribute win over display: grid/flex rules (used by the publication filter) */
+    [hidden] { display: none !important; }
 
     html {
       scroll-behavior: smooth;
@@ -457,6 +459,38 @@
     }
     .gb-note { margin-top: 0.85rem; font-size: 0.8rem; color: var(--muted); }
 
+    /* Hover pop-up with the full entry details */
+    .gb-pop {
+      position: fixed; z-index: 60;
+      width: min(30rem, calc(100vw - 24px));
+      max-height: calc(100vh - 24px); overflow: auto;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--hema);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem 1rem;
+      box-shadow: 0 18px 40px -12px rgba(20, 18, 50, 0.35), 0 2px 6px rgba(20, 18, 50, 0.08);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      pointer-events: none;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .gb-pop.show { opacity: 1; transform: none; }
+    .gb-pop.teaching { border-top-color: var(--eosin); }
+    .gb-pop-when { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 0.15rem; }
+    .gb-pop h4 { font-family: var(--serif); font-weight: 600; font-size: 1.12rem; line-height: 1.25; }
+    .gb-pop .entry-org { font-weight: 500; margin-top: 0.1rem; }
+    .gb-pop .entry-sup { font-size: 0.85rem; color: var(--muted); }
+    .gb-pop .entry-sup em { font-style: normal; color: var(--ink); }
+    .gb-pop .entry-desc { margin-top: 0.45rem; }
+    .gb-pop ul { margin-top: 0.5rem; padding-left: 1rem; }
+    .gb-pop li { margin-bottom: 0.3rem; }
+    .gb-pop li::marker { color: var(--hema); }
+    .gb-pop a { color: inherit; text-decoration: none; }
+    .gb-pop-hint { margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); font-size: 0.78rem; color: var(--muted); }
+    .gb-row.is-active { background: var(--hema-soft); }
+
     @media (max-width: 680px) {
       .gb { padding: 0.75rem 0.9rem 1rem; }
       .gb-row, .gb-axis { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
@@ -584,6 +618,8 @@
       border-bottom: 1px solid var(--rule);
     }
     .pub:last-child { border-bottom: 0; }
+    .pub { scroll-margin-top: calc(var(--header-h) + 1.5rem); transition: background-color 0.6s ease; border-radius: 6px; }
+    .pub:target { background: var(--eosin-soft); box-shadow: 0 0 0 0.6rem var(--eosin-soft); }
     .pub-n {
       font-family: var(--mono);
       font-size: 0.82rem;
@@ -753,8 +789,12 @@
         <h1>Ekarsi Lodh</h1>
         <p class="lede">I build computational methods for genomic, epigenomic and clinical data, from DNA methylation clocks and polyploid GWAS to fine-tuned clinical language models.</p>
         <p class="hero-text">
-          I am a Research Associate at the HealthTech AI Hub and a Postgraduate Teaching Assistant at the University of Birmingham, where I am also an MSc Bioinformatics student.
-          Earlier, as a research intern in Dr Tapan Chowdhury's group at Techno Main Salt Lake, I worked on signalling pathway analysis, drug repurposing and deep learning for protein–ligand binding affinity, which led to multiple journal and conference publications.
+          I hold a BTech in Computer Science and Engineering and an MSc in Bioinformatics from the University of Birmingham (2026).
+          I am currently a Research Associate in the Department of Cancer and Genomic Sciences and a Postgraduate Teaching Assistant, benchmarking fine-tuned large language models (InternistAI-7B, Gemma-2-9B) for clinical prediction on EHR data with QLoRA/PEFT.
+        </p>
+        <p class="hero-text">
+          I am first author of six peer-reviewed papers, in journals including the <i>Journal of Computer-Aided Molecular Design</i>, <i>Journal of Molecular Graphics and Modelling</i> and <i>Computational Intelligence</i>, spanning deep learning for protein–ligand binding, GPU-accelerated sequence alignment and reinforcement learning for drug prioritisation.
+          I build reproducible Python and R pipelines for genomics, epigenomics and healthcare data on HPC (BlueBEAR), and I teach and mentor computational research.
         </p>
 
         <div class="actions">
@@ -786,15 +826,19 @@
         <ul>
           <li>
             <strong>Research Associate</strong>
-            <span>HealthTech AI Hub, University of Birmingham. Fine-tuning clinical LLMs on EHR data.</span>
+            <span>Department of Cancer and Genomic Sciences, University of Birmingham. Benchmarking clinical LLMs on longitudinal EHR data.</span>
           </li>
           <li>
             <strong>Postgraduate Teaching Assistant</strong>
             <span>MSc Bioinformatics, University of Birmingham</span>
           </li>
           <li>
-            <strong>MSc Bioinformatics</strong>
-            <span>Thesis on epigenetic age acceleration in early-onset breast cancer</span>
+            <strong>Undergraduate research co-supervisor</strong>
+            <span>Techno Main Salt Lake, India (remote)</span>
+          </li>
+          <li>
+            <strong>MSc Bioinformatics, completed 2026</strong>
+            <span>University of Birmingham. Graduating December 2026.</span>
           </li>
         </ul>
         <dl class="contact-mini">
@@ -828,7 +872,7 @@
       </li>
       <li>
         <h3>Clinical language models</h3>
-        <p>Parameter-efficient fine-tuning of Internist-7B and Gemma-9B on EHR data to predict mortality and readmission risk.</p>
+        <p>Benchmarking zero-shot and QLoRA fine-tuned LLMs (InternistAI-7B, Gemma-2-9B) on longitudinal EHR data for mortality, readmission and next-diagnosis prediction, with fairness evaluation.</p>
       </li>
       <li>
         <h3>Signalling and drug repurposing</h3>
@@ -864,54 +908,52 @@
       <p class="entry-when">Mar 2026 – present</p>
       <div class="entry-body">
         <h4>Research Associate</h4>
-        <p class="entry-org">HealthTech AI Hub, University of Birmingham, UK</p>
+        <p class="entry-org">Department of Cancer and Genomic Sciences, College of Medicine and Health, University of Birmingham, UK</p>
         <p class="entry-sup">Supervisor: <em>Dr Mamunur Rashid</em></p>
         <ul>
-          <li>Conducting research on machine learning and AI applications for Electronic Health Record (EHR) data.</li>
-          <li>Training and fine-tuning the <b>Internist-7B</b> clinical large language model and <b>Gemma-9B</b> on multiple EHR datasets to predict patient mortality and hospital readmission risk.</li>
-          <li>Implementing parameter-efficient fine-tuning methods (QLoRA / PEFT) and benchmarking against transformer and classical machine learning models.</li>
+          <li>Benchmarking zero-shot and fine-tuned LLMs (<b>InternistAI-7B</b>, <b>Gemma-2-9B</b>) for clinical decision support on three longitudinal EHR datasets: MIMIC-IV (364,627 patients), Synthea (~575,000 synthetic patients) and a Delphi-2M synthetic UK Biobank cohort. Tasks cover mortality, 14-day readmission and next-diagnosis prediction, with ethnicity- and sex-stratified fairness evaluation.</li>
+          <li>Fine-tuning with <b>QLoRA</b> (4-bit NF4; full- vs last-layer adapters) on GPU HPC, and comparing full-history vs recent-visit prompting against XGBoost, DoctorAI, Delphi-2M and Longformer baselines.</li>
+          <li>Fine-tuning raised InternistAI's MIMIC-IV mortality <b>AUROC from 0.678 (zero-shot) to 0.946</b>, above XGBoost (0.939). Fine-tuned LLMs achieved the highest AUROC on all three readmission datasets (MIMIC-IV: 0.766 vs 0.736 for XGBoost).</li>
         </ul>
       </div>
     </article>
 
     <article class="entry" id="exp-thesis">
-      <p class="entry-when">Nov 2025 – present</p>
+      <p class="entry-when">Nov 2025 – Aug 2026</p>
       <div class="entry-body">
         <h4>MSc thesis project</h4>
         <p class="entry-org">School of Biosciences, University of Birmingham, UK</p>
-        <p class="entry-sup">Supervisor: <em>Dr Archana Sharma-Oates</em>, Assistant Professor in Bioinformatics</p>
-        <p class="entry-desc">
-          <b>Epigenetic age acceleration and earlier breast cancer onset in UK-resident South Asian women: a multi-cohort DNA methylation clock study.</b>
-          The project investigates ethnicity-associated differences in epigenetic ageing using blood-derived DNA methylation data, integrating multiple generations of epigenetic clocks (Horvath, Hannum, PhenoAge, GrimAge and DunedinPACE). The work focuses on robust preprocessing, cell composition adjustment and multi-clock triangulation to assess associations with breast cancer risk and age at diagnosis, with an emphasis on underrepresented populations and reproducible statistical and machine learning workflows in R and Python.
-        </p>
+        <p class="entry-sup">Supervisor: <em>Dr Archana Sharma-Oates</em></p>
+        <ul>
+          <li>Investigated epigenetic age acceleration and earlier breast cancer onset in UK-resident South Asian women using blood-derived DNA methylation data across multiple cohorts.</li>
+          <li>Integrated five epigenetic clocks (Horvath, Hannum, PhenoAge, GrimAge, DunedinPACE) with robust preprocessing, cell-composition adjustment and multi-clock triangulation to assess associations with breast cancer risk and age at diagnosis.</li>
+          <li>Built reproducible statistical and ML workflows in R and Python, with a focus on under-represented populations.</li>
+        </ul>
       </div>
     </article>
 
     <article class="entry" id="exp-gwas">
-      <p class="entry-when">Oct 2025 – present</p>
+      <p class="entry-when">Oct 2025 – May 2026</p>
       <div class="entry-body">
-        <h4>Group research project</h4>
+        <h4>Group research project: polyploid GWAS</h4>
         <p class="entry-org">School of Biosciences, University of Birmingham, UK</p>
-        <p class="entry-sup">Supervisor: <em>Dr Lindsey Compton</em>, Associate Professor in Genetics</p>
-        <p class="entry-desc">
-          <b>Optimising GWAS pipelines to uncover genetic loci underlying canopy architecture and yield in autotetraploid potato.</b>
-          Using SNP and phenotyping datasets to enable precision breeding for climate-resilient crop improvement. The work integrates population structure analysis (DAPC and STRUCTURE), environmental correction using Best Linear Unbiased Estimates (BLUEs), and comparative statistical models to improve trait–locus associations, building a robust polyploid GWAS workflow in R and Linux.
-        </p>
+        <p class="entry-sup">Supervisor: <em>Dr Lindsey Compton</em></p>
+        <ul>
+          <li>Optimised GWAS pipelines in R and Linux to identify loci underlying canopy architecture and yield in autotetraploid potato from SNP and phenotyping data.</li>
+          <li>Integrated population structure analysis (DAPC, STRUCTURE), environmental correction with BLUEs, and comparison of statistical models to improve trait–locus associations.</li>
+        </ul>
       </div>
     </article>
 
     <article class="entry" id="exp-intern">
       <p class="entry-when">Feb 2023 – Sep 2025</p>
       <div class="entry-body">
-        <h4>Research internship</h4>
-        <p class="entry-org">Department of Computer Science and Engineering, Techno Main Salt Lake, Kolkata, India</p>
-        <p class="entry-sup">Supervisor: <em>Dr Tapan Chowdhury</em>, Head and Associate Professor</p>
-        <ul class="tags" aria-label="Research domains">
-          <li>Signalling pathway analysis</li>
-          <li>Molecular docking</li>
-          <li>Drug repurposing</li>
-          <li>Deep learning for protein–ligand binding affinity</li>
-          <li>Sequence alignment algorithms</li>
+        <h4>Research intern</h4>
+        <p class="entry-org">Department of Computer Science and Engineering, Techno Main Salt Lake, India</p>
+        <p class="entry-sup">Supervisor: <em>Dr Tapan Chowdhury</em></p>
+        <ul>
+          <li>Developed deep learning models for protein–ligand binding affinity prediction (RLBindDeep, CGDeepAff), a GPU-accelerated global sequence alignment framework (BioAlignNet) and network-informed offline RL for pharmacogenomic drug prioritisation (NetPolicy-RL).</li>
+          <li>Carried out signalling pathway modelling, molecular docking and drug repurposing studies. This work underpins most of the <a href="#publications">publications listed below</a>.</li>
         </ul>
       </div>
     </article>
@@ -924,10 +966,7 @@
         <h4>Postgraduate Teaching Assistant, MSc Bioinformatics</h4>
         <p class="entry-org">University of Birmingham, UK</p>
         <ul>
-          <li>Supporting teaching and practical learning for students on the MSc Bioinformatics programme.</li>
-          <li>Teaching support in Linux and command-line computing, Python and R programming, Next-Generation Sequencing (NGS) pipelines and bioinformatics workflows, Statistical Machine Learning, and Health Data Analytics.</li>
-          <li>Troubleshooting programming, computational and analytical workflows with students during practical sessions.</li>
-          <li>Helping students build foundational and applied computational skills for biological data analysis and bioinformatics problem-solving.</li>
+          <li>Supporting practical sessions in Linux and command-line computing, Python and R, NGS pipelines, statistical machine learning and health data analytics; troubleshooting students' code and analytical workflows.</li>
         </ul>
       </div>
     </article>
@@ -936,13 +975,10 @@
       <p class="entry-when">Aug 2025 – present</p>
       <div class="entry-body">
         <h4>Undergraduate research project co-supervisor</h4>
-        <p class="entry-org">Techno Main Salt Lake, India (remote)</p>
-        <p class="entry-sup">With <em>Dr Tapan Chowdhury</em>, Head and Associate Professor, Department of Computer Science and Engineering</p>
+        <p class="entry-org">Techno Main Salt Lake, India</p>
+        <p class="entry-sup">With <em>Dr Tapan Chowdhury</em></p>
         <ul>
-          <li>Co-supervising a group of BTech final-year students on their undergraduate research project.</li>
-          <li>Running regular remote mentoring sessions from the UK on literature review, research design and computational methodology.</li>
-          <li>Guided a <b>miRNA–mRNA interaction network analysis for Alzheimer's disease biomarker discovery</b>.</li>
-          <li>Mentored students in scientific writing and manuscript preparation; the work resulted in a student-led article in <i>Journal of Molecular Neuroscience</i>.</li>
+          <li>Remotely co-supervising BTech final-year students on research design and computational methods; guided a miRNA–mRNA network analysis for Alzheimer's disease biomarker discovery that resulted in a <a href="#pub-j1">student-led article in <i>Journal of Molecular Neuroscience</i></a>.</li>
         </ul>
       </div>
     </article>
@@ -950,10 +986,11 @@
     <h3 class="group-title" id="education">Education</h3>
 
     <article class="entry" id="edu-msc">
-      <p class="entry-when">2025 – present</p>
+      <p class="entry-when">2025 – 2026</p>
       <div class="entry-body">
         <h4>MSc in Bioinformatics</h4>
         <p class="entry-org">University of Birmingham, United Kingdom</p>
+        <p class="entry-desc">Graduation: December 2026</p>
         <p class="entry-desc">Thesis: <i>Epigenetic Age Acceleration in Early-Onset Breast Cancer: Multi-Cohort and Cross-Omic Analysis</i>, supervised by Dr Archana Sharma-Oates.</p>
       </div>
     </article>
@@ -964,6 +1001,7 @@
         <h4>BTech in Computer Science and Engineering</h4>
         <p class="entry-org">Techno Main Salt Lake, India</p>
         <p class="entry-desc">CGPA 8.13 / 10.0</p>
+        <p class="entry-desc">Thesis: <i>A Stacked Ensemble Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures</i>, supervised by Dr Tapan Chowdhury. <a href="#pub-pam50">Published in <i>Network Modeling Analysis in Health Informatics and Bioinformatics</i></a>.</p>
       </div>
     </article>
   </section>
@@ -991,7 +1029,7 @@
     <div class="pub-group" data-type="journal">
       <h3 id="pubs-journal">Journal articles</h3>
       <ol class="pubs">
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-j1">
           <span class="pub-n">[1]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s12031-026-02579-w" target="_blank" rel="noopener">miRNA–mRNA interaction network analysis in Alzheimer's disease for biomarker discovery</a></p>
@@ -1041,7 +1079,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-pam50">
           <span class="pub-n">[6]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s13721-026-00755-x" target="_blank" rel="noopener">A Stacked Ensemble Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures</a></p>
@@ -1288,9 +1326,9 @@
       <div class="block" id="leadership">
         <h3>Leadership</h3>
         <ul class="dated">
-          <li><span class="when">2025 – present</span><span>Postgraduate Student Ambassador, University of Birmingham</span></li>
-          <li><span class="when">2025 – present</span><span>Student Rep, MSc Bioinformatics FT (2025–26 cohort), University of Birmingham</span></li>
-          <li><span class="when">2024 – 2025</span><span>Convenor, Department of Computer Science and Engineering, Techno Main Salt Lake</span></li>
+          <li><span class="when">2025 – 2026</span><span>Postgraduate Student Ambassador, University of Birmingham</span></li>
+          <li><span class="when">2025 – 2026</span><span>MSc Bioinformatics Student Representative, University of Birmingham</span></li>
+          <li><span class="when">2024 – 2025</span><span>Departmental Convenor, Department of Computer Science and Engineering, Techno Main Salt Lake</span></li>
           <li><span class="when">2023 – 2025</span><span>Class Representative, Department of Computer Science and Engineering, Techno Main Salt Lake</span></li>
         </ul>
       </div>
@@ -1470,13 +1508,13 @@
   /* ---------- Genome-browser timeline ---------- */
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var tracks = [
-    { group: "Research",  cls: "research",  name: "Research Associate, HealthTech AI Hub", start: "2026-03", end: null, href: "#exp-ra" },
-    { group: "Research",  cls: "research",  name: "MSc thesis: epigenetic age acceleration", start: "2025-11", end: null, href: "#exp-thesis" },
-    { group: "Research",  cls: "research",  name: "Group project: polyploid GWAS", start: "2025-10", end: null, href: "#exp-gwas" },
-    { group: "Research",  cls: "research",  name: "Research internship, Kolkata", start: "2023-02", end: "2025-09", href: "#exp-intern" },
+    { group: "Research",  cls: "research",  name: "Research Associate, Cancer and Genomic Sciences", start: "2026-03", end: null, href: "#exp-ra" },
+    { group: "Research",  cls: "research",  name: "MSc thesis: epigenetic age acceleration", start: "2025-11", end: "2026-08", href: "#exp-thesis" },
+    { group: "Research",  cls: "research",  name: "Group project: polyploid GWAS", start: "2025-10", end: "2026-05", href: "#exp-gwas" },
+    { group: "Research",  cls: "research",  name: "Research intern, Techno Main Salt Lake", start: "2023-02", end: "2025-09", href: "#exp-intern" },
     { group: "Teaching",  cls: "teaching",  name: "PGTA, MSc Bioinformatics", start: "2026-09", end: null, href: "#exp-pgta" },
     { group: "Teaching",  cls: "teaching",  name: "Undergraduate project co-supervisor", start: "2025-08", end: null, href: "#exp-cosup" },
-    { group: "Education", cls: "education", name: "MSc Bioinformatics, Birmingham", start: "2025-09", end: null, href: "#edu-msc", label: "2025 – present" },
+    { group: "Education", cls: "education", name: "MSc Bioinformatics, Birmingham", start: "2025-09", end: "2026-09", href: "#edu-msc", label: "2025 – 2026" },
     { group: "Education", cls: "education", name: "BTech CSE, Techno Main Salt Lake", start: "2020-08", end: "2025-06", href: "#edu-btech", label: "2020 – 2025" }
   ];
   function ym(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, 1); }
@@ -1518,8 +1556,66 @@
               '</span>' +
             '</a>';
   });
-  html += '<p class="gb-note">Bars run from start date to today; an arrow marks a role that is ongoing.</p>';
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  html += '<p class="gb-note">An arrow marks a role that is ongoing. ' +
+          (canHover ? 'Hover over a track for details, or select it to jump to the full entry.' : 'Tap a track to jump to the full entry.') + '</p>';
   document.getElementById("gb").innerHTML = html;
+
+  /* Pop-up details on hover / keyboard focus */
+  var pop = document.createElement("div");
+  pop.className = "gb-pop";
+  pop.id = "gb-pop";
+  pop.setAttribute("role", "tooltip");
+  pop.hidden = true;
+  document.body.appendChild(pop);
+  var activeRow = null;
+
+  function showPop(row) {
+    var art = document.querySelector(row.getAttribute("href"));
+    if (!art) return;
+    if (activeRow) activeRow.classList.remove("is-active");
+    activeRow = row;
+    row.classList.add("is-active");
+
+    var body = art.querySelector(".entry-body").cloneNode(true);
+    body.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
+    pop.innerHTML = '<p class="gb-pop-when">' + art.querySelector(".entry-when").textContent + '</p>';
+    pop.appendChild(body);
+    pop.insertAdjacentHTML("beforeend", '<p class="gb-pop-hint">Click to jump to this entry</p>');
+    pop.className = "gb-pop " + (row.querySelector(".gb-bar.teaching") ? "teaching" : "");
+    pop.hidden = false;
+    row.setAttribute("aria-describedby", "gb-pop");
+
+    // Position next to the bar, flipping above the row if there is no room below
+    var bar = row.querySelector(".gb-bar").getBoundingClientRect();
+    var r = row.getBoundingClientRect();
+    var pw = pop.offsetWidth, ph = pop.offsetHeight, m = 12;
+    var left = Math.min(Math.max(bar.left + bar.width / 2 - pw / 2, m), window.innerWidth - pw - m);
+    var top = r.bottom + 8;
+    if (top + ph > window.innerHeight - m) top = r.top - ph - 8;
+    if (top < m) top = m;
+    pop.style.left = left + "px";
+    pop.style.top = top + "px";
+    requestAnimationFrame(function () { pop.classList.add("show"); });
+  }
+  function hidePop() {
+    if (activeRow) { activeRow.classList.remove("is-active"); activeRow.removeAttribute("aria-describedby"); }
+    activeRow = null;
+    pop.classList.remove("show");
+    pop.hidden = true;
+  }
+
+  document.querySelectorAll(".gb-row").forEach(function (row) {
+    if (canHover) {
+      row.addEventListener("mouseenter", function () { showPop(row); });
+      row.addEventListener("mouseleave", hidePop);
+    }
+    row.addEventListener("focus", function () { if (row.matches(":focus-visible")) showPop(row); });
+    row.addEventListener("blur", hidePop);
+    row.addEventListener("click", hidePop);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hidePop(); });
+  window.addEventListener("scroll", function () { if (activeRow) hidePop(); }, { passive: true });
 
   /* ---------- Publication filter ---------- */
   var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
@@ -1537,7 +1633,10 @@
       g.querySelectorAll(".pub").forEach(function (p) {
         var ok = typeOk && (!firstOnly.checked || p.getAttribute("data-first") === "true");
         p.hidden = !ok;
-        if (ok) visible++;
+        if (ok) {
+          visible++;
+          p.querySelector(".pub-n").textContent = "[" + visible + "]";   // renumber visible items from 1
+        }
       });
       g.hidden = visible === 0;
       shown += visible;
@@ -1548,13 +1647,24 @@
       b.querySelector(".count").textContent = document.querySelectorAll(sel).length;
       b.setAttribute("aria-pressed", String(f === current));
     });
-    status.textContent = "Showing " + shown + " of " + allPubs + " publications" + (firstOnly.checked ? ", first-authored only" : "") + ".";
+    status.textContent = shown === 0
+      ? "No first-authored publications in this category. Turn off “First-authored only” to see them all."
+      : "Showing " + shown + " of " + allPubs + " publications" + (firstOnly.checked ? ", first-authored only" : "") + ".";
   }
   buttons.forEach(function (b) {
     b.addEventListener("click", function () { current = b.getAttribute("data-filter"); applyFilter(); });
   });
   firstOnly.addEventListener("change", applyFilter);
   applyFilter();
+
+  // Links that point at a specific paper (e.g. from the BTech thesis) clear the filters first
+  document.querySelectorAll('a[href^="#pub-"]').forEach(function (a) {
+    a.addEventListener("click", function () {
+      current = "all";
+      firstOnly.checked = false;
+      applyFilter();
+    });
+  });
 
   /* ---------- Highlight current section in nav ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
