@@ -490,6 +490,10 @@
     .gb-pop a { color: inherit; text-decoration: none; }
     .gb-pop-hint { margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); font-size: 0.78rem; color: var(--muted); }
     .gb-row.is-active { background: var(--hema-soft); }
+    /* Touch: no text selection or link callout while holding a track */
+    .gb-row { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+    .gb-row.is-pressing { background: var(--hema-soft); transition: background-color 0.45s ease; }
+    .gb-pop.touch { pointer-events: auto; cursor: pointer; overscroll-behavior: contain; }
 
     @media (max-width: 680px) {
       .gb { padding: 0.75rem 0.9rem 1rem; }
@@ -691,6 +695,19 @@
     @media (max-width: 820px) { .beyond { grid-template-columns: minmax(0, 1fr); } }
     .block { padding: 1.5rem 0; border-top: 1px solid var(--rule); scroll-margin-top: calc(var(--header-h) + 1rem); }
     .block.wide { grid-column: 1 / -1; }
+    .stack { display: flex; flex-direction: column; }
+
+    .training > div {
+      display: grid;
+      grid-template-columns: 13rem minmax(0, 1fr);
+      gap: 0.3rem 2rem;
+      padding: 0.6rem 0;
+    }
+    .training > div + div { border-top: 1px dashed var(--rule); }
+    .training dt { font-weight: 600; padding-top: 0.05rem; }
+    .training ul { padding-left: 1.1rem; }
+    .training li { margin-bottom: 0.3rem; }
+    @media (max-width: 680px) { .training > div { grid-template-columns: minmax(0, 1fr); } }
     .block h3 {
       font-family: var(--serif);
       font-weight: 600;
@@ -1333,11 +1350,21 @@
         </ul>
       </div>
 
-      <div class="block" id="memberships">
-        <h3>Professional memberships</h3>
-        <ul class="dated">
-          <li><span class="when">Feb 2025 – present</span><span>IEEE Member, including the IEEE Computational Intelligence Society and the IEEE Engineering in Medicine and Biology Society</span></li>
-        </ul>
+      <div class="stack">
+        <div class="block" id="memberships">
+          <h3>Professional memberships</h3>
+          <ul class="dated">
+            <li><span class="when">Feb 2025 – present</span><span>IEEE Member, including the IEEE Computational Intelligence Society and the IEEE Engineering in Medicine and Biology Society</span></li>
+          </ul>
+        </div>
+
+        <div class="block" id="languages">
+          <h3>Language qualifications</h3>
+          <ul>
+            <li><b>IELTS</b>, overall band 8.0 (Listening 8.5, Reading 9.0, Writing 8.0, Speaking 6.5), CEFR C1, 2025</li>
+            <li><b>Goethe-Zertifikat Start Deutsch A1</b>, Goethe-Institut, 71/100 (Befriedigend), 2024</li>
+          </ul>
+        </div>
       </div>
 
       <div class="block wide" id="relevant-experience">
@@ -1385,22 +1412,39 @@
         </ul>
       </div>
 
-      <div class="block" id="languages">
-        <h3>Language qualifications</h3>
-        <ul>
-          <li><b>IELTS</b>, overall band 8.0 (Listening 8.5, Reading 9.0, Writing 8.0, Speaking 6.5), CEFR C1, 2025</li>
-          <li><b>Goethe-Zertifikat Start Deutsch A1</b>, Goethe-Institut, 71/100 (Befriedigend), 2024</li>
-        </ul>
-      </div>
-
-      <div class="block" id="certifications">
-        <h3>Certifications</h3>
-        <ul>
-          <li>Biology Meets Programming: Bioinformatics for Beginners, UC San Diego, Coursera (2025)</li>
-          <li>Python for Genomic Data Science, Johns Hopkins University, Coursera (2024)</li>
-          <li>Introduction to Machine Learning, Duke University, Coursera (2023)</li>
-          <li>Introduction to Python Programming, University of Pennsylvania, Coursera (2022)</li>
-        </ul>
+      <div class="block wide" id="certifications">
+        <h3>Training and certifications</h3>
+        <dl class="training">
+          <div>
+            <dt>Ethics and governance</dt>
+            <dd>
+              <ul>
+                <li>CITI Program: Data or Specimens Only Research (human subjects research training required for PhysioNet credentialed access to MIMIC-IV)</li>
+                <li>Research data management and information governance training, University of Birmingham</li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Professional training</dt>
+            <dd>
+              <ul>
+                <li>Postgraduate Teaching Assistant induction, University of Birmingham</li>
+                <li>BlueBEAR High-Performance Computing training, University of Birmingham</li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Coursera certificates</dt>
+            <dd>
+              <ul>
+                <li>Biology Meets Programming: Bioinformatics for Beginners, UC San Diego (2025)</li>
+                <li>Python for Genomic Data Science, Johns Hopkins University (2024)</li>
+                <li>Introduction to Machine Learning, Duke University (2023)</li>
+                <li>Introduction to Python Programming, University of Pennsylvania (2022)</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
       </div>
 
       <div class="block wide" id="extracurriculum">
@@ -1558,7 +1602,8 @@
   });
   var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   html += '<p class="gb-note">An arrow marks a role that is ongoing. ' +
-          (canHover ? 'Hover over a track for details, or select it to jump to the full entry.' : 'Tap a track to jump to the full entry.') + '</p>';
+          (canHover ? 'Hover over a track for details, or select it to jump to the full entry.'
+                    : 'Touch and hold a track for details, or tap it to jump to the full entry.') + '</p>';
   document.getElementById("gb").innerHTML = html;
 
   /* Pop-up details on hover / keyboard focus */
@@ -1569,8 +1614,11 @@
   pop.hidden = true;
   document.body.appendChild(pop);
   var activeRow = null;
+  var openedByTouch = false;
 
-  function showPop(row) {
+  function showPop(row, viaTouch) {
+    openedByTouch = !!viaTouch;
+    if (viaTouch) popArmed = false;
     var art = document.querySelector(row.getAttribute("href"));
     if (!art) return;
     if (activeRow) activeRow.classList.remove("is-active");
@@ -1581,41 +1629,117 @@
     body.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
     pop.innerHTML = '<p class="gb-pop-when">' + art.querySelector(".entry-when").textContent + '</p>';
     pop.appendChild(body);
-    pop.insertAdjacentHTML("beforeend", '<p class="gb-pop-hint">Click to jump to this entry</p>');
-    pop.className = "gb-pop " + (row.querySelector(".gb-bar.teaching") ? "teaching" : "");
+    pop.insertAdjacentHTML("beforeend", '<p class="gb-pop-hint">' +
+      (viaTouch ? 'Tap this card to open the full entry, or tap elsewhere to close' : 'Click to jump to this entry') + '</p>');
+    pop.className = "gb-pop" + (row.querySelector(".gb-bar.teaching") ? " teaching" : "") + (viaTouch ? " touch" : "");
     pop.hidden = false;
     row.setAttribute("aria-describedby", "gb-pop");
 
-    // Position next to the bar, flipping above the row if there is no room below
+    // Position next to the bar: below the row if it fits, else above; if neither fits,
+    // use the roomier side and let the card scroll, so it never covers the track itself
+    pop.style.maxHeight = "";
     var bar = row.querySelector(".gb-bar").getBoundingClientRect();
     var r = row.getBoundingClientRect();
-    var pw = pop.offsetWidth, ph = pop.offsetHeight, m = 12;
+    var pw = pop.offsetWidth, ph = pop.offsetHeight, m = 12, gap = 8;
     var left = Math.min(Math.max(bar.left + bar.width / 2 - pw / 2, m), window.innerWidth - pw - m);
-    var top = r.bottom + 8;
-    if (top + ph > window.innerHeight - m) top = r.top - ph - 8;
-    if (top < m) top = m;
+    var below = window.innerHeight - r.bottom - gap - m;
+    var above = r.top - gap - m;
+    var top;
+    if (ph <= below) top = r.bottom + gap;
+    else if (ph <= above) top = r.top - gap - ph;
+    else if (below >= above) { pop.style.maxHeight = Math.max(below, 120) + "px"; top = r.bottom + gap; }
+    else { var h = Math.max(above, 120); pop.style.maxHeight = h + "px"; top = r.top - gap - h; }
     pop.style.left = left + "px";
-    pop.style.top = top + "px";
+    pop.style.top = Math.max(top, m) + "px";
     requestAnimationFrame(function () { pop.classList.add("show"); });
   }
   function hidePop() {
     if (activeRow) { activeRow.classList.remove("is-active"); activeRow.removeAttribute("aria-describedby"); }
     activeRow = null;
+    openedByTouch = false;
     pop.classList.remove("show");
     pop.hidden = true;
   }
 
+  /* Touch: press and hold (~450 ms) opens the pop-up; a quick tap still follows the link */
+  var HOLD_MS = 450, MOVE_TOLERANCE = 10;
+  var holdTimer = null, holdRow = null, startX = 0, startY = 0, suppressClick = false;
+
+  function cancelHold() {
+    clearTimeout(holdTimer);
+    holdTimer = null;
+    if (holdRow) holdRow.classList.remove("is-pressing");
+    holdRow = null;
+  }
+
   document.querySelectorAll(".gb-row").forEach(function (row) {
     if (canHover) {
-      row.addEventListener("mouseenter", function () { showPop(row); });
-      row.addEventListener("mouseleave", hidePop);
+      row.addEventListener("mouseenter", function () { showPop(row, false); });
+      row.addEventListener("mouseleave", function () { if (!openedByTouch) hidePop(); });
     }
-    row.addEventListener("focus", function () { if (row.matches(":focus-visible")) showPop(row); });
-    row.addEventListener("blur", hidePop);
-    row.addEventListener("click", hidePop);
+    row.addEventListener("focus", function () { if (row.matches(":focus-visible")) showPop(row, false); });
+    row.addEventListener("blur", function () { if (!openedByTouch) hidePop(); });
+
+    row.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "touch") return;
+      suppressClick = false;
+      cancelHold();
+      holdRow = row;
+      startX = e.clientX; startY = e.clientY;
+      row.classList.add("is-pressing");
+      holdTimer = setTimeout(function () {
+        holdTimer = null;
+        row.classList.remove("is-pressing");
+        suppressClick = true;              // the lift after a hold must not follow the link
+        showPop(row, true);
+        try { if (navigator.vibrate) navigator.vibrate(12); } catch (err) {}
+      }, HOLD_MS);
+    });
+    row.addEventListener("pointermove", function (e) {
+      if (holdTimer && Math.hypot(e.clientX - startX, e.clientY - startY) > MOVE_TOLERANCE) cancelHold();
+    });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(function (t) {
+      row.addEventListener(t, function () { if (holdTimer) cancelHold(); });
+    });
+    // Stop the browser's own long-press menu (copy link, open in new tab) on the tracks
+    row.addEventListener("contextmenu", function (e) { if (holdRow || suppressClick || openedByTouch) e.preventDefault(); });
+
+    row.addEventListener("click", function (e) {
+      if (suppressClick) { e.preventDefault(); suppressClick = false; return; }
+      hidePop();
+    });
   });
+
+  // Tapping the touch-opened card opens the full entry; tapping anywhere else closes it
+  var popArmed = false;   // the card ignores taps until the finger that opened it has lifted
+  document.addEventListener("pointerup", function () {
+    if (openedByTouch && !popArmed) setTimeout(function () { popArmed = true; }, 50);
+  }, true);
+  new MutationObserver(function () { if (pop.hidden) popArmed = false; })
+    .observe(pop, { attributes: true, attributeFilter: ["hidden"] });
+
+  pop.addEventListener("click", function () {
+    if (!openedByTouch || !activeRow || !popArmed) return;
+    var target = document.querySelector(activeRow.getAttribute("href"));
+    hidePop();
+    if (target) {
+      history.replaceState(null, "", "#" + target.id);
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    }
+  });
+  document.addEventListener("pointerdown", function (e) {
+    if (openedByTouch && !pop.contains(e.target) && !(activeRow && activeRow.contains(e.target))) hidePop();
+  }, true);
+
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hidePop(); });
-  window.addEventListener("scroll", function () { if (activeRow) hidePop(); }, { passive: true });
+  // Close on page scroll (with a little slack on touch, where the browser bars can nudge the page)
+  var scrollAtOpen = 0;
+  new MutationObserver(function () { if (!pop.hidden) scrollAtOpen = window.scrollY; })
+    .observe(pop, { attributes: true, attributeFilter: ["hidden"] });
+  window.addEventListener("scroll", function () {
+    if (!activeRow) return;
+    if (!openedByTouch || Math.abs(window.scrollY - scrollAtOpen) > 30) hidePop();
+  }, { passive: true });
 
   /* ---------- Publication filter ---------- */
   var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
