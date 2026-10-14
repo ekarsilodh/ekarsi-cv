@@ -12,6 +12,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 concurrency:
   group: check-publications
@@ -36,7 +37,9 @@ jobs:
             --pr-body "$RUNNER_TEMP/pr_body.md"
 
       - name: Open a pull request for review
+        id: pr
         if: steps.check.outputs.new_count != '0'
+        continue-on-error: true      # if GitHub blocks pull requests, fall back to an issue below
         uses: peter-evans/create-pull-request@v8
         with:
           branch: auto/new-publications
@@ -45,3 +48,34 @@ jobs:
           commit-message: "Add new publications from ORCID"
           title: "New publications found on ORCID"
           body-path: ${{ runner.temp }}/pr_body.md
+
+      # Happens when "Allow GitHub Actions to create and approve pull requests" is off in
+      # Settings > Actions > General. The changes are already on the auto/new-publications
+      # branch, so the issue links straight to a ready-made pull request.
+      - name: If the pull request was blocked, open an issue with a one-click link instead
+        if: steps.check.outputs.new_count != '0' && steps.pr.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BASE: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          title="New publications found on ORCID"
+          link="https://github.com/$REPO/compare/$BASE...auto/new-publications?expand=1"
+          {
+            echo "**[Open the pull request with the new publications]($link)** (one click, then *Create pull request*)."
+            echo
+            echo "GitHub didn't let the weekly check open it automatically. To let it do so in future, tick"
+            echo "*Allow GitHub Actions to create and approve pull requests* in Settings > Actions > General > Workflow permissions, then Save."
+            echo
+            echo "---"
+            echo
+            cat "$RUNNER_TEMP/pr_body.md"
+          } > "$RUNNER_TEMP/issue_body.md"
+          existing=$(gh issue list --repo "$REPO" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body-file "$RUNNER_TEMP/issue_body.md"
+            echo "Updated issue #$existing"
+          else
+            gh issue create --repo "$REPO" --title "$title" --body-file "$RUNNER_TEMP/issue_body.md"
+          fi
