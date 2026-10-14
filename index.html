@@ -770,6 +770,102 @@
       .pub, .entry, .block { break-inside: avoid; }
       a { color: #000; text-decoration: none; }
     }
+
+    /* =========== Publication tools and co-author network =========== */
+    .visually-hidden {
+      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    /* Live citation badge */
+    .cites {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--hema);
+    }
+    .cites::before {
+      content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%;
+      background: var(--hema); flex: none;
+    }
+
+    /* ---------- Publications: network, search, sort ---------- */
+    .pub-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      margin-bottom: 2.25rem;
+    }
+    @media (max-width: 860px) { .pub-intro { grid-template-columns: minmax(0, 1fr); } }
+
+    .net-wrap {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .net { display: block; width: 100%; height: auto; touch-action: pan-y; }
+    .net .edge { stroke: var(--muted); stroke-opacity: var(--o, 0.15); transition: stroke-opacity 0.15s ease, stroke 0.15s ease; }
+    .net .node { cursor: grab; outline: none; touch-action: none; }
+    .net .node:active { cursor: grabbing; }
+    .net .node circle { fill: var(--hema-soft); stroke: var(--hema); stroke-width: 1.5; transition: fill 0.15s ease, stroke-width 0.15s ease; }
+    .net .node.freq circle { fill: var(--hema); }
+    .net .node.self circle { fill: var(--eosin); stroke: var(--eosin); }
+    .net .node text {
+      font-family: var(--sans); font-size: 11.5px; fill: var(--ink);
+      paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round;
+      pointer-events: none;
+    }
+    .net .node.minor text { opacity: 0; transition: opacity 0.15s ease; }
+    .net .node.self text { font-weight: 600; }
+    .net.hl .edge { stroke-opacity: 0.06; }
+    .net.hl .edge.on { stroke: var(--eosin); stroke-opacity: 0.75; }
+    .net.hl .node { opacity: 0.35; }
+    .net.hl .node.on, .net.hl .node.self { opacity: 1; }
+    .net .node.on text, .net .node:focus-visible text { opacity: 1; }
+    .net .node:focus-visible circle { stroke: var(--eosin); stroke-width: 3; }
+    .net .node.picked circle { stroke: var(--eosin); stroke-width: 3.5; }
+    .net-caption { padding: 0.6rem 0.9rem 0.75rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--rule); }
+
+    .collab h3 { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .collab > p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .collab-list { list-style: none; display: grid; gap: 0.15rem; }
+    .collab-list button {
+      width: 100%; font: inherit; font-size: 0.92rem; cursor: pointer; text-align: left;
+      display: grid; grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr) auto; gap: 0.75rem; align-items: center;
+      padding: 0.35rem 0.5rem; margin-inline: -0.5rem; border: 0; border-radius: 6px;
+      background: transparent; color: var(--ink);
+    }
+    .collab-list button:hover { background: var(--hema-soft); }
+    .collab-list button[aria-pressed="true"] { background: var(--eosin-soft); }
+    .collab-list .bar { height: 6px; border-radius: 3px; background: var(--hema-soft); position: relative; overflow: hidden; }
+    .collab-list .bar i { position: absolute; inset: 0 auto 0 0; background: var(--hema); border-radius: 3px; }
+    .collab-list button[aria-pressed="true"] .bar i { background: var(--eosin); }
+    .collab-more { margin-top: 0.9rem; font-size: 0.86rem; color: var(--muted); }
+    .collab-list .k { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    .pub-tools {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 0.6rem 1rem; margin-top: 0.9rem;
+    }
+    .field {
+      font: inherit; font-size: 0.9rem; color: var(--ink);
+      background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+      padding: 0.45rem 0.7rem; min-height: 2.35rem;
+    }
+    .field:hover { border-color: var(--hema); }
+    .field.search { flex: 1 1 15rem; min-width: 0; }
+    .field option:disabled { color: var(--muted); }
+    .chip {
+      font: inherit; font-size: 0.86rem; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.3rem 0.65rem; border-radius: 999px;
+      border: 1px solid var(--eosin); background: var(--eosin-soft); color: var(--ink);
+    }
+    .chip .x { font-size: 1rem; line-height: 1; color: var(--eosin); }
+    .pub-empty { margin-top: 1.25rem; color: var(--muted); }
+    .linklike { font: inherit; border: 0; background: none; color: var(--hema); text-decoration: underline; cursor: pointer; padding: 0; }
+
+    @media print { .pub-intro, .pub-tools, .chip, .pub-empty { display: none !important; } }
   </style>
 </head>
 <body>
@@ -1025,9 +1121,21 @@
 
   <!-- ========== PUBLICATIONS ========== -->
   <section class="section wrap" id="publications">
-    <div class="section-head">
+    <div class="section-head view-head">
       <h2>Publications</h2>
-      <p>My name is underlined in each author list. Titles link to the published version via DOI.</p>
+      <p>My name is underlined in each author list, and titles link to the published version. Citation counts come from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a> and update automatically, so they can differ from Google Scholar.</p>
+    </div>
+
+    <div class="pub-intro">
+      <figure class="net-wrap">
+        <svg class="net" id="net" role="group" aria-label="Co-author network. Each circle is a co-author; select one to list our joint papers."></svg>
+        <figcaption class="net-caption">Each circle is a co-author, sized by papers we share; lines join people on the same paper. Drag to rearrange, select to filter.</figcaption>
+      </figure>
+      <div class="collab">
+        <h3>Frequent collaborators</h3>
+        <p>Select a name to list our joint papers.</p>
+        <ol class="collab-list" id="collab-list"></ol>
+      </div>
     </div>
 
     <div class="pub-controls">
@@ -1040,13 +1148,23 @@
       </div>
       <label class="switch"><input type="checkbox" id="first-only"> First-authored only</label>
     </div>
+    <div class="pub-tools">
+      <input class="field search" type="search" id="pub-q" placeholder="Search titles, venues and authors" aria-label="Search publications">
+      <select class="field" id="pub-theme" aria-label="Filter by topic"><option value="">All topics</option></select>
+      <select class="field" id="pub-sort" aria-label="Sort publications">
+        <option value="newest">Newest first</option>
+        <option value="cited" disabled>Most cited (loading)</option>
+      </select>
+      <button type="button" class="chip" id="collab-chip" hidden><span>With <b></b></span><span class="x" aria-hidden="true">×</span><span class="visually-hidden">, clear</span></button>
+    </div>
     <p class="pub-status" id="pub-status" aria-live="polite"></p>
+    <p class="pub-empty" id="pub-empty" hidden>No publications match these filters. <button type="button" class="linklike" id="pub-reset">Clear all filters</button></p>
 
     <!-- Journal -->
     <div class="pub-group" data-type="journal">
       <h3 id="pubs-journal">Journal articles</h3>
       <ol class="pubs">
-        <li class="pub" data-first="false" id="pub-j1">
+        <li class="pub" data-first="false" id="pub-j1" data-themes="signalling">
           <span class="pub-n">[1]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s12031-026-02579-w" target="_blank" rel="noopener">miRNA–mRNA interaction network analysis in Alzheimer's disease for biomarker discovery</a></p>
@@ -1056,7 +1174,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-j2" data-themes="signalling">
           <span class="pub-n">[2]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1111/coin.70276" target="_blank" rel="noopener">A Novel Method for Drug Application on Signaling Pathways with Concurrent Faults Using Probabilistic Boolean Networks</a></p>
@@ -1066,7 +1184,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-j3" data-themes="signalling">
           <span class="pub-n">[3]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s10822-026-00823-4" target="_blank" rel="noopener">NetPolicy-RL: Network-Informed Offline Reinforcement Learning for Pharmacogenomic Drug prioritization</a></p>
@@ -1076,7 +1194,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-j4" data-themes="epigenomics">
           <span class="pub-n">[4]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s00438-026-02423-1" target="_blank" rel="noopener">In silico Characterization of Melanoma-derived Mouse lncRNA Gm26982 and Comparative Analyses with Human Ortholog</a></p>
@@ -1086,7 +1204,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-j5" data-themes="algorithms">
           <span class="pub-n">[5]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1111/coin.70232" target="_blank" rel="noopener">BioAlignNet: A GPU-Accelerated Framework for Efficient Global Sequence Alignment Across Genomics and Proteomics Scales</a></p>
@@ -1096,7 +1214,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="true" id="pub-pam50">
+        <li class="pub" data-first="true" id="pub-pam50" data-themes="epigenomics">
           <span class="pub-n">[6]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s13721-026-00755-x" target="_blank" rel="noopener">A Stacked Ensemble Meta-Classifier Framework for PAM50 Breast Cancer Subtype Prediction from Gene Expression Signatures</a></p>
@@ -1106,7 +1224,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-j7" data-themes="binding">
           <span class="pub-n">[7]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1016/j.jmgm.2026.109282" target="_blank" rel="noopener">RLBindDeep: A ResNet-LSTM based novel framework for protein–ligand binding affinity prediction</a></p>
@@ -1116,7 +1234,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-j8" data-themes="algorithms">
           <span class="pub-n">[8]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/s42001-025-00451-2" target="_blank" rel="noopener">Graph-theoretic and emotional analysis of character dynamics in novel-to-film adaptations</a></p>
@@ -1126,7 +1244,7 @@
           </div>
           <span class="pub-year">2026</span>
         </li>
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-j9" data-themes="signalling">
           <span class="pub-n">[9]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1016/j.compbiolchem.2024.108255" target="_blank" rel="noopener">Implications of trinodal inhibitions and drug repurposing in MAPK pathway: A putative remedy for breast cancer</a></p>
@@ -1143,7 +1261,7 @@
     <div class="pub-group" data-type="conference">
       <h3 id="pubs-conference">Conference papers</h3>
       <ol class="pubs">
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-c2" data-themes="binding">
           <span class="pub-n">[1]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1109/IEMENTech65115.2025.10959578" target="_blank" rel="noopener">CGDeepAff: Deep Learning-Based Approach for Protein-Ligand Binding Affinity Estimation Using CNN-GRU</a></p>
@@ -1153,7 +1271,7 @@
           </div>
           <span class="pub-year">2025</span>
         </li>
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-c3" data-themes="algorithms">
           <span class="pub-n">[2]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1109/IEMENTech65115.2025.10959554" target="_blank" rel="noopener">Ensemble Clustering on Big Data</a></p>
@@ -1163,7 +1281,7 @@
           </div>
           <span class="pub-year">2025</span>
         </li>
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-c4" data-themes="clinical">
           <span class="pub-n">[3]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1007/978-3-032-20253-6_4" target="_blank" rel="noopener">A Deep Learning-Based Method for the Categorization of Different Skin Diseases</a></p>
@@ -1173,7 +1291,7 @@
           </div>
           <span class="pub-year">2025</span>
         </li>
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-c1" data-themes="epigenomics">
           <span class="pub-n">[4]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.1016/j.procs.2026.06.202" target="_blank" rel="noopener">GeneDeepNet: A Differential Expression and Deep Learning Based Novel Framework for Detecting Invasive Breast Cancer Subtypes</a></p>
@@ -1190,7 +1308,7 @@
     <div class="pub-group" data-type="preprint">
       <h3 id="pubs-preprint">Preprints</h3>
       <ol class="pubs">
-        <li class="pub" data-first="false">
+        <li class="pub" data-first="false" id="pub-p1" data-themes="signalling">
           <span class="pub-n">[1]</span>
           <div>
             <p class="pub-title"><a href="https://doi.org/10.64898/2026.06.11.731601" target="_blank" rel="noopener">Multiple Fault Analysis and Drug Therapy on Signaling Pathways Using Dynamic Bayesian Network-based Model</a></p>
@@ -1207,7 +1325,7 @@
     <div class="pub-group" data-type="chapter">
       <h3 id="pubs-chapter">Book chapter (invited)</h3>
       <ol class="pubs">
-        <li class="pub" data-first="true">
+        <li class="pub" data-first="true" id="pub-b1" data-themes="clinical">
           <span class="pub-n">[1]</span>
           <div>
             <p class="pub-title">Explainable AI in Redox Medicine: Challenges and Opportunities</p>
@@ -1741,54 +1859,372 @@
     if (!openedByTouch || Math.abs(window.scrollY - scrollAtOpen) > 30) hidePop();
   }, { passive: true });
 
-  /* ---------- Publication filter ---------- */
-  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
-  var firstOnly = document.getElementById("first-only");
-  var groups = Array.prototype.slice.call(document.querySelectorAll(".pub-group"));
-  var status = document.getElementById("pub-status");
-  var allPubs = document.querySelectorAll(".pub").length;
-  var current = "all";
+  /* ---------- Publications: model, filters, search, topic, sort ---------- */
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]; }); }
+  function plural(n, one, many) { return n + " " + (n === 1 ? one : (many || one + "s")); }
 
-  function applyFilter() {
+  var TOPICS = {
+    epigenomics: "Cancer genomics and epigenomics",
+    clinical: "Clinical AI",
+    signalling: "Signalling networks and drug repurposing",
+    binding: "Protein–ligand binding",
+    algorithms: "Algorithms and data science"
+  };
+  var ME = "E. Lodh";
+  var pubs = $$(".pub");
+  pubs.forEach(function (p, i) {
+    p._order = i;
+    p._type = p.closest(".pub-group").getAttribute("data-type");
+    p._first = p.getAttribute("data-first") === "true";
+    p._themes = (p.getAttribute("data-themes") || "").split(/\s+/).filter(Boolean);
+    p._title = $(".pub-title", p).textContent.trim();
+    var venue = $(".pub-venue i", p);
+    p._venue = venue ? venue.textContent.trim() : "";
+    var doiEl = $(".doi", p);
+    p._doi = doiEl ? doiEl.textContent.replace(/^doi:\s*/i, "").trim().toLowerCase() : "";
+    var a = $(".pub-authors", p).cloneNode(true);
+    $$(".small", a).forEach(function (s) { s.remove(); });
+    p._authors = a.textContent.replace(/\*/g, "").split(/\s*,\s*(?:and\s+)?|\s+and\s+/)
+      .map(function (s) { return s.trim(); }).filter(Boolean);
+    p._text = (p._title + " " + p._venue + " " + p._authors.join(" ")).toLowerCase();
+    p._cites = null;
+  });
+
+  var pf = { type: "all", first: false, q: "", theme: "", collab: "", sort: "newest" };
+  var segButtons = $$("[data-filter]");
+  var firstOnly = document.getElementById("first-only");
+  var qInput = document.getElementById("pub-q");
+  var themeSel = document.getElementById("pub-theme");
+  var sortSel = document.getElementById("pub-sort");
+  var chip = document.getElementById("collab-chip");
+  var groups = $$(".pub-group");
+  var status = document.getElementById("pub-status");
+  var empty = document.getElementById("pub-empty");
+  var collabList = document.getElementById("collab-list");
+  var nodes = null, nodeEls = [];
+
+  Object.keys(TOPICS).forEach(function (k) {
+    var o = document.createElement("option");
+    o.value = k; o.textContent = TOPICS[k];
+    themeSel.appendChild(o);
+  });
+
+  function matches(p, ignoreType) {
+    if (!ignoreType && pf.type !== "all" && p._type !== pf.type) return false;
+    if (pf.first && !p._first) return false;
+    if (pf.theme && p._themes.indexOf(pf.theme) === -1) return false;
+    if (pf.collab && p._authors.indexOf(pf.collab) === -1) return false;
+    if (pf.q) {
+      var words = pf.q.toLowerCase().split(/\s+/).filter(Boolean);
+      for (var i = 0; i < words.length; i++) if (p._text.indexOf(words[i]) === -1) return false;
+    }
+    return true;
+  }
+
+  function applyPubFilter() {
     var shown = 0;
     groups.forEach(function (g) {
-      var typeOk = current === "all" || g.getAttribute("data-type") === current;
-      var visible = 0;
-      g.querySelectorAll(".pub").forEach(function (p) {
-        var ok = typeOk && (!firstOnly.checked || p.getAttribute("data-first") === "true");
-        p.hidden = !ok;
-        if (ok) {
-          visible++;
-          p.querySelector(".pub-n").textContent = "[" + visible + "]";   // renumber visible items from 1
-        }
+      var ol = $(".pubs", g);
+      var items = $$(".pub", g);
+      items.sort(function (a, b) {
+        if (pf.sort === "cited") { var d = (b._cites || 0) - (a._cites || 0); if (d) return d; }
+        return a._order - b._order;
       });
-      g.hidden = visible === 0;
-      shown += visible;
+      items.forEach(function (p) { ol.appendChild(p); });
+      var n = 0;
+      items.forEach(function (p) {
+        var ok = matches(p, false);
+        p.hidden = !ok;
+        if (ok) { n++; $(".pub-n", p).textContent = "[" + n + "]"; }   // renumber visible items from 1
+      });
+      g.hidden = n === 0;
+      shown += n;
     });
-    buttons.forEach(function (b) {
+    segButtons.forEach(function (b) {
       var f = b.getAttribute("data-filter");
-      var sel = (f === "all" ? ".pub" : '.pub-group[data-type="' + f + '"] .pub') + (firstOnly.checked ? '[data-first="true"]' : "");
-      b.querySelector(".count").textContent = document.querySelectorAll(sel).length;
-      b.setAttribute("aria-pressed", String(f === current));
+      b.querySelector(".count").textContent = pubs.filter(function (p) { return (f === "all" || p._type === f) && matches(p, true); }).length;
+      b.setAttribute("aria-pressed", String(f === pf.type));
     });
-    status.textContent = shown === 0
-      ? "No first-authored publications in this category. Turn off “First-authored only” to see them all."
-      : "Showing " + shown + " of " + allPubs + " publications" + (firstOnly.checked ? ", first-authored only" : "") + ".";
+    var bits = [];
+    if (pf.first) bits.push("first-authored");
+    if (pf.theme) bits.push("in " + TOPICS[pf.theme]);
+    if (pf.collab) bits.push("with " + pf.collab);
+    if (pf.q) bits.push('matching "' + pf.q + '"');
+    status.textContent = "Showing " + shown + " of " + pubs.length + " publications" + (bits.length ? ", " + bits.join(", ") : "") + ".";
+    empty.hidden = shown !== 0;
+    chip.hidden = !pf.collab;
+    if (pf.collab) $("b", chip).textContent = pf.collab;
+    syncNetSelection();
   }
-  buttons.forEach(function (b) {
-    b.addEventListener("click", function () { current = b.getAttribute("data-filter"); applyFilter(); });
-  });
-  firstOnly.addEventListener("change", applyFilter);
-  applyFilter();
+
+  function resetPubFilters() {
+    pf.type = "all"; pf.first = false; pf.q = ""; pf.theme = ""; pf.collab = "";
+    firstOnly.checked = false; qInput.value = ""; themeSel.value = "";
+    applyPubFilter();
+  }
+  function setCollab(name) { pf.collab = pf.collab === name ? "" : name; applyPubFilter(); }
+
+  segButtons.forEach(function (b) { b.addEventListener("click", function () { pf.type = b.getAttribute("data-filter"); applyPubFilter(); }); });
+  firstOnly.addEventListener("change", function () { pf.first = firstOnly.checked; applyPubFilter(); });
+  var qTimer;
+  qInput.addEventListener("input", function () { clearTimeout(qTimer); qTimer = setTimeout(function () { pf.q = qInput.value.trim(); applyPubFilter(); }, 120); });
+  themeSel.addEventListener("change", function () { pf.theme = themeSel.value; applyPubFilter(); });
+  sortSel.addEventListener("change", function () { pf.sort = sortSel.value; applyPubFilter(); });
+  chip.addEventListener("click", function () { pf.collab = ""; applyPubFilter(); });
+  document.getElementById("pub-reset").addEventListener("click", resetPubFilters);
 
   // Links that point at a specific paper (e.g. from the BTech thesis) clear the filters first
   document.querySelectorAll('a[href^="#pub-"]').forEach(function (a) {
-    a.addEventListener("click", function () {
-      current = "all";
-      firstOnly.checked = false;
-      applyFilter();
-    });
+    a.addEventListener("click", resetPubFilters);
   });
+
+  /* ---------- Co-author network (small force layout, no library) ---------- */
+  var netSvg = document.getElementById("net");
+  var people = {}, pairs = {};
+  pubs.forEach(function (p) {
+    var names = p._authors;
+    names.forEach(function (n) { (people[n] = people[n] || { name: n, count: 0 }).count++; });
+    for (var i = 0; i < names.length; i++) for (var j = i + 1; j < names.length; j++) {
+      var k = names[i] < names[j] ? names[i] + "|" + names[j] : names[j] + "|" + names[i];
+      pairs[k] = (pairs[k] || 0) + 1;
+    }
+  });
+  nodes = Object.keys(people).map(function (n) { return people[n]; });
+  var links = Object.keys(pairs).map(function (k) {
+    var ab = k.split("|");
+    var me = ab[0] === ME || ab[1] === ME;
+    return { a: people[ab[0]], b: people[ab[1]], w: pairs[k], me: me, hub: !me && (people[ab[0]].count >= 3 || people[ab[1]].count >= 3) };
+  });
+
+  // Ranked list of repeat collaborators (also the accessible alternative to the drawing)
+  var ranked = nodes.filter(function (n) { return n.name !== ME; }).sort(function (a, b) { return b.count - a.count || a.name.localeCompare(b.name); });
+  var maxCount = ranked.length ? ranked[0].count : 1;
+  var repeat = ranked.filter(function (n) { return n.count >= 2; });
+  var oneOff = ranked.length - repeat.length;
+  collabList.innerHTML = repeat.map(function (n) {
+    return '<li><button type="button" aria-pressed="false" data-name="' + esc(n.name) + '"><span>' + esc(n.name) + '</span>' +
+           '<span class="bar" aria-hidden="true"><i style="width:' + (n.count / maxCount * 100).toFixed(1) + '%"></i></span>' +
+           '<span class="k">' + plural(n.count, "paper") + '</span></button></li>';
+  }).join("");
+  $$("button", collabList).forEach(function (b) { b.addEventListener("click", function () { setCollab(b.getAttribute("data-name")); }); });
+  if (oneOff) collabList.insertAdjacentHTML("afterend", '<p class="collab-more">Plus ' + plural(oneOff, "co-author") + ' on a single paper each. Hover over or select their circles to see them.</p>');
+
+  var W = 600, H = 400, alpha = 0, simRunning = false, dragging = null;
+  function radius(n) { return n.name === ME ? 11 : 4.5 + 2.1 * Math.sqrt(n.count); }
+
+  function initLayout() {
+    var seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    nodes.forEach(function (n) {
+      var a = rnd() * Math.PI * 2, d = 40 + rnd() * Math.min(W, H) * 0.4;
+      n.x = W / 2 + Math.cos(a) * d; n.y = H / 2 + Math.sin(a) * d; n.vx = 0; n.vy = 0;
+      n.fx = n.name === ME ? W / 2 : null; n.fy = n.name === ME ? H / 2 : null;
+      n.deg = 0;
+    });
+    links.forEach(function (l) { l.a.deg++; l.b.deg++; });
+  }
+
+  function tick() {
+    var i, j, n, m, dx, dy, d2, f;
+    for (i = 0; i < nodes.length; i++) {          // repulsion
+      n = nodes[i];
+      for (j = i + 1; j < nodes.length; j++) {
+        m = nodes[j];
+        dx = m.x - n.x; dy = m.y - n.y; d2 = dx * dx + dy * dy || 0.01;
+        if (d2 > 90000) continue;
+        f = -170 * alpha / d2;
+        n.vx += dx * f; n.vy += dy * f; m.vx -= dx * f; m.vy -= dy * f;
+      }
+    }
+    links.forEach(function (l) {                  // springs: frequent collaborators sit close; each paper's team clusters
+      var dist = l.me ? 48 + 105 / Math.sqrt(l.b.name === ME ? l.a.count : l.b.count) : (l.hub ? 120 : 42);
+      var s = l.me ? 0.45 : l.hub ? 0.02 * l.w : 0.35;
+      dx = l.b.x - l.a.x; dy = l.b.y - l.a.y;
+      var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+      var k = (d - dist) / d * alpha * s;
+      dx *= k; dy *= k;
+      var bias = l.a.deg / (l.a.deg + l.b.deg);
+      l.b.vx -= dx * bias; l.b.vy -= dy * bias; l.a.vx += dx * (1 - bias); l.a.vy += dy * (1 - bias);
+    });
+    nodes.forEach(function (n) {
+      n.vx += (W / 2 - n.x) * 0.012 * alpha; n.vy += (H / 2 - n.y) * 0.02 * alpha;
+      if (n.fx != null) { n.x = n.fx; n.y = n.fy; n.vx = n.vy = 0; return; }
+      n.vx *= 0.6; n.vy *= 0.6;
+      n.x += n.vx; n.y += n.vy;
+      var r = radius(n) + 6;
+      n.x = Math.max(r, Math.min(W - r - 70, n.x));
+      n.y = Math.max(r + 4, Math.min(H - r - 4, n.y));
+    });
+    alpha += (0 - alpha) * 0.0228;
+  }
+
+  var edgeEls = [];
+  function buildNet() {
+    var w = Math.round(netSvg.getBoundingClientRect().width);
+    if (!w) return;
+    W = Math.max(320, Math.min(760, w));
+    H = W < 520 ? Math.round(W * 1.05) : Math.round(W * 0.62);
+    netSvg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    initLayout();
+    alpha = 1;
+    for (var i = 0; i < 320; i++) tick();         // settle before the first paint: no jitter on arrival
+    var out = '<g class="edges">';
+    links.forEach(function (l) {
+      // Line strength follows how often two people published together; one-off links stay faint until hovered
+      var o = l.me ? 0.16 + 0.03 * Math.min(l.w, 8) : l.w >= 2 ? Math.min(0.45, 0.12 + 0.05 * l.w) : 0.07;
+      out += '<line class="edge" style="--o:' + o.toFixed(2) + '" stroke-width="' + Math.min(4, 0.8 + l.w * 0.4).toFixed(2) + '"/>';
+    });
+    out += '</g><g class="nodes">';
+    nodes.forEach(function (n) {
+      var cls = "node" + (n.name === ME ? " self" : n.count >= 3 ? " freq" : "") + (n.name !== ME && n.count < 2 ? " minor" : "");
+      out += '<g class="' + cls + '" tabindex="' + (n.name === ME ? -1 : 0) + '" role="button" aria-label="' +
+             esc(n.name === ME ? "Ekarsi Lodh" : n.name + ", " + plural(n.count, "shared paper")) + '">' +
+             '<circle r="' + radius(n).toFixed(1) + '"/>' +
+             (n.name === ME ? '<text text-anchor="middle" y="' + (radius(n) + 14).toFixed(1) + '">' : '<text dy="0.35em" x="' + (radius(n) + 4).toFixed(1) + '">') +
+             esc(n.name) + '</text></g>';
+    });
+    out += '</g>';
+    netSvg.innerHTML = out;
+    edgeEls = $$(".edge", netSvg);
+    nodeEls = $$(".node", netSvg);
+    nodeEls.forEach(function (g, i) { wireNode(g, nodes[i]); });
+    paint();
+    syncNetSelection();
+  }
+
+  function paint() {
+    links.forEach(function (l, i) {
+      var e = edgeEls[i];
+      e.setAttribute("x1", l.a.x.toFixed(1)); e.setAttribute("y1", l.a.y.toFixed(1));
+      e.setAttribute("x2", l.b.x.toFixed(1)); e.setAttribute("y2", l.b.y.toFixed(1));
+    });
+    nodes.forEach(function (n, i) { nodeEls[i].setAttribute("transform", "translate(" + n.x.toFixed(1) + "," + n.y.toFixed(1) + ")"); });
+  }
+
+  function run() {
+    if (simRunning) return;
+    simRunning = true;
+    (function frame() {
+      tick(); tick(); paint();
+      if (alpha > 0.004 || dragging) requestAnimationFrame(frame);
+      else simRunning = false;
+    })();
+  }
+
+  function highlight(n) {
+    netSvg.classList.toggle("hl", !!n);
+    var near = {};
+    if (n) { near[n.name] = true; links.forEach(function (l) { if (l.a === n) near[l.b.name] = true; if (l.b === n) near[l.a.name] = true; }); }
+    links.forEach(function (l, i) { edgeEls[i].classList.toggle("on", !!n && (l.a === n || l.b === n)); });
+    nodes.forEach(function (m, i) { nodeEls[i].classList.toggle("on", !!n && !!near[m.name]); });
+  }
+
+  function svgPoint(e) {
+    var pt = netSvg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    return pt.matrixTransform(netSvg.getScreenCTM().inverse());
+  }
+
+  function wireNode(g, n) {
+    g.addEventListener("pointerenter", function () { if (!dragging) highlight(n); });
+    g.addEventListener("pointerleave", function () { if (!dragging) highlight(null); });
+    g.addEventListener("focus", function () { highlight(n); });
+    g.addEventListener("blur", function () { highlight(null); });
+    g.addEventListener("keydown", function (e) {
+      if ((e.key === "Enter" || e.key === " ") && n.name !== ME) { e.preventDefault(); setCollab(n.name); }
+    });
+    var start = null;
+    g.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      g.setPointerCapture(e.pointerId);
+      start = { x: e.clientX, y: e.clientY, moved: false };
+      dragging = n;
+      highlight(n);
+    });
+    g.addEventListener("pointermove", function (e) {
+      if (dragging !== n || !start) return;
+      if (!start.moved && Math.hypot(e.clientX - start.x, e.clientY - start.y) < 4) return;
+      start.moved = true;
+      var p = svgPoint(e);
+      n.fx = Math.max(12, Math.min(W - 12, p.x)); n.fy = Math.max(12, Math.min(H - 12, p.y));
+      alpha = Math.max(alpha, 0.25);
+      run();
+    });
+    function end() {
+      if (dragging !== n) return;
+      var wasClick = start && !start.moved;
+      dragging = null; start = null;
+      if (n.name !== ME) { n.fx = null; n.fy = null; } else { n.fx = n.x; n.fy = n.y; }
+      alpha = Math.max(alpha, 0.12);
+      run();
+      if (wasClick && n.name !== ME) setCollab(n.name);
+      if (!g.matches(":hover")) highlight(null);
+    }
+    g.addEventListener("pointerup", end);
+    g.addEventListener("pointercancel", end);
+  }
+
+  function syncNetSelection() {
+    if (!collabList || !nodes) return;
+    $$("button", collabList).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-name") === pf.collab)); });
+    nodes.forEach(function (n, i) { if (nodeEls[i]) nodeEls[i].classList.toggle("picked", n.name === pf.collab); });
+  }
+
+  buildNet();
+  applyPubFilter();
+  var netW = Math.round(netSvg.getBoundingClientRect().width), netRT;
+  window.addEventListener("resize", function () {
+    clearTimeout(netRT);
+    netRT = setTimeout(function () {
+      var w = Math.round(netSvg.getBoundingClientRect().width);
+      if (Math.abs(w - netW) > 40) { netW = w; buildNet(); }
+    }, 200);
+  });
+
+  /* ---------- Live citation counts (OpenAlex) ---------- */
+  function cacheGet(key, maxAgeMs) {
+    try { var v = JSON.parse(localStorage.getItem(key)); if (v && Date.now() - v.t < maxAgeMs) return v.d; } catch (e) {}
+    return null;
+  }
+  function cacheSet(key, data) { try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), d: data })); } catch (e) {} }
+
+  (function loadCitations() {
+    var dois = pubs.map(function (p) { return p._doi; }).filter(Boolean);
+    var opt = $('option[value="cited"]', sortSel);
+    var cached = cacheGet("openalex-cites-v1", 12 * 3600 * 1000);
+    var req;
+    if (cached) req = Promise.resolve(cached);
+    else {
+      var ctrl = window.AbortController ? new AbortController() : null;
+      setTimeout(function () { if (ctrl) ctrl.abort(); }, 9000);
+      req = fetch("https://api.openalex.org/works?filter=doi:" + dois.map(encodeURIComponent).join("|") + "&per-page=50&select=doi,cited_by_count",
+                  { headers: { Accept: "application/json" }, signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function (j) {
+          var map = {};
+          (j.results || []).forEach(function (w) {
+            if (w.doi) map[w.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, "").toLowerCase()] = w.cited_by_count || 0;
+          });
+          cacheSet("openalex-cites-v1", map);
+          return map;
+        });
+    }
+    req.then(function (map) {
+      var found = 0;
+      pubs.forEach(function (p) {
+        if (!p._doi || !(p._doi in map)) return;
+        found++;
+        p._cites = map[p._doi];
+        if (p._cites > 0) $(".pub-meta", p).insertAdjacentHTML("beforeend", '<span class="cites" title="Citation count from OpenAlex">Cited by ' + p._cites + '</span>');
+      });
+      if (!found) throw new Error("No matching works");
+      opt.disabled = false; opt.textContent = "Most cited";
+      applyPubFilter();
+    }).catch(function () {
+      opt.textContent = "Most cited (unavailable)";   // no citation badges are shown rather than guessed ones
+    });
+  })();
 
   /* ---------- Highlight current section in nav ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
